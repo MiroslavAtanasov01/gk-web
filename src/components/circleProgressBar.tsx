@@ -1,6 +1,14 @@
 import React from "react";
 
-export default function SegmentedCircularProgress({ value }) {
+interface SegmentedCircularProgressProps {
+  value: number;
+}
+
+type ColorKey = "red" | "yellow" | "green" | "gray";
+
+const SegmentedCircularProgress: React.FC<SegmentedCircularProgressProps> = ({
+  value,
+}) => {
   const size = 60;
   const stroke = 6;
   const segments = 8;
@@ -9,8 +17,8 @@ export default function SegmentedCircularProgress({ value }) {
   const radius = center - stroke;
   const filledSegments = Math.round((value / 100) * segments);
 
-  const getColorKey = () => {
-    if (value == 0) return "gray";
+  const getColorKey = (): ColorKey => {
+    if (value === 0) return "gray";
     if (value < 30) return "red";
     if (value < 70) return "yellow";
     return "green";
@@ -18,14 +26,19 @@ export default function SegmentedCircularProgress({ value }) {
 
   const colorKey = getColorKey();
 
-  const colorMap = {
+  const colorMap: Record<string, string> = {
     red: "#ef4444", // Tailwind red-500
     yellow: "#EFB333", // Tailwind yellow-400
     green: "#7BBA3A", // Tailwind green-500
     gray: "#d1d5db", // Tailwind gray-300
   };
 
-  const polarToCartesian = (cx, cy, r, angleDeg) => {
+  const polarToCartesian = (
+    cx: number,
+    cy: number,
+    r: number,
+    angleDeg: number,
+  ): { x: number; y: number } => {
     const angleRad = ((angleDeg - 90) * Math.PI) / 180.0;
     return {
       x: cx + r * Math.cos(angleRad),
@@ -33,7 +46,7 @@ export default function SegmentedCircularProgress({ value }) {
     };
   };
 
-  const createArc = (startAngle, endAngle) => {
+  const createArc = (startAngle: number, endAngle: number): string => {
     const start = polarToCartesian(center, center, radius, endAngle);
     const end = polarToCartesian(center, center, radius, startAngle);
     const largeArc = endAngle - startAngle <= 180 ? "0" : "1";
@@ -86,4 +99,6 @@ export default function SegmentedCircularProgress({ value }) {
       </div>
     </div>
   );
-}
+};
+
+export default SegmentedCircularProgress;

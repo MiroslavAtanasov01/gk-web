@@ -1,7 +1,11 @@
 import React from "react";
 
-export default function HomeProgressBar({ value }) {
-  const getCustomGradient = () => {
+interface HomeProgressBarProps {
+  value: number;
+}
+
+const HomeProgressBar: React.FC<HomeProgressBarProps> = ({ value }) => {
+  const getCustomGradient = (): string => {
     if (value < 30) {
       return " linear-gradient(360deg,rgba(174, 15, 10, 1) 0%, rgba(227, 6, 19, 1) 50%, rgba(218, 7, 17, 1) 63%, rgba(195, 11, 13, 1) 84%, rgba(174, 15, 10, 1) 100%)";
     }
@@ -11,17 +15,17 @@ export default function HomeProgressBar({ value }) {
     return "linear-gradient(360deg,rgba(35, 98, 82, 1) 0%, rgba(127, 187, 72, 1) 50%, rgba(118, 178, 72, 1) 59%, rgba(95, 156, 75, 1) 73%, rgba(57, 119, 79, 1) 91%, rgba(35, 98, 82, 1) 100%)";
   };
 
-  const getBorderColor = () => {
+  const getBorderColor = (): string => {
     if (value < 30) return "#AE0F0A";
     if (value < 70) return "#EB5B27";
     return "#236252";
   };
 
   return (
-    <div className="flex items-center ">
+    <div className="flex items-center">
       {/* Percentage box */}
       <div
-        className="text-white text-sm font-bold px-2 py-0.5 "
+        className="text-white text-sm font-bold px-2 py-0.5"
         style={{
           background: getCustomGradient(),
           border: `2px solid ${getBorderColor()}`,
@@ -36,9 +40,9 @@ export default function HomeProgressBar({ value }) {
       </div>
 
       {/* Progress bar */}
-      <div className="w-full max-w-xl h-6 bg-gray-200  relative overflow-hidden">
+      <div className="w-full max-w-xl h-6 bg-gray-200 relative overflow-hidden">
         <div
-          className="h-full absolute  rounded-r-full transition-all duration-300"
+          className="h-full absolute rounded-r-full transition-all duration-300"
           style={{
             width: `${value}%`,
             background: getCustomGradient(),
@@ -47,4 +51,6 @@ export default function HomeProgressBar({ value }) {
       </div>
     </div>
   );
-}
+};
+
+export default HomeProgressBar;
