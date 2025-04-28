@@ -1,8 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Tab from "@/components/homepageTabs";
 import HomeProgressBar from "@/components/homeProgressBar";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Home() {
+  const { logout } = useAuth();
   return (
     <div>
       <div className="bg-[var(--color-primary)] flex items-center ">
@@ -17,6 +21,9 @@ export default function Home() {
         <p className=" text-2xl text-white text-center w-full font-medium -ml-50">
           КАЧВАНЕ НА ДАННИТЕ В ИНФОРМАЦИОНЕН МОДЕЛ
         </p>
+        <button onClick={logout} style={{ marginLeft: "1rem" }}>
+          Logout
+        </button>
       </div>
       <div className="relative flex items-center justify-center mt-8">
         {/* Background image */}
