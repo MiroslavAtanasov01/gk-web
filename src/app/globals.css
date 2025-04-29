@@ -5,9 +5,11 @@
   --foreground: #171717;
 
   --color-primary: #27519b;
+  --color-secondary: #74acda;
   --color-text-main: #efb333;
   --color-text-secondary: #25509a;
   --color-gray: #6d6e70;
+  --color-gray-light: #8e8e8e;
 }
 
 @theme inline {
