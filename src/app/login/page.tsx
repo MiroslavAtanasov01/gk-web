@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -13,8 +13,14 @@ export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { login } = useAuth();
+  const { user, loading, login } = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && user) {
+      router.replace("/");
+    }
+  }, [user, loading, router]);
 
   const getStoredUsers = (): { username: string; password: string }[] => {
     try {
@@ -30,9 +36,14 @@ export default function LoginPage() {
     event.preventDefault();
     setError("");
 
+    console.log(username, password);
+    if (username.trim() === "" || password.trim() === "") {
+      setError("Моля, попълнете всички полета.");
+      return;
+    }
+
     const users = getStoredUsers();
     const foundUser = users.find((u) => u.username === username);
-    console.log(users);
 
     if (foundUser && foundUser.password === password) {
       login({ username: foundUser.username });
@@ -41,6 +52,9 @@ export default function LoginPage() {
       setError("Invalid username or password");
     }
   };
+
+  if (loading) return <div>Зареждане...</div>;
+
   return (
     <div className="flex flex-col items-center justify-center">
       {/* Main Content Grid */}
@@ -61,12 +75,14 @@ export default function LoginPage() {
           </p>
           <form onSubmit={handleSubmit} className="w-sm ml-13">
             <InputField
+              name="username"
               icon={<FiLogIn size={18} />}
               placeholder="Логин"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
             <InputField
+              name="password"
               icon={<FaLock size={16} />}
               placeholder="Парола"
               type="password"
@@ -80,7 +96,7 @@ export default function LoginPage() {
             <div className="flex items-center gap-9 mt-6">
               <button
                 type="button"
-                onClick={() => console.log("Cancel clicked")}
+                onClick={() => router.push("/register")}
                 className="py-2 w-full rounded-lg bg-[var(--color-gray-light)] text-white text-2xl hover:bg-gray-300 cursor-pointer"
               >
                 Отмяна

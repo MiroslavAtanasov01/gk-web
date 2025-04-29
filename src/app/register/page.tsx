@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { FiLogIn } from "react-icons/fi";
 import Image from "next/image";
 import { InputField } from "@/components/InputFIeld";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 export default function RegisterPage() {
   const [firstName, setFirstName] = useState("");
@@ -15,7 +17,15 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loadingRegister, setLoading] = useState(false);
+  const router = useRouter();
+  const { user, loading, register } = useAuth();
+
+  useEffect(() => {
+    if (!loading && user) {
+      router.replace("/");
+    }
+  }, [user, loading, router]);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -34,34 +44,39 @@ export default function RegisterPage() {
       setLoading(false);
       return;
     }
+
     if (password !== confirmPassword) {
       setError("Паролите не съвпадат.");
       setLoading(false);
       return;
     }
-    // --- Add more validation as needed (email format, password strength) ---
 
-    // --- !!! Placeholder for actual registration logic !!! ---
-    // Replace this with your actual API call or context function
-    console.log("Submitting registration:", {
+    const userData = {
+      username,
       firstName,
       lastName,
       email,
-      username,
-      password,
-    });
-    // Simulate API call delay
-    setTimeout(() => {
-      console.log("Registration Submitted (mock)");
-      alert("Регистрацията е успешна! (Демо)"); // Placeholder success feedback
-      // Redirect or clear form after successful registration
+    };
+
+    const success = register(userData, password);
+
+    if (success) {
+      alert("Регистрацията е успешна!");
       setLoading(false);
-      // Reset form (optional)
-      // setFirstName(''); setLastName(''); setEmail(''); setUsername(''); setPassword(''); setConfirmPassword('');
-      // router.push('/login'); // If using router
-    }, 1500);
-    // --- End Placeholder ---
+      router.push("/");
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setUsername("");
+      setPassword("");
+      setConfirmPassword("");
+    } else {
+      setError("Потребителското име вече съществува.");
+      setLoading(false);
+    }
   };
+
+  if (loading) return <div>Зареждане...</div>;
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -80,18 +95,21 @@ export default function RegisterPage() {
           </h2>
           <form onSubmit={handleSubmit} className="w-sm ml-13">
             <InputField
+              name="firstName"
               icon={<FaUser size={16} />}
               placeholder="Име"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
             <InputField
+              name="lastName"
               icon={<FaUser size={16} />}
               placeholder="Фамилия"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
             <InputField
+              name="email"
               icon={<MdOutlineEmail size={18} />}
               placeholder="E-mail"
               type="email"
@@ -99,12 +117,14 @@ export default function RegisterPage() {
               onChange={(e) => setEmail(e.target.value)}
             />
             <InputField
+              name="username"
               icon={<FiLogIn size={18} />}
               placeholder="Логин"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
             <InputField
+              name="password"
               icon={<FaLock size={16} />}
               placeholder="Парола"
               type="password"
@@ -112,6 +132,7 @@ export default function RegisterPage() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <InputField
+              name="confirmPassword"
               icon={<FaLock size={16} />}
               placeholder="Потвърждение на парола"
               type="password"
@@ -125,18 +146,18 @@ export default function RegisterPage() {
             <div className="flex items-center gap-9 mt-6">
               <button
                 type="button"
-                onClick={() => console.log("Cancel clicked")}
+                onClick={() => router.push("/login")}
                 className="py-2 w-full rounded-lg bg-[var(--color-gray-light)] text-white text-2xl hover:bg-gray-300 cursor-pointer"
               >
                 Отмяна
               </button>
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loadingRegister}
                 className="w-full py-2 rounded-lg bg-[var(--color-secondary)] text-white text-2xl hover:bg-[var(--color-primary)] flex items-center justify-center relative cursor-pointer"
               >
-                {loading ? "Регистриране..." : "Вход"}
-                {!loading && (
+                {loadingRegister ? "Регистриране..." : "Вход"}
+                {!loadingRegister && (
                   <div className="absolute right-2">
                     <Image
                       src="/images/right-arrow.svg"
