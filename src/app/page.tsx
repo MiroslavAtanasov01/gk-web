@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Tab from "@/components/homepageTabs";
-import HomeProgressBar from "@/components/homeProgressBar";
+import Tab from "@/components/HomepageTabs";
+import HomeProgressBar from "@/components/HomeProgressBar";
 import { useAuth } from "@/context/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
