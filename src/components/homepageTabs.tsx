@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CircularProgressBar from "@/components/circleProgressBar";
+import CircularProgressBar from "@/components/CircleProgressBar";
 
 interface TabProps {
   image: string;
