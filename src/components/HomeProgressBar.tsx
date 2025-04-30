@@ -1,7 +1,11 @@
 import React from "react";
 
-export default function HomeProgressBar({ value }) {
-  const getCustomGradient = () => {
+type HomeProgressBarProps = {
+  value: number;
+};
+
+export default function HomeProgressBar({ value }: HomeProgressBarProps) {
+  const getCustomGradient = (): string => {
     if (value < 30) {
       return " linear-gradient(360deg,rgba(174, 15, 10, 1) 0%, rgba(227, 6, 19, 1) 50%, rgba(218, 7, 17, 1) 63%, rgba(195, 11, 13, 1) 84%, rgba(174, 15, 10, 1) 100%)";
     }
@@ -11,7 +15,7 @@ export default function HomeProgressBar({ value }) {
     return "linear-gradient(360deg,rgba(35, 98, 82, 1) 0%, rgba(127, 187, 72, 1) 50%, rgba(118, 178, 72, 1) 59%, rgba(95, 156, 75, 1) 73%, rgba(57, 119, 79, 1) 91%, rgba(35, 98, 82, 1) 100%)";
   };
 
-  const getBorderColor = () => {
+  const getBorderColor = (): string => {
     if (value < 30) return "#AE0F0A";
     if (value < 70) return "#EB5B27";
     return "#236252";

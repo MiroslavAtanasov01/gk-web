@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Tab from "@/components/homepageTabs";
-import HomeProgressBar from "@/components/homeProgressBar";
+import Tab from "@/components/HomepageTabs";
+import HomeProgressBar from "@/components/HomeProgressBar";
 
 export default function Home() {
   return (
-    <div>
+    <div style={{ overflow: "hidden" }}>
       <div className="bg-[var(--color-primary)] flex items-center ">
         <Image
           src="/images/home/logo.svg"
@@ -36,7 +36,7 @@ export default function Home() {
           height={220}
           alt="Home Logo"
           priority
-          className="z-10"
+          className="z-10 md:h-32"
         />
         <p className="text-[var(--color-text-main)] font-bold -ml-6 w-50 text-end">
           СТАТИСТИЧЕСКИ АНАЛИЗ
@@ -55,8 +55,12 @@ export default function Home() {
             ></Image>
           </div>
           <div className="flex items-center text-[var(--color-text-main)] text-2xl">
-            <p className="text-center pl-5 pr-5 text-[60px]">1</p>
-            <p className="flex-1 text-center ">ПЕРСОНАЛИЗАЦИЯ НА ЦИМ</p>
+            <p className="text-center pl-5 pr-5 text-[60px] md:text-[50px]">
+              1
+            </p>
+            <p className="flex-1 text-center md:text-[20px]">
+              ПЕРСОНАЛИЗАЦИЯ НА ЦИМ
+            </p>
           </div>
           <Tab
             image="/images/home/profile.svg"
@@ -83,8 +87,12 @@ export default function Home() {
         {/* Second column  */}
         <div className="p-4 flex-1">
           <div className="flex items-center text-[var(--color-text-main)] text-2xl">
-            <p className="text-center pl-5 pr-5 text-[60px]">2</p>
-            <p className="flex-1 text-center ">УПРАВЛЕНИЕ НА ИМ ПО БАЗИ</p>
+            <p className="text-center pl-5 pr-5 text-[60px] md:text-[50px]">
+              2
+            </p>
+            <p className="flex-1 text-center md:text-[20px]">
+              УПРАВЛЕНИЕ НА ИМ ПО БАЗИ
+            </p>
           </div>
           <Tab
             image="/images/home/speaker.svg"
@@ -115,8 +123,12 @@ export default function Home() {
             ></Image>
           </div>
           <div className="flex items-center text-[var(--color-text-main)] text-2xl">
-            <p className="text-center pl-5 pr-5 text-[60px]">3</p>
-            <p className="flex-1 text-center ">УПРАВЛЕНИЕ НА КАМПАНИЯТА</p>
+            <p className="text-center pl-5 pr-5 text-[60px] md:text-[50px]">
+              3
+            </p>
+            <p className="flex-1 text-center md:text-[20px]">
+              УПРАВЛЕНИЕ НА КАМПАНИЯТА
+            </p>
           </div>
           <Tab
             image="/images/home/calendar.svg"
