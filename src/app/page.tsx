@@ -5,9 +5,11 @@ import Tab from "@/components/HomepageTabs";
 import HomeProgressBar from "@/components/HomeProgressBar";
 import { useAuth } from "@/context/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { logout } = useAuth();
+  const router = useRouter();
   return (
     <ProtectedRoute>
       <div>
@@ -134,6 +136,7 @@ export default function Home() {
               image="/images/home/calendar.svg"
               text="Управление на кампаниите"
               percents={25}
+              onClick={() => router.push("/campaigns")}
             ></Tab>
             <Tab
               image="/images/home/barchart.svg"
