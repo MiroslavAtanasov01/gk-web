@@ -24,13 +24,12 @@ interface ScrollableCampaignListProps {
 const IndicatorArrow: React.FC<{ type: IndicatorType }> = ({ type }) => {
   switch (type) {
     case "up":
-      // Red Up Arrow SVG
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="w-5 h-5 text-red-500" // Size and color
+          className="w-5 h-5 text-red-500"
         >
           <path
             fillRule="evenodd"
@@ -40,13 +39,12 @@ const IndicatorArrow: React.FC<{ type: IndicatorType }> = ({ type }) => {
         </svg>
       );
     case "down":
-      // Green Down Arrow SVG
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="w-5 h-5 text-green-500" // Size and color
+          className="w-5 h-5 text-green-500"
         >
           <path
             fillRule="evenodd"
@@ -56,13 +54,12 @@ const IndicatorArrow: React.FC<{ type: IndicatorType }> = ({ type }) => {
         </svg>
       );
     case "neutral":
-      // Gray Right Arrow SVG
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="w-5 h-5 text-gray-500" // Size and color
+          className="w-5 h-5 text-gray-500"
         >
           <path
             fillRule="evenodd"
@@ -121,45 +118,27 @@ const ScrollableCampaignList: React.FC<ScrollableCampaignListProps> = ({
           {title}
         </h3>
       </div>
-      {/* Scrollable Content Area */}
-      {/*
-        - `overflow-y-auto`: Enables vertical scrolling ONLY when content exceeds the height.
-        - `containerHeightClass`: Sets the maximum height for the scrollable area.
-        - `bg-white`: Background for the list area.
-        - `rounded-b-lg`: Rounds bottom corners.
-      */}
       <div
         className={`overflow-y-auto ${containerHeightClass} bg-white rounded-b-lg`}
       >
         {/* List Container - using ul for semantic list */}
         <ul className="divide-y divide-gray-200">
           {" "}
-          {/* Adds lines between items */}
           {items.map((item) => (
-            // List Item - using li
             <li
               key={item.id}
               className="flex items-center p-3 space-x-3 hover:bg-gray-50 transition duration-150 ease-in-out"
             >
-              {/* Index Number */}
               <span className="font-bold text-gray-700 w-6 text-center">
                 {item.index}
               </span>
-              {/* Thumbnail Image */}
               <div className="flex-shrink-0 w-12 h-12 rounded overflow-hidden">
-                {" "}
-                {/* Fixed size container */}
                 <Image
                   src={item.imageUrl}
                   alt={`Thumbnail for ${item.name}`}
-                  width={48} // Match container width
-                  height={48} // Match container height
-                  className="object-cover w-full h-full" // Ensure image covers the area
-                  // Add a placeholder in case the image fails to load
-                  onError={(e) =>
-                    (e.currentTarget.src =
-                      "https://placehold.co/48x48/cccccc/ffffff?text=?")
-                  }
+                  width={48}
+                  height={48}
+                  className="object-cover w-full h-full"
                 />
               </div>
               {/* Campaign Name */}
