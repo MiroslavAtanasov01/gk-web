@@ -1,0 +1,13 @@
+/* CORRECT */
+.btn-primary {
+  display: flex;
+  text-align: center;
+  background-color: #74acda;
+  color: white;
+  font-size: small;
+  padding: 6px 10px;
+  border-radius: 5px;
+}
+.btn-primary:hover {
+  background-color: skyblue;
+}

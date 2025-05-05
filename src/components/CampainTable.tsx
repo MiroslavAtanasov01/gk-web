@@ -1,25 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; // Keep if needed elsewhere, unused in this snippet
+import Image from "next/image";
+import "@/styles/campain.css";
 
-// --- PLACEHOLDER Custom Icon Components ---
-// Replace these with your actual icon components.
-// They should accept className props if you want to control size/color via Tailwind.
-const IconTemplate = ({ className }) => <span className={className}>📄</span>; // Example
-const IconImport = ({ className }) => <span className={className}>📥</span>;
-const IconDelete = ({ className }) => <span className={className}>🗑️</span>;
-const IconEdit = ({ className }) => <span className={className}>✏️</span>;
-const IconAdd = ({ className }) => <span className={className}>➕</span>;
-const IconExport = ({ className }) => <span className={className}>📤</span>;
+// --- Icons (assuming these are correct) ---
 const IconUncheckedCircle = ({ className }) => (
   <span className={className}>⚪</span>
 );
 const IconCheckedCircle = ({ className }) => (
   <span className={className}>✔️</span>
-); // Using a checkmark, adjust as needed
-// --- End Placeholder Icons ---
+);
 
+// --- Data ---
 const campaignData = [
   { id: 1, code: "001/001", name: "кампания № 001" },
   { id: 2, code: "001/001", name: "кампания № 002" },
@@ -38,93 +32,129 @@ function CampaignTable() {
   };
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md w-full max-w-2xl mx-auto">
+    <div className=" p-4 bg-white rounded-lg shadow-md w-full max-w-2xl mx-auto">
       {/* Header Row */}
       <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-200">
         {/* Column Titles */}
-        <div className="flex items-center space-x-4">
-          <span className="font-bold text-blue-600 w-8 text-center">№</span>
-          <span className="font-bold text-blue-600">Кампания</span>
+        <div className="flex items-center space-x-4 ">
+          <div className="w-8 mr-1"></div>
+          <span
+            className="font-semibold w-11 text-center"
+            style={{ color: "var(--color-text-secondary)" }}
+          >
+            №
+          </span>
+          <span
+            className="font-semibold ml-2 mr-2 "
+            style={{ color: "var(--color-text-secondary)" }}
+          >
+            Кампания
+          </span>
         </div>
 
         {/* Action Buttons */}
         <div className="flex items-center space-x-2">
-          <button className="flex items-center bg-sky-500 hover:bg-sky-600 text-white text-sm px-3 py-1.5 rounded-md transition duration-150 ease-in-out">
-            {/* Use your custom icon component here */}
-            <IconTemplate className="mr-1 w-4 h-4" /> Шаблон
+          <button className="btn-primary">
+            <Image
+              src="/images/campain/template.svg"
+              alt="Шаблон"
+              width={20}
+              height={20}
+              className="pr-1"
+            />
+            <p className="pr-2">Шаблон</p>
           </button>
-          <button className="flex items-center bg-sky-500 hover:bg-sky-600 text-white text-sm px-3 py-1.5 rounded-md transition duration-150 ease-in-out">
-            {/* Use your custom icon component here */}
-            <IconImport className="mr-1 w-4 h-4" /> Импорт
+          <button className="flex items-center bg-[#74ACDA] hover:bg-sky-600 text-white text-sm px-3 py-1.5 rounded-md transition duration-150 ease-in-out">
+            <Image
+              src="/images/campain/import.svg"
+              alt="Импорт"
+              width={20}
+              height={20}
+              className="pr-1"
+            />{" "}
+            <p className="pr-2">Импорт</p>
           </button>
           <button
-            className="flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white w-8 h-8 rounded-md transition duration-150 ease-in-out"
+            className="flex items-center justify-center bg-[#74ACDA] hover:bg-sky-600 text-white w-8 h-8 rounded-md transition duration-150 ease-in-out"
             title="Изтрий"
           >
-            {/* Use your custom icon component here */}
-            <IconDelete className="w-4 h-4" />
+            <Image
+              src="/images/campain/delete.svg"
+              alt="Изтрий"
+              width={18}
+              height={20}
+            />
           </button>
           <button
-            className="flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white w-8 h-8 rounded-md transition duration-150 ease-in-out"
+            className="flex items-center justify-center bg-[#74ACDA] hover:bg-sky-600 text-white w-8 h-8 rounded-md transition duration-150 ease-in-out"
             title="Редактирай"
           >
-            {/* Use your custom icon component here */}
-            <IconEdit className="w-4 h-4" />
+            <Image
+              src="/images/campain/pencil.svg"
+              alt="Редактирай"
+              width={20}
+              height={20}
+            />
           </button>
           <button
-            className="flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white w-8 h-8 rounded-md transition duration-150 ease-in-out"
+            className="flex items-center justify-center bg-[#74ACDA] hover:bg-sky-600 text-white w-8 h-8 rounded-md transition duration-150 ease-in-out"
             title="Добави"
           >
-            {/* Use your custom icon component here */}
-            <IconAdd className="w-4 h-4" />
+            <Image
+              src="/images/campain/plus.svg"
+              alt="Добави"
+              width={20}
+              height={20}
+            />
           </button>
-          <button className="flex items-center bg-sky-500 hover:bg-sky-600 text-white text-sm px-3 py-1.5 rounded-md transition duration-150 ease-in-out">
-            {/* Use your custom icon component here */}
-            <IconExport className="mr-1 w-4 h-4" /> Експорт
+          <button className="flex items-center bg-[#74ACDA] hover:bg-sky-600 text-white text-sm px-3 py-1.5 rounded-md transition duration-150 ease-in-out">
+            <Image
+              src="/images/campain/import.svg" // Assuming export uses same icon for now
+              alt="Експорт"
+              width={20}
+              height={20}
+              className="pr-1"
+            />
+            <p className="pr-2">Експорт</p>
           </button>
         </div>
       </div>
 
       {/* Data Rows */}
       <div className="space-y-1">
-        {campaignData.map((campaign) => {
+        {campaignData.map((campaign, index) => {
           const isSelected = campaign.id === selectedId;
+          const isEven = index % 2 === 0;
+
           return (
             <div
               key={campaign.id}
               onClick={() => handleRowClick(campaign.id)}
-              className={`flex items-center p-2 rounded-lg cursor-pointer transition duration-150 ease-in-out ${
+              className={`flex items-center p-1 rounded-2xl cursor-pointer transition duration-150 ease-in-out ${
                 isSelected
-                  ? "bg-green-500 text-white font-semibold" // Selected row style
-                  : "bg-gray-100 hover:bg-gray-200 text-gray-800" // Default row style
+                  ? "bg-[#7FBB48] text-white font-semibold"
+                  : isEven
+                    ? "bg-gray-300 hover:bg-gray-400 text-gray-800"
+                    : "bg-white hover:bg-gray-400 text-gray-800"
               }`}
             >
-              {/* Radio button representation */}
               <div className="w-8 flex justify-center items-center mr-1">
                 {isSelected ? (
-                  // Use your custom checked icon component here
-                  <IconCheckedCircle
-                    className={`text-xl ${isSelected ? "text-white" : "text-gray-500"}`}
-                  />
+                  <IconCheckedCircle className={`text-xl`} />
                 ) : (
-                  // Use your custom unchecked icon component here
-                  <IconUncheckedCircle
-                    className={`text-xl ${isSelected ? "text-white" : "text-gray-500"}`}
-                  />
+                  <IconUncheckedCircle className={`text-xl text-gray-500`} />
                 )}
               </div>
 
-              {/* Number */}
               <span
-                className={`w-8 text-center ${isSelected ? "text-white" : "text-gray-700"}`}
+                className={`w-8 text-center ${
+                  isSelected ? "" : "text-gray-700"
+                }`}
               >
                 {campaign.id}
               </span>
 
-              {/* Campaign Text */}
-              <span
-                className={`ml-4 ${isSelected ? "text-white" : "text-gray-900"}`}
-              >
+              <span className={`ml-4 ${isSelected ? "" : "text-gray-900"}`}>
                 Шифр {campaign.code} {campaign.name}
               </span>
             </div>
