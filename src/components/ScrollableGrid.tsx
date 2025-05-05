@@ -21,14 +21,14 @@ const ScrollableGridContainer: React.FC<ScrollableGridContainerProps> = ({
   return (
     <div className="">
       {/* Header Section */}
-      <div className="bg-[var(--color-primary)] text-white text-center py-2 rounded-t-2xl">
+      <div className="bg-primary text-white text-center py-2 rounded-t-2xl">
         <h3 className="">{title}</h3>
       </div>
       {/* Scrollable Content Area */}
       <div
-        className={`overflow-y-auto ${containerHeightClass} p-2 border-2 border-[var(--color-primary)] rounded-b-2xl`}
+        className={`overflow-y-auto custom-scrollbar ${containerHeightClass} p-2 border-2 border-[var(--color-primary)] rounded-b-2xl`}
       >
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3 ">
           {items.map((item) => (
             <div
               key={item.id}

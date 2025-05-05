@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import ButtonBar from "@/components/ButtonBar";
 import Image from "next/image";
@@ -7,10 +9,10 @@ import {
 } from "@/components/ScrollableGrid";
 
 import dynamic from "next/dynamic";
-// import {
-//   sampleCampaignDynamics,
-//   ScrollableCampaignList,
-// } from "@/components/ScrollableCampaigns";
+import {
+  sampleCampaignDynamics,
+  ScrollableCampaignList,
+} from "@/components/ScrollableCampaigns";
 
 const Map = dynamic(() => import("@/components/Map"));
 
@@ -18,7 +20,7 @@ function Campaigns() {
   return (
     <div>
       {/* Header */}
-      <div className="bg-[var(--color-primary)] flex items-center h-[50px]">
+      <div className="bg-primary flex items-center h-[50px]">
         <p className=" text-3xl text-white text-center w-full">
           ОПЕРАТИВНО УПРАВЛЕНИЕ КАМПАНИИТЕ
         </p>
@@ -91,7 +93,7 @@ function Campaigns() {
             <Map />
           </div>
           <div className="">
-            {/* <ScrollableCampaignList
+            <ScrollableCampaignList
               title="ДИНАМИКА НА АКТИВНИТЕ КАМПАНИИ"
               items={sampleCampaignDynamics}
             />
@@ -102,7 +104,7 @@ function Campaigns() {
             <ScrollableCampaignList
               title="ТОП 10 СТАРТЕР МЕРОПРИЯТИЯ"
               items={sampleCampaignDynamics}
-            /> */}
+            />
           </div>
         </div>
       </div>

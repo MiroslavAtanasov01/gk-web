@@ -76,7 +76,7 @@ const IndicatorArrow: React.FC<{ type: IndicatorType }> = ({ type }) => {
 const ScrollableCampaignList: React.FC<ScrollableCampaignListProps> = ({
   title,
   items,
-  containerHeightClass = "h-50",
+  containerHeightClass = "h-43",
 }) => {
   const getIndicatorTextColor = (type: IndicatorType): string => {
     switch (type) {
@@ -95,7 +95,7 @@ const ScrollableCampaignList: React.FC<ScrollableCampaignListProps> = ({
     // Outer container with background, padding, rounded corners, shadow
     <div className="">
       {/* Header Section */}
-      <div className="flex items-center bg-blue-700 text-white p-3 rounded-t-lg space-x-3">
+      <div className="flex items-center bg-[var(--color-primary)] text-white p-3 space-x-3">
         {/* Placeholder for Gauge Icon */}
         <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-blue-700">
           {/* Replace with your actual gauge icon (SVG, Font Awesome, etc.) */}
@@ -114,31 +114,28 @@ const ScrollableCampaignList: React.FC<ScrollableCampaignListProps> = ({
             />
           </svg>
         </div>
-        <h3 className="font-semibold text-lg uppercase tracking-wide">
-          {title}
-        </h3>
+        <h3 className="">{title}</h3>
       </div>
       <div
-        className={`overflow-y-auto ${containerHeightClass} bg-white rounded-b-lg`}
+        className={`overflow-y-auto custom-scrollbar ${containerHeightClass} border-2 border-[var(--color-primary)] p-1`}
       >
         {/* List Container - using ul for semantic list */}
-        <ul className="divide-y divide-gray-200">
-          {" "}
+        <ul className="grid gap-1">
           {items.map((item) => (
             <li
               key={item.id}
-              className="flex items-center p-3 space-x-3 hover:bg-gray-50 transition duration-150 ease-in-out"
+              className="flex items-center space-x-3 hover:bg-gray-50 transition duration-150 ease-in-out"
             >
-              <span className="font-bold text-gray-700 w-6 text-center">
+              <span className="font-bold text-gray-700 w-4 text-center">
                 {item.index}
               </span>
-              <div className="flex-shrink-0 w-12 h-12 rounded overflow-hidden">
+              <div className="flex-shrink-0 overflow-hidden">
                 <Image
                   src={item.imageUrl}
                   alt={`Thumbnail for ${item.name}`}
-                  width={48}
-                  height={48}
-                  className="object-cover w-full h-full"
+                  width={40}
+                  height={30}
+                  className="object-cover"
                 />
               </div>
               {/* Campaign Name */}
