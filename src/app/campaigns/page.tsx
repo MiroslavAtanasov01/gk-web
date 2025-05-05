@@ -24,7 +24,7 @@ function Campaigns() {
           ОПЕРАТИВНО УПРАВЛЕНИЕ КАМПАНИИТЕ
         </p>
       </div>
-      <div className="px-4 md:px-10 pb-10 pt-1 flex flex-col flex-grow overflow-hidden">
+      <div className="px-4 md:px-10 pb-8 pt-1 flex flex-col flex-grow overflow-hidden">
         <div className="flex-shrink-0 mb-1">
           <ButtonBar />
         </div>

@@ -1,59 +1,85 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import { getColorClasses } from "../utils/colorStyles";
 
 interface GridItem {
   id: string;
   text: string;
-  isActive?: boolean;
 }
 
 interface ScrollableGridContainerProps {
   title: string;
   items: GridItem[];
+  color: "green" | "orange" | "blue";
   containerHeightClass?: string;
+  initialActiveId?: string | null;
+  onItemClick?: (id: string) => void;
+  className?: string;
 }
 
 const ScrollableGridContainer: React.FC<ScrollableGridContainerProps> = ({
   title,
   items,
-  containerHeightClass = "h-37",
+  color,
+  containerHeightClass,
+  initialActiveId = null,
+  onItemClick,
+  className,
 }) => {
+  const [activeItemId, setActiveItemId] = useState<string | null>(
+    initialActiveId,
+  );
+
+  const { border, bg, text, hover } = getColorClasses(color);
+
+  const handleItemClick = (itemId: string) => {
+    setActiveItemId(itemId);
+    if (onItemClick) {
+      onItemClick(itemId);
+    }
+    console.log(`Clicked item ID: ${itemId}`);
+  };
+
   return (
-    <div className="">
-      {/* Header Section */}
-      <div className="bg-primary text-white text-center py-2 rounded-t-2xl">
-        <h3 className="">{title}</h3>
+    <div className={`flex flex-col ${className}`}>
+      <div className="bg-primary flex-shrink-0 rounded-t-2xl py-2 text-center text-white">
+        <h3 className="text-sm font-semibold tracking-wide uppercase">
+          {title}
+        </h3>
       </div>
-      {/* Scrollable Content Area */}
+
       <div
-        className={`overflow-y-auto custom-scrollbar ${containerHeightClass} p-2 border-2 border-[var(--color-primary)] rounded-b-2xl`}
+        className={`custom-scrollbar overflow-y-auto ${containerHeightClass} border-primary min-h-0 rounded-b-2xl border-r-2 
+        border-b-2 border-l-2 bg-white pt-2 pb-2 pl-2`}
       >
-        <div className="grid grid-cols-2 gap-3 ">
+        <div className="grid grid-cols-2 gap-3 pr-2">
           {items.map((item) => (
             <div
               key={item.id}
-              className={`
-                p-4 rounded-lg border text-center font-medium cursor-pointer
-                transition duration-150 ease-in-out
-                ${
-                  item.isActive
-                    ? "bg-green-600 text-white border-green-700 shadow-md"
-                    : "bg-white text-green-600 border-green-400 hover:bg-green-50 hover:border-green-500"
-                }
-              `}
-              onClick={() => console.log(`Clicked item: ${item.text}`)}
+              className={`cursor-pointer rounded-lg border p-4 text-center font-medium transition duration-150 ease-in-out ${
+                activeItemId === item.id
+                  ? `${border} ${bg} text-white`
+                  : `border-2 ${border} bg-white ${text} hover:${border} ${hover}`
+              } `}
+              onClick={() => handleItemClick(item.id)}
             >
               {item.text}
             </div>
           ))}
+          {items.length === 0 && (
+            <p className="col-span-2 py-4 text-center text-gray-500">
+              Няма налични елементи.
+            </p>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
+// Sample data remains the same
 export const sampleCampaigns: GridItem[] = [
-  { id: "k15", text: "K № 000015", isActive: true },
+  { id: "k15", text: "K № 000015" },
   { id: "k16", text: "K № 000016" },
   { id: "k17", text: "K № 000017" },
   { id: "k18", text: "K № 000018" },
