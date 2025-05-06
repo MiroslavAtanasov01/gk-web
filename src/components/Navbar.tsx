@@ -18,7 +18,7 @@ export default function Navbar() {
           style={{ borderBottomLeftRadius: 50 }}
         >
           <Image
-            src="/images/campain/campain.svg"
+            src="/images/campain/campain-white.svg"
             alt="campain"
             width={40}
             height={40}
@@ -28,7 +28,7 @@ export default function Navbar() {
         </div>
         <div className={` ${styles.tab} mr-0.5 cursor-pointer`}>
           <Image
-            src="/images/campain/topic.svg"
+            src="/images/campain/topic-white.svg"
             alt="campain"
             width={40}
             height={40}

@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation"; // Keep if needed elsewhere, unused in this snippet
+// import { useRouter } from "next/navigation"; // Keep if needed
 import Image from "next/image";
-import "@/styles/campain.css";
+import "@/styles/campain.css"; // Make sure this path is correct
 
-// --- Icons (assuming these are correct) ---
+// --- Icons ---
 const IconUncheckedCircle = ({ className }) => (
   <span className={className}>⚪</span>
 );
@@ -13,17 +13,21 @@ const IconCheckedCircle = ({ className }) => (
   <span className={className}>✔️</span>
 );
 
-// --- Data ---
+// --- Data (add more items to make scrolling likely) ---
 const campaignData = [
   { id: 1, code: "001/001", name: "кампания № 001" },
   { id: 2, code: "001/001", name: "кампания № 002" },
   { id: 3, code: "001/001", name: "кампания № 003" },
   { id: 4, code: "001/001", name: "кампания № 004" },
   { id: 5, code: "001/001", name: "кампания № 005" },
+  { id: 6, code: "001/001", name: "кампания № 006" },
+  { id: 7, code: "001/001", name: "кампания № 007" },
+  { id: 8, code: "001/001", name: "кампания № 008" },
+  { id: 9, code: "001/001", name: "кампания № 009" },
+  { id: 10, code: "001/001", name: "кампания № 010" },
 ];
 
 function CampaignTable() {
-  // State to keep track of the selected row's ID
   const [selectedId, setSelectedId] = useState(2);
 
   const handleRowClick = (id) => {
@@ -32,9 +36,10 @@ function CampaignTable() {
   };
 
   return (
-    <div className=" p-4 bg-white rounded-lg shadow-md w-full max-w-2xl mx-auto">
+    <div className="p-4 bg-white rounded-lg shadow-md w-full max-w-2xl mx-auto overflow-hidden border-2 border-blue-700 rounded h-full">
       {/* Header Row */}
-      <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-200">
+      <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-200 pr-2">
+        {" "}
         {/* Column Titles */}
         <div className="flex items-center space-x-4 ">
           <div className="w-8 mr-1"></div>
@@ -51,7 +56,6 @@ function CampaignTable() {
             Кампания
           </span>
         </div>
-
         {/* Action Buttons */}
         <div className="flex items-center space-x-2">
           <button className="btn-primary">
@@ -64,7 +68,7 @@ function CampaignTable() {
             />
             <p className="pr-2">Шаблон</p>
           </button>
-          <button className="flex items-center bg-[#74ACDA] hover:bg-sky-600 text-white text-sm px-3 py-1.5 rounded-md transition duration-150 ease-in-out">
+          <button className="btn-primary">
             <Image
               src="/images/campain/import.svg"
               alt="Импорт"
@@ -74,21 +78,17 @@ function CampaignTable() {
             />{" "}
             <p className="pr-2">Импорт</p>
           </button>
-          <button
-            className="flex items-center justify-center bg-[#74ACDA] hover:bg-sky-600 text-white w-8 h-8 rounded-md transition duration-150 ease-in-out"
-            title="Изтрий"
-          >
+          <button className="btn-primary btn-icon" title="Изтрий">
+            {" "}
             <Image
               src="/images/campain/delete.svg"
               alt="Изтрий"
               width={18}
-              height={20}
+              height={18}
             />
           </button>
-          <button
-            className="flex items-center justify-center bg-[#74ACDA] hover:bg-sky-600 text-white w-8 h-8 rounded-md transition duration-150 ease-in-out"
-            title="Редактирай"
-          >
+          <button className="btn-primary btn-icon" title="Редактирай">
+            {" "}
             <Image
               src="/images/campain/pencil.svg"
               alt="Редактирай"
@@ -96,10 +96,8 @@ function CampaignTable() {
               height={20}
             />
           </button>
-          <button
-            className="flex items-center justify-center bg-[#74ACDA] hover:bg-sky-600 text-white w-8 h-8 rounded-md transition duration-150 ease-in-out"
-            title="Добави"
-          >
+          <button className="btn-primary btn-icon" title="Добави">
+            {" "}
             <Image
               src="/images/campain/plus.svg"
               alt="Добави"
@@ -107,9 +105,9 @@ function CampaignTable() {
               height={20}
             />
           </button>
-          <button className="flex items-center bg-[#74ACDA] hover:bg-sky-600 text-white text-sm px-3 py-1.5 rounded-md transition duration-150 ease-in-out">
+          <button className="btn-primary">
             <Image
-              src="/images/campain/import.svg" // Assuming export uses same icon for now
+              src="/images/campain/import.svg"
               alt="Експорт"
               width={20}
               height={20}
@@ -120,8 +118,9 @@ function CampaignTable() {
         </div>
       </div>
 
-      {/* Data Rows */}
-      <div className="space-y-1">
+      {/* Data Rows Container - Added classes here */}
+      <div className="custom-scrollbar space-y-1 max-h-72 overflow-y-auto pr-1">
+        {" "}
         {campaignData.map((campaign, index) => {
           const isSelected = campaign.id === selectedId;
           const isEven = index % 2 === 0;
@@ -130,12 +129,12 @@ function CampaignTable() {
             <div
               key={campaign.id}
               onClick={() => handleRowClick(campaign.id)}
-              className={`flex items-center p-1 rounded-2xl cursor-pointer transition duration-150 ease-in-out ${
+              className={`flex items-center p-1 rounded-lg cursor-pointer transition duration-150 ease-in-out mr-1 ${
                 isSelected
                   ? "bg-[#7FBB48] text-white font-semibold"
                   : isEven
-                    ? "bg-gray-300 hover:bg-gray-400 text-gray-800"
-                    : "bg-white hover:bg-gray-400 text-gray-800"
+                    ? "bg-white hover:bg-gray-400 text-gray-800"
+                    : "bg-[#D7D8D9] hover:bg-gray-400 text-gray-800"
               }`}
             >
               <div className="w-8 flex justify-center items-center mr-1">
