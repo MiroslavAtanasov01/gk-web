@@ -29,6 +29,7 @@ export default function Map({ className }: MapProps) {
       center={[43.20361984325244, 27.91659099714607]}
       zoom={14}
       className={className}
+      attributionControl={false}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Marker position={[43.20361984325244, 27.91659099714607]}>

@@ -19,71 +19,38 @@ interface ScrollableCampaignListProps {
   title: string;
   items: CampaignItem[];
   containerHeightClass?: string;
+  className?: string;
+  number?: string;
+  icon: string;
 }
-
-const IndicatorArrow: React.FC<{ type: IndicatorType }> = ({ type }) => {
-  switch (type) {
-    case "up":
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          className="w-5 h-5 text-red-500"
-        >
-          <path
-            fillRule="evenodd"
-            d="M10 17a.75.75 0 01-.75-.75V5.612L5.03 9.83a.75.75 0 01-1.06-1.06l5.5-5.5a.75.75 0 011.06 0l5.5 5.5a.75.75 0 11-1.06 1.06L10.75 5.612V16.25a.75.75 0 01-.75.75z"
-            clipRule="evenodd"
-          />
-        </svg>
-      );
-    case "down":
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          className="w-5 h-5 text-green-500"
-        >
-          <path
-            fillRule="evenodd"
-            d="M10 3a.75.75 0 01.75.75v10.638l4.22-4.22a.75.75 0 111.06 1.06l-5.5 5.5a.75.75 0 01-1.06 0l-5.5-5.5a.75.75 0 111.06-1.06l4.22 4.22V3.75A.75.75 0 0110 3z"
-            clipRule="evenodd"
-          />
-        </svg>
-      );
-    case "neutral":
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          className="w-5 h-5 text-gray-500"
-        >
-          <path
-            fillRule="evenodd"
-            d="M3 10a.75.75 0 01.75-.75h10.638L10.17 5.03a.75.75 0 011.06-1.06l5.5 5.5a.75.75 0 010 1.06l-5.5 5.5a.75.75 0 11-1.06-1.06L14.388 10.75H3.75A.75.75 0 013 10z"
-            clipRule="evenodd"
-          />
-        </svg>
-      );
-    default:
-      return null;
-  }
-};
 
 const ScrollableCampaignList: React.FC<ScrollableCampaignListProps> = ({
   title,
   items,
-  containerHeightClass = "h-43",
+  containerHeightClass,
+  className,
+  number,
+  icon,
 }) => {
+  const IndicatorArrow = (type: IndicatorType) => {
+    switch (type) {
+      case "up":
+        return "/images/campaigns/arrow-up.svg";
+      case "down":
+        return "/images/campaigns/arrow-down.svg";
+      case "neutral":
+        return "/images/campaigns/arrow-neutral.svg";
+      default:
+        return null;
+    }
+  };
+
   const getIndicatorTextColor = (type: IndicatorType): string => {
     switch (type) {
       case "up":
-        return "text-red-500";
+        return "text-[#E30613]";
       case "down":
-        return "text-green-500";
+        return "text-[#7FBB48]";
       case "neutral":
         return "text-gray-500";
       default:
@@ -91,75 +58,64 @@ const ScrollableCampaignList: React.FC<ScrollableCampaignListProps> = ({
     }
   };
 
+  const roundedT = number === "first" ? "rounded-t-2xl" : "";
+  const roundedB = number === "last" ? "rounded-b-2xl" : "";
+
   return (
-    // Outer container with background, padding, rounded corners, shadow
-    <div className="">
-      {/* Header Section */}
-      <div className="flex items-center bg-[var(--color-primary)] text-white p-3 space-x-3">
-        {/* Placeholder for Gauge Icon */}
-        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-blue-700">
-          {/* Replace with your actual gauge icon (SVG, Font Awesome, etc.) */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-            />
-          </svg>
-        </div>
-        <h3 className="">{title}</h3>
+    <div
+      className={`flex flex-col ${className} ${roundedT} ${roundedB} border-primary border-2`}
+    >
+      <div
+        className={`bg-primary flex items-center space-x-3 px-3 py-1 text-white ${roundedT}`}
+      >
+        <Image src={icon} alt="Gauge Icon" width={60} height={60} />
+        <h3>{title}</h3>
       </div>
       <div
-        className={`overflow-y-auto custom-scrollbar ${containerHeightClass} border-2 border-[var(--color-primary)] p-1`}
+        className={`custom-scrollbar overflow-y-auto pr-2 ${containerHeightClass} ${roundedB} border-x-8 border-y-5 border-white`}
       >
-        {/* List Container - using ul for semantic list */}
         <ul className="grid gap-1">
           {items.map((item) => (
             <li
               key={item.id}
-              className="flex items-center space-x-3 hover:bg-gray-50 transition duration-150 ease-in-out"
+              className="flex items-center space-x-3 transition duration-150 ease-in-out hover:bg-gray-50"
             >
-              <span className="font-bold text-gray-700 w-4 text-center">
+              <span className="w-4 text-center font-semibold text-gray-950">
                 {item.index}
               </span>
               <div className="flex-shrink-0 overflow-hidden">
                 <Image
                   src={item.imageUrl}
-                  alt={`Thumbnail for ${item.name}`}
+                  alt={`${item.name}`}
                   width={40}
                   height={30}
                   className="object-cover"
                 />
               </div>
-              {/* Campaign Name */}
-              <span className="flex-grow font-medium text-gray-800 truncate mr-2">
-                {item.name}
-              </span>{" "}
-              {/* Allow shrinking/growing, truncate long names */}
-              {/* Primary Value */}
-              <span className="font-bold text-gray-900 w-10 text-right">
+              <span className="flex-grow text-gray-950">{item.name}</span>
+              <span className="text-right text-lg font-semibold text-gray-950">
                 {item.primaryValue}
               </span>
-              {/* Indicator and Secondary Value */}
               <div
-                className={`flex items-center space-x-1 w-16 justify-end ${getIndicatorTextColor(item.indicatorType)}`}
+                className={`flex items-center justify-end space-x-1 ${getIndicatorTextColor(item.indicatorType)}`}
               >
-                <IndicatorArrow type={item.indicatorType} />
-                <span className="font-semibold">{item.secondaryValue}</span>
+                <Image
+                  src={IndicatorArrow(item.indicatorType) || ""}
+                  alt={"arrow"}
+                  width={item.indicatorType === "neutral" ? 20 : 15}
+                  height={item.indicatorType === "neutral" ? 15 : 20}
+                />
+                <span className="text-base">
+                  {item.indicatorType === "neutral"
+                    ? "--"
+                    : item.secondaryValue}
+                </span>
               </div>
             </li>
           ))}
         </ul>
-        {/* Add a message if there are no items */}
         {items.length === 0 && (
-          <p className="text-center text-gray-500 py-6">
+          <p className="py-6 text-center text-gray-500">
             Няма активни кампании.
           </p>
         )}
@@ -173,7 +129,7 @@ export const sampleCampaignDynamics: CampaignItem[] = [
     id: "c005",
     index: 1,
     imageUrl: "/images/campaigns/image.png",
-    name: "Кампания 005",
+    name: "Кампания 1",
     primaryValue: 76,
     indicatorType: "up",
     secondaryValue: 10,
@@ -182,7 +138,7 @@ export const sampleCampaignDynamics: CampaignItem[] = [
     id: "c5",
     index: 2,
     imageUrl: "/images/campaigns/image.png",
-    name: "Кампания 5",
+    name: "Кампания 2",
     primaryValue: 32,
     indicatorType: "down",
     secondaryValue: 20,
@@ -191,7 +147,7 @@ export const sampleCampaignDynamics: CampaignItem[] = [
     id: "c_generic_1",
     index: 3,
     imageUrl: "/images/campaigns/image.png",
-    name: "Кампания",
+    name: "Кампания 3",
     primaryValue: 21,
     indicatorType: "neutral",
     secondaryValue: 0,
@@ -200,7 +156,7 @@ export const sampleCampaignDynamics: CampaignItem[] = [
     id: "c_generic_2",
     index: 4,
     imageUrl: "/images/campaigns/image.png",
-    name: "Кампания",
+    name: "Кампания 4",
     primaryValue: 17,
     indicatorType: "down",
     secondaryValue: 20,
@@ -209,7 +165,7 @@ export const sampleCampaignDynamics: CampaignItem[] = [
     id: "c106",
     index: 5,
     imageUrl: "/images/campaigns/image.png",
-    name: "Кампания 106",
+    name: "Кампания 5",
     primaryValue: 7,
     indicatorType: "up",
     secondaryValue: 10,
@@ -218,7 +174,7 @@ export const sampleCampaignDynamics: CampaignItem[] = [
     id: "c107",
     index: 6,
     imageUrl: "/images/campaigns/image.png",
-    name: "Кампания 107",
+    name: "Кампания 6",
     primaryValue: 55,
     indicatorType: "neutral",
     secondaryValue: 0,
@@ -227,7 +183,7 @@ export const sampleCampaignDynamics: CampaignItem[] = [
     id: "c108",
     index: 7,
     imageUrl: "/images/campaigns/image.png",
-    name: "Кампания 108",
+    name: "Кампания 7",
     primaryValue: 42,
     indicatorType: "up",
     secondaryValue: 5,

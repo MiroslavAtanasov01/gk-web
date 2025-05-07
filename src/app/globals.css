@@ -22,7 +22,7 @@ body {
 
 /* Custom scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 20px;
+  width: 19px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
   background: transparent;
@@ -34,10 +34,10 @@ body {
 .custom-scrollbar::-webkit-scrollbar-button:single-button:decrement {
   height: 20px;
   background: url("/images/up-arrow.svg") no-repeat center;
-  background-size: 25px 15px;
+  background-size: 22px 13px;
 }
 .custom-scrollbar::-webkit-scrollbar-button:single-button:increment {
   height: 20px;
   background: url("/images/down-arrow.svg") no-repeat center;
-  background-size: 25px 15px;
+  background-size: 22px 13px;
 }

@@ -111,12 +111,14 @@ function Campaigns() {
               containerHeightClass="flex-grow min-h-0"
               className="flex-grow min-h-0"
               number="first"
+              icon="/images/campaigns/side-icon1.svg"
             />
             <ScrollableCampaignList
               title="ПРЕДПОЧИТАНИ СПОНСОРИ"
               items={sampleCampaignDynamics}
               containerHeightClass="flex-grow min-h-0"
               className="flex-grow min-h-0"
+              icon="/images/campaigns/side-icon2.svg"
             />
             <ScrollableCampaignList
               title="ТОП 10 СТАРТЕР МЕРОПРИЯТИЯ"
@@ -124,6 +126,7 @@ function Campaigns() {
               containerHeightClass="flex-grow min-h-0"
               className="flex-grow min-h-0"
               number="last"
+              icon="/images/campaigns/side-icon3.svg"
             />
           </div>
         </div>
