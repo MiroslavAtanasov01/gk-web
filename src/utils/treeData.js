@@ -34,6 +34,6 @@ export const sampleTreeData = [
   },
   {
     id: "root-3",
-    label: "Тема 3 (без деца)",
+    label: "Тема 3",
   },
 ];

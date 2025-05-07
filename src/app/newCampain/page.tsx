@@ -1,35 +1,42 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import CampainTable from "@/components/CampainTable";
 import Image from "next/image";
 
 export default function NewCampain() {
   return (
-    <div>
+    <div className="flex flex-col h-screen">
+      {/* Navbar at the top */}
       <Navbar />
-      <p className="text-center w-full text-[var(--color-primary)] p-3 font-bold text-2xl  tracking-wide">
+
+      {/* Title */}
+      <p className="text-center w-full text-[var(--color-primary)] p-3 font-bold text-2xl tracking-wide">
         СЪЗДАВАНЕ НА КАМПАНИЯ - ТЕМА
       </p>
-      <div className="flex w-full gap-3 p-1 grow-[20]">
-        <div className="flex-1/2 text-center ">
-          <div>
-            <div className="flex justify-center ">
-              <Image
-                src="/images/campain/campain.svg"
-                alt="campain"
-                width={60}
-                height={70}
-                className="pr-2"
-              />
-              <p className="p-5 pl-1 text-[#25509A] font-bold">КАМПАНИЯ</p>
-            </div>
+
+      {/* Main Content */}
+      <div className="flex w-full gap-3 p-1 flex-1 overflow-hidden">
+        {/* Left Column */}
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <div className="flex justify-center items-center">
+            <Image
+              src="/images/campain/campain.svg"
+              alt="campain"
+              width={60}
+              height={70}
+              className="pr-2"
+            />
+            <p className="p-5 pl-1 text-[#25509A] font-bold">КАМПАНИЯ</p>
           </div>
-          <div className="flex w-full h-[110%]">
-            {/* Table  */}
+          <div className="flex-1 overflow-hidden">
             <CampainTable />
           </div>
         </div>
-        <div className="flex-1/2 text-center">
-          <div className="flex justify-center">
+
+        {/* Right Column */}
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <div className="flex justify-center items-center">
             <Image
               src="/images/campain/topic.svg"
               alt="campain"
@@ -37,11 +44,13 @@ export default function NewCampain() {
               height={70}
               className="pr-2"
             />
-            <p className="p-5 pl-1 text-[#25509A] font-bold "> ТЕМА</p>
+            <p className="p-5 pl-1 text-[#25509A] font-bold">ТЕМА</p>
           </div>
-          <div className="w-full h-full">
-            <CampainTable />
-            <div className="flex justify-end text-end pr-5 pt-2">
+          <div className="flex-1 overflow-hidden flex flex-col">
+            <div className="flex-1 overflow-hidden">
+              <CampainTable />
+            </div>
+            <div className="flex justify-end pr-5 pt-2 shrink-0">
               <button className="flex bg-secondary text-white p-2 rounded-lg">
                 <Image
                   src="/images/campain/save.svg"

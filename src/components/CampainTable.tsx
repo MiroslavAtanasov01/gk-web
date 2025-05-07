@@ -27,7 +27,7 @@ const campaignData = [
   { id: 10, code: "001/001", name: "кампания № 010" },
 ];
 
-function CampaignTable() {
+function CampaignTable({ showActions = true }) {
   const [selectedId, setSelectedId] = useState(2);
 
   const handleRowClick = (id) => {
@@ -36,91 +36,84 @@ function CampaignTable() {
   };
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md w-full max-w-2xl mx-auto overflow-hidden border-2 border-blue-700 rounded h-full">
+    <div className="flex flex-col h-full p-4 bg-white rounded-lg shadow-md w-full max-w-2xl mx-auto border-2 border-blue-700">
       {/* Header Row */}
       <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-200 pr-2">
-        {" "}
-        {/* Column Titles */}
-        <div className="flex items-center space-x-4 ">
+        <div className="flex items-center space-x-4">
           <div className="w-8 mr-1"></div>
-          <span
-            className="font-semibold w-11 text-center"
-            style={{ color: "var(--color-text-secondary)" }}
-          >
+          <span className="font-semibold w-11 text-center text-[var(--color-text-secondary)]">
             №
           </span>
-          <span
-            className="font-semibold ml-2 mr-2 "
-            style={{ color: "var(--color-text-secondary)" }}
-          >
+          <span className="font-semibold ml-2 mr-2 text-[var(--color-text-secondary)]">
             Кампания
           </span>
         </div>
-        {/* Action Buttons */}
-        <div className="flex items-center space-x-2">
-          <button className="btn-primary">
-            <Image
-              src="/images/campain/template.svg"
-              alt="Шаблон"
-              width={20}
-              height={20}
-              className="pr-1"
-            />
-            <p className="pr-2">Шаблон</p>
-          </button>
-          <button className="btn-primary">
-            <Image
-              src="/images/campain/import.svg"
-              alt="Импорт"
-              width={20}
-              height={20}
-              className="pr-1"
-            />{" "}
-            <p className="pr-2">Импорт</p>
-          </button>
-          <button className="btn-primary btn-icon" title="Изтрий">
-            {" "}
-            <Image
-              src="/images/campain/delete.svg"
-              alt="Изтрий"
-              width={18}
-              height={18}
-            />
-          </button>
-          <button className="btn-primary btn-icon" title="Редактирай">
-            {" "}
-            <Image
-              src="/images/campain/pencil.svg"
-              alt="Редактирай"
-              width={20}
-              height={20}
-            />
-          </button>
-          <button className="btn-primary btn-icon" title="Добави">
-            {" "}
-            <Image
-              src="/images/campain/plus.svg"
-              alt="Добави"
-              width={20}
-              height={20}
-            />
-          </button>
-          <button className="btn-primary">
-            <Image
-              src="/images/campain/import.svg"
-              alt="Експорт"
-              width={20}
-              height={20}
-              className="pr-1"
-            />
-            <p className="pr-2">Експорт</p>
-          </button>
-        </div>
+
+        {/* Conditional actions */}
+        {showActions ? (
+          <div className="flex items-center space-x-2">
+            <button className="btn-primary">
+              <Image
+                src="/images/campain/template.svg"
+                alt="Шаблон"
+                width={20}
+                height={20}
+                className="pr-1"
+              />
+              <p className="pr-2">Шаблон</p>
+            </button>
+            <button className="btn-primary">
+              <Image
+                src="/images/campain/import.svg"
+                alt="Импорт"
+                width={20}
+                height={20}
+                className="pr-1"
+              />
+              <p className="pr-2">Импорт</p>
+            </button>
+            <button className="btn-primary btn-icon" title="Изтрий">
+              <Image
+                src="/images/campain/delete.svg"
+                alt="Изтрий"
+                width={18}
+                height={18}
+              />
+            </button>
+            <button className="btn-primary btn-icon" title="Редактирай">
+              <Image
+                src="/images/campain/pencil.svg"
+                alt="Редактирай"
+                width={20}
+                height={20}
+              />
+            </button>
+            <button className="btn-primary btn-icon" title="Добави">
+              <Image
+                src="/images/campain/plus.svg"
+                alt="Добави"
+                width={20}
+                height={20}
+              />
+            </button>
+            <button className="btn-primary">
+              <Image
+                src="/images/campain/import.svg"
+                alt="Експорт"
+                width={20}
+                height={20}
+                className="pr-1"
+              />
+              <p className="pr-2">Експорт</p>
+            </button>
+          </div>
+        ) : (
+          <div className="font-semibold mr-5 text-primary">Статус</div>
+        )}
       </div>
 
-      {/* Data Rows Container - Added classes here */}
-      <div className="custom-scrollbar space-y-1 max-h-72 overflow-y-auto pr-1">
-        {" "}
+      {/* Data Rows */}
+      <div className="custom-scrollbar flex-1 overflow-y-auto pr-1 space-y-1 min-h-0">
         {campaignData.map((campaign, index) => {
           const isSelected = campaign.id === selectedId;
           const isEven = index % 2 === 0;
@@ -139,23 +132,23 @@ function CampaignTable() {
             >
               <div className="w-8 flex justify-center items-center mr-1">
                 {isSelected ? (
-                  <IconCheckedCircle className={`text-xl`} />
+                  <IconCheckedCircle className="text-xl" />
                 ) : (
-                  <IconUncheckedCircle className={`text-xl text-gray-500`} />
+                  <IconUncheckedCircle className="text-xl text-gray-500" />
                 )}
               </div>
-
               <span
-                className={`w-8 text-center ${
-                  isSelected ? "" : "text-gray-700"
-                }`}
+                className={`w-8 text-center ${isSelected ? "" : "text-gray-700"}`}
               >
                 {campaign.id}
               </span>
-
               <span className={`ml-4 ${isSelected ? "" : "text-gray-900"}`}>
                 Шифр {campaign.code} {campaign.name}
               </span>
+
+              {isSelected && !showActions && (
+                <span className="ml-auto mr-5  text-sm">OK</span>
+              )}
             </div>
           );
         })}
