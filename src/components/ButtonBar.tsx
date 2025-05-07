@@ -56,9 +56,9 @@ const ButtonBar: React.FC = () => {
   const router = useRouter();
 
   return (
-    <div className="flex items-stretch justify-between bg-gray-100 p-1 gap-1 py-2">
+    <div className="flex items-stretch justify-between gap-1 bg-gray-100 p-1 py-2">
       {/* Logo Section */}
-      <div className="flex items-center justify-center bg-white cursor-pointer border-2 border-[var(--color-primary)] hover:bg-gray-100 rounded-2xl px-5 py-5 shadow-lg shadow-gray-400 transition duration-150 ease-in-out">
+      <div className="flex cursor-pointer items-center justify-center rounded-2xl border-2 border-[var(--color-primary)] bg-white px-5 py-5 shadow-lg shadow-gray-400 transition duration-150 ease-in-out hover:bg-gray-100">
         <Image
           src="/images/campaigns/logo.svg"
           alt="ГРАЖДАНИ на квартала Logo"
@@ -68,17 +68,17 @@ const ButtonBar: React.FC = () => {
         />
       </div>
       {/* Buttons Section */}
-      <div className="flex-grow flex items-stretch justify-center gap-2 px-1 ">
+      <div className="flex flex-grow items-stretch justify-center gap-2 px-1">
         {buttonsData.map((button) => (
           <button
             key={button.id}
             style={{ width: button.large ? "200px" : "100px" }}
-            className="gap-2 flex flex-col items-center justify-center border-2 border-[var(--color-secondary)] bg-[radial-gradient(circle,#74ACDA,_#25509A)] text-white rounded-xl px-3 py-2 hover:opacity-80 transition duration-150 ease-in-out text-center flex-grow cursor-pointer"
+            className="flex flex-grow cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-[var(--color-secondary)] bg-[radial-gradient(circle,#74ACDA,_#25509A)] px-3 py-2 text-center text-white transition duration-150 ease-in-out hover:opacity-80"
             onClick={() => {
               console.log(`${button.label} clicked`);
             }}
           >
-            <span className="text-lg font-medium leading-tight">
+            <span className="leading-tight font-medium xl:text-sm 2xl:text-lg">
               {button.label}
             </span>
             <Image
@@ -91,7 +91,7 @@ const ButtonBar: React.FC = () => {
         ))}
       </div>
       {/* Date/Time Section */}
-      <div className="flex flex-col items-center justify-center bg-white border-2 border-[var(--color-primary)] rounded-xl px-4 py-2 text-[var(--color-primary)] min-w-[100px]">
+      <div className="flex min-w-[100px] flex-col items-center justify-center rounded-xl border-2 border-[var(--color-primary)] bg-white px-4 py-2 text-[var(--color-primary)]">
         <span className="text-3xl font-bold">{time}</span>
         <span className="text-lg">{date}</span>
       </div>

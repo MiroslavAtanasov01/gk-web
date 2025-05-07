@@ -49,8 +49,7 @@ const ScrollableGridContainer: React.FC<ScrollableGridContainerProps> = ({
       </div>
 
       <div
-        className={`custom-scrollbar overflow-y-auto ${containerHeightClass} border-primary min-h-0 rounded-b-2xl border-r-2 
-        border-b-2 border-l-2 bg-white pt-2 pb-2 pl-2`}
+        className={`custom-scrollbar overflow-y-auto ${containerHeightClass} border-primary min-h-0 rounded-b-2xl border-r-2 border-b-2 border-l-2 bg-white pt-2 pb-2 pl-2`}
       >
         <div className="grid grid-cols-2 gap-3 pr-2">
           {items.map((item) => (

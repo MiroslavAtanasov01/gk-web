@@ -68,9 +68,12 @@ const ScrollableCampaignList: React.FC<ScrollableCampaignListProps> = ({
       <div
         className={`bg-primary flex items-center space-x-3 px-3 py-1 text-white ${roundedT}`}
       >
-        <Image src={icon} alt="Gauge Icon" width={60} height={60} />
-        <h3>{title}</h3>
+        <div className="relative h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16">
+          <Image src={icon} alt="Gauge Icon" fill className="object-contain" />
+        </div>
+        <span className="2xl:text-md lg:text-xs xl:text-sm">{title}</span>
       </div>
+
       <div
         className={`custom-scrollbar overflow-y-auto pr-2 ${containerHeightClass} ${roundedB} border-x-8 border-y-5 border-white`}
       >
@@ -129,7 +132,7 @@ export const sampleCampaignDynamics: CampaignItem[] = [
     id: "c005",
     index: 1,
     imageUrl: "/images/campaigns/image.png",
-    name: "Кампания 1",
+    name: "Кампания",
     primaryValue: 76,
     indicatorType: "up",
     secondaryValue: 10,
@@ -138,7 +141,7 @@ export const sampleCampaignDynamics: CampaignItem[] = [
     id: "c5",
     index: 2,
     imageUrl: "/images/campaigns/image.png",
-    name: "Кампания 2",
+    name: "Кампания",
     primaryValue: 32,
     indicatorType: "down",
     secondaryValue: 20,
@@ -147,7 +150,7 @@ export const sampleCampaignDynamics: CampaignItem[] = [
     id: "c_generic_1",
     index: 3,
     imageUrl: "/images/campaigns/image.png",
-    name: "Кампания 3",
+    name: "Кампания",
     primaryValue: 21,
     indicatorType: "neutral",
     secondaryValue: 0,
