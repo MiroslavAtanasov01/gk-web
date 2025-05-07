@@ -1,33 +1,46 @@
-// components/TreeView.jsx
+// components/TreeView.tsx
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import React, { useState } from "react";
 
-const TreeNode = ({
-  node,
-  level,
-  isExpanded,
-  onToggle,
-  isLastChild,
-  hasSiblingAfter,
-}) => {
-  const hasChildren = node.children && node.children.length > 0;
+// --- TypeScript Interfaces ---
+export interface TreeNodeData {
+  id: string;
+  label: string;
+  children?: TreeNodeData[];
+  [key: string]: any; // Allows for other custom properties
+}
 
-  return (
-    <li
-      className="tree-node relative"
-      role="treeitem"
-      aria-expanded={hasChildren ? isExpanded : undefined}
-    ></li>
-  );
-};
+export interface TreeViewProps {
+  data: TreeNodeData[];
+  title?: string;
+  initialExpandedIds?: string[];
+  className?: string;
+}
+
+// Props for the internal RecursiveTreeNode component
+interface RecursiveTreeNodeProps {
+  node: TreeNodeData;
+  level: number;
+  isLastChildInParent: boolean;
+  parentHasSiblingAfter: boolean; // If the parent of this node has siblings after it
+  // Functions passed down from TreeView
+  isNodeExpanded: (nodeId: string) => boolean;
+  handleToggle: (nodeId: string) => void;
+}
 
 // --- Main TreeView Component ---
-const TreeView = ({ data, title, initialExpandedIds = [], className = "" }) => {
-  const [expandedIds, setExpandedIds] = useState(new Set(initialExpandedIds));
+const TreeView: React.FC<TreeViewProps> = ({
+  data,
+  title,
+  initialExpandedIds = [],
+  className = "",
+}) => {
+  const [expandedIds, setExpandedIds] = useState<Set<string>>(
+    new Set(initialExpandedIds),
+  );
 
-  const handleToggle = (nodeId) => {
+  const handleToggle = (nodeId: string): void => {
     setExpandedIds((prevExpandedIds) => {
       const newExpandedIds = new Set(prevExpandedIds);
       if (newExpandedIds.has(nodeId)) {
@@ -39,22 +52,27 @@ const TreeView = ({ data, title, initialExpandedIds = [], className = "" }) => {
     });
   };
 
-  // Helper function to pass to TreeNode for child expansion state
-  const isNodeExpanded = (nodeId) => expandedIds.has(nodeId);
+  const isNodeExpanded = (nodeId: string): boolean => expandedIds.has(nodeId);
 
-  // --- Recursive TreeNode (modified to use isNodeExpanded) ---
-  const RecursiveTreeNode = ({
+  // --- Recursive TreeNode Component ---
+  const RecursiveTreeNode: React.FC<RecursiveTreeNodeProps> = ({
     node,
     level,
     isLastChildInParent,
-    parentHasSiblingAfter,
+    // parentHasSiblingAfter, // Can be used for more complex line drawing
+    isNodeExpanded,
+    handleToggle,
   }) => {
     const hasChildren = node.children && node.children.length > 0;
     const currentIsExpanded = isNodeExpanded(node.id);
 
     // Calculate the left offset for lines based on level
-    // Each level adds 20px. The line connects to the center of the 12px icon (6px) + 3px space = 9px offset from level start.
-    const lineLeftOffset = (levelValue) => `${levelValue * 20 + 9}px`;
+    // 20px per level for general structure, +9px to center on a 12px icon with 3px spacing
+    const lineLeftOffset = (levelValue: number): string =>
+      `${levelValue * 20 + 9}px`;
+
+    // Padding for the node content itself (icon + label)
+    const contentPaddingLeft = `${level * 24}px`; // e.g., 24px per level for indentation
 
     return (
       <li
@@ -64,55 +82,47 @@ const TreeView = ({ data, title, initialExpandedIds = [], className = "" }) => {
       >
         <div
           className="tree-node-content flex items-center py-1 cursor-pointer hover:bg-gray-100 rounded"
-          style={{ paddingLeft: `${level * 24}px` }} // Indentation
+          style={{ paddingLeft: contentPaddingLeft }}
           onClick={() => hasChildren && handleToggle(node.id)}
         >
-          {/* Vertical line coming from parent (for levels > 0) */}
+          {/* Vertical line connecting from parent */}
           {level > 0 && (
             <span
-              className="absolute top-0 w-px bg-gray-400" // Line color
+              className="absolute top-0 w-px bg-gray-300" // Line color
               style={{
                 left: lineLeftOffset(level - 1),
+                // Line extends half-way if it's the last child and not expanded, otherwise full height
                 height:
-                  isLastChildInParent && !currentIsExpanded ? "50%" : "100%", // Stop at midpoint if last and not expanded
-                // If this node's parent has siblings after it, the line needs to continue past this node
-                // This logic is complex and better handled by individual line segments for each node.
-                // For simplicity, this line extends fully unless it's the absolute last item visually.
+                  isLastChildInParent && !currentIsExpanded ? "50%" : "100%",
               }}
             ></span>
           )}
 
-          {/* Horizontal connector line */}
+          {/* Horizontal connector line from vertical line to the node's icon/content area */}
           {level > 0 && (
             <span
-              className="absolute top-1/2 w-[15px] h-px bg-gray-400 -translate-y-1/2" // Line color, width of connector
+              className="absolute top-1/2 w-[15px] h-px bg-gray-300 -translate-y-1/2" // Connector line width
               style={{
                 left: lineLeftOffset(level - 1),
               }}
             ></span>
           )}
 
-          {/* Icon and Label - z-10 ensures it's above the lines */}
+          {/* Icon and Label container */}
           <div className="flex items-center relative z-10 bg-white pr-2">
-            {" "}
-            {/* bg-white to mask line behind icon/text */}
+            {/* ^ z-10 and bg-white ensures this content sits above the lines and masks them */}
             {hasChildren ? (
-              currentIsExpanded ? (
-                <div>
-                  {" "}
-                  <button className="bg-secondary h-5 w-5 text-white">-</button>
-                </div>
-              ) : (
-                <div>
-                  {" "}
-                  <button className="bg-secondary h-5 w-5 text-white text-center">
-                    +
-                  </button>
-                </div>
-              )
+              <button
+                aria-label={currentIsExpanded ? "Collapse" : "Expand"}
+                // Ensure 'bg-secondary' is a defined color in your Tailwind config (e.g., theme.extend.colors.secondary)
+                className="bg-secondary hover:bg-blue-600 text-white w-5 h-5 flex items-center justify-center rounded-sm text-xs mr-2 flex-shrink-0"
+                // onClick is handled by the parent div for simplicity
+              >
+                {currentIsExpanded ? "-" : "+"}
+              </button>
             ) : (
-              // Placeholder for alignment if no children, to keep text aligned
-              <span className="inline-block w-[12px] mr-2 flex-shrink-0"></span>
+              // Placeholder for alignment when no children, matches button width
+              <span className="inline-block w-5 mr-2 flex-shrink-0"></span>
             )}
             <span className="select-none text-sm text-gray-700">
               {node.label}
@@ -120,15 +130,18 @@ const TreeView = ({ data, title, initialExpandedIds = [], className = "" }) => {
           </div>
         </div>
 
+        {/* Render children if any and if the node is expanded */}
         {hasChildren && currentIsExpanded && (
           <ul role="group" className="tree-node-children">
-            {node.children.map((childNode, index) => (
+            {node.children?.map((childNode, index) => (
               <RecursiveTreeNode
                 key={childNode.id}
                 node={childNode}
                 level={level + 1}
-                isLastChildInParent={index === node.children.length - 1}
-                parentHasSiblingAfter={!isLastChildInParent} // This prop isn't fully utilized in the current line logic but can be useful
+                isLastChildInParent={index === (node.children?.length ?? 0) - 1}
+                parentHasSiblingAfter={index < (node.children?.length ?? 0) - 1}
+                isNodeExpanded={isNodeExpanded}
+                handleToggle={handleToggle}
               />
             ))}
           </ul>
@@ -138,14 +151,15 @@ const TreeView = ({ data, title, initialExpandedIds = [], className = "" }) => {
   };
 
   return (
-    <div className={`tree-view-container  bg-white ${className}`}>
+    <div className={`tree-view-container bg-white ${className}`}>
       {title && (
         <h2 className="text-md font-semibold mb-2 text-gray-800">{title}</h2>
       )}
+      {/* Scrollable area with custom scrollbar class */}
       <div className="custom-scrollbar max-h-[400px] overflow-y-auto pr-1">
-        {" "}
-        {/* Scrollable area */}
         <ul role="tree" className="space-y-0">
+          {" "}
+          {/* space-y-0 to prevent extra space between li items */}
           {data.map((rootNode, index) => (
             <RecursiveTreeNode
               key={rootNode.id}
@@ -153,6 +167,8 @@ const TreeView = ({ data, title, initialExpandedIds = [], className = "" }) => {
               level={0}
               isLastChildInParent={index === data.length - 1}
               parentHasSiblingAfter={index < data.length - 1}
+              isNodeExpanded={isNodeExpanded}
+              handleToggle={handleToggle}
             />
           ))}
         </ul>
