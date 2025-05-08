@@ -51,6 +51,16 @@ const buttonsData: ButtonInfo[] = [
   },
 ];
 
+const buttonsLinks: { [key: string]: string } = {
+  "АВТОИЧНИ ОТЧЕТИ": "/auto-reports",
+  "УПРАВЛЕНИЕ КАМПАНИИ": "/campaign-management",
+  "АРХИВ КАМПАНИИ": "/archive",
+  "ПРОГНОЗИ КАМПАНИИ": "/campaign-forecast",
+  "БЛАГОДАРНОСТ КАМПАНИИ": "/campaign-thanks",
+  "ОЦЕНКА НА СТАРТЕР МЕРОПРИЯТИЯ": "/event-starter-evaluation",
+  "НАСТРОЙКИ ОУК": "/settings",
+};
+
 const ButtonBar: React.FC = () => {
   const { time, date } = getFormattedDateTime();
   const router = useRouter();
@@ -75,7 +85,7 @@ const ButtonBar: React.FC = () => {
             style={{ width: button.large ? "200px" : "100px" }}
             className="flex flex-grow cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-[var(--color-secondary)] bg-[radial-gradient(circle,#74ACDA,_#25509A)] px-3 py-2 text-center text-white transition duration-150 ease-in-out hover:opacity-80"
             onClick={() => {
-              console.log(`${button.label} clicked`);
+              router.push(buttonsLinks[button.label]);
             }}
           >
             <span className="leading-tight font-medium xl:text-sm 2xl:text-lg">
