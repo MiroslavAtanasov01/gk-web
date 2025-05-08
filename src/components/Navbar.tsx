@@ -8,10 +8,11 @@ export default function Navbar() {
   const router = useRouter();
 
   return (
-    <div className="flex place-content-around w-full">
+    <div className="grid grid-cols-5 items-center w-full px-4">
+      {/* Back Button */}
       <div
-        className="flex place-content-center cursor-pointer"
-        onClick={() => router.back()} // Go to previous page
+        className="flex justify-center ml-5 cursor-pointer"
+        onClick={() => router.back()}
       >
         <Image
           src="/images/campain/back-button.svg"
@@ -21,11 +22,12 @@ export default function Navbar() {
         />
       </div>
 
-      <div className="flex place-content-around">
+      {/* Tabs Section */}
+      <div className="flex justify-center col-span-3">
         <div
-          className={`${styles.tab} flex mr-0.5 cursor-pointer`}
+          className={`${styles.tab} flex items-center cursor-pointer`}
           style={{ borderBottomLeftRadius: 50 }}
-          onClick={() => router.push("/newCampain")}
+          onClick={() => router.push("/topicCampain")}
         >
           <Image
             src="/images/campain/campain-white.svg"
@@ -38,8 +40,8 @@ export default function Navbar() {
         </div>
 
         <div
-          className={`${styles.tab} mr-0.5 cursor-pointer`}
-          // onClick={() => router.push("/topics")}
+          className={`${styles.tab} flex items-center cursor-pointer`}
+          onClick={() => router.push("/topicCampain")}
         >
           <Image
             src="/images/campain/topic-white.svg"
@@ -52,8 +54,8 @@ export default function Navbar() {
         </div>
 
         <div
-          className={`${styles.tab} mr-0.5 cursor-pointer`}
-          // onClick={() => router.push("/questions")}
+          className={`${styles.tab} flex items-center cursor-pointer`}
+          onClick={() => router.push("/questionsCampain")}
         >
           <Image
             src="/images/campain/questions.svg"
@@ -66,9 +68,9 @@ export default function Navbar() {
         </div>
 
         <div
-          className={`${styles.tab} cursor-pointer`}
+          className={`${styles.tab} flex items-center cursor-pointer`}
           style={{ borderBottomRightRadius: 50 }}
-          // onClick={() => router.push("/answers")}
+          onClick={() => router.push("/answersCampain")}
         >
           <Image
             src="/images/campain/answer.svg"
@@ -81,15 +83,24 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div
-        className="flex place-content-center cursor-pointer"
-        onClick={() => router.forward()} // Go to next page in history
-      >
+      {/* Logo */}
+      <div className="flex justify-center">
+        <div
+          className="flex mr-5 justify-center cursor-pointer"
+          onClick={() => router.forward()}
+        >
+          <Image
+            src="/images/campain/right-button.svg"
+            alt="next"
+            width={40}
+            height={40}
+          />
+        </div>
         <Image
-          src="/images/campain/right-button.svg"
-          alt="next"
-          width={40}
-          height={40}
+          src="/images/campain/logo.svg"
+          alt="logo"
+          width={150}
+          height={80}
         />
       </div>
     </div>
