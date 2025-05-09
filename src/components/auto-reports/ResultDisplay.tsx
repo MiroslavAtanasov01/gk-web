@@ -20,12 +20,14 @@ const results: QuestionResult[] = [
 ];
 
 const ResultsDisplay: React.FC<{
-  className?: string;
-}> = ({}) => {
+  height?: string;
+}> = ({ height }) => {
   return (
     <div className="border-primary mx-8 flex flex-row gap-4 gap-7 space-y-1 rounded-b-xl border-2">
       <div className="flex-grow p-3">
-        <div className="custom-scrollbar flex grid h-40 grid-cols-3 flex-row gap-7 space-y-2 overflow-y-auto pr-2">
+        <div
+          className={`custom-scrollbar flex grid h-${height} grid-cols-3 flex-row gap-7 space-y-2 overflow-y-auto pr-2`}
+        >
           <div>
             {results.map((result, index) => (
               <div key={result.id}>

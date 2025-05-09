@@ -1,5 +1,5 @@
-import LineChart from "./charts/LineChart";
-import PieChart from "./charts/PieChart";
+import LineChart from "../charts/LineChart";
+import PieChart from "../charts/PieChart";
 
 const AutoReportGraphics: React.FC<{
   className?: string;
