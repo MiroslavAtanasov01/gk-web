@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Header = () => (
+const Header = ({ title }: { title: string }) => (
   <header className="flex items-center justify-between bg-white px-10 pt-5">
     <div className="flex items-center space-x-2">
       <Image
@@ -11,7 +11,7 @@ const Header = () => (
         className="mr-10 cursor-pointer"
         onClick={() => window.history.back()}
       />
-      <h1 className="text-primary text-5xl font-semibold">Автоотчети</h1>
+      <h1 className="text-primary text-5xl font-semibold">{title}</h1>
     </div>
     <div className="flex items-center space-x-2">
       <Image
