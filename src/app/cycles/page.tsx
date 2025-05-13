@@ -84,11 +84,11 @@ const CampaignsAndCyclesPage: React.FC = () => {
     calendarDays.push(
       <div
         key={day}
-        className={`relative flex items-center justify-center p-1 py-7 ${isToday ? "bg-blue-100" : ""}`}
+        className={`relative flex items-center justify-center p-1 ${isToday ? "bg-blue-100" : ""}`}
       >
         <span className="z-10 text-3xl">{day}</span>
 
-        <div className="absolute right-1 flex gap-1">
+        <div className="absolute right-1 flex">
           {event?.start && StarIcon("red")}
           {event?.end && StarIcon("green")}
         </div>
@@ -107,7 +107,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
             АКТИВНИ КАМПАНИИ
           </h2>
           <div className="border-primary ml-25 rounded-xl border-2 py-3 pr-3">
-            <div className="custom-scrollbar max-h-[calc(100vh-250px)] flex-grow space-y-3 overflow-y-auto py-5">
+            <div className="custom-scrollbar max-h-[calc(100vh-270px)] flex-grow space-y-3 overflow-y-auto py-5">
               {sampleCampaigns.map((campaign) => (
                 <div key={campaign.id}>
                   <p className="text-primary text-center text-lg font-semibold">
@@ -125,8 +125,8 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       <div className="flex items-center">
                         <span className="mr-3 text-xl">Дата</span>
                         <input
+                          defaultValue={campaign.startDate}
                           type="date"
-                          value={campaign.startDate}
                           className="border-secondary rounded-xl border-2 bg-white px-2"
                         />
                       </div>
@@ -139,8 +139,8 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       <div className="flex items-center">
                         <span className="mr-3 text-xl">Дата</span>
                         <input
+                          defaultValue={campaign.endDate}
                           type="date"
-                          value={campaign.endDate}
                           className="border-secondary rounded-xl border-2 bg-white px-2"
                         />
                       </div>
@@ -153,13 +153,13 @@ const CampaignsAndCyclesPage: React.FC = () => {
         </section>
 
         {/* Right Column: Calendar */}
-        <section className="flex flex-col">
+        <section className="flex flex-grow flex-col overflow-hidden">
           <h2 className="text-primary mb-3 text-center text-2xl font-semibold">
             ГРАФИК КАМПАНИИ
           </h2>
           {/* Calendar Header */}
           <div className="bg-primary flex h-25 items-center justify-between rounded-t-xl px-1 py-2 text-white">
-            <button onClick={() => changeMonth(-1)} className="p-2">
+            <button onClick={() => changeMonth(-1)} className="ml-15 p-2">
               <Image
                 src="/images/left-arrow.svg"
                 alt="next"
@@ -170,7 +170,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
             <h3 className="text-5xl">
               {monthNames[month]}, {year}
             </h3>
-            <button onClick={() => changeMonth(1)} className="p-2">
+            <button onClick={() => changeMonth(1)} className="mr-15 p-2">
               <Image
                 src="/images/right-arrow.svg"
                 alt="next"
@@ -180,7 +180,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
             </button>
           </div>
           {/* Calendar Grid */}
-          <div className="border-primary grid grid-cols-7 rounded-b-xl border-2">
+          <div className="border-primary grid flex-grow grid-cols-7 rounded-b-xl border-2">
             {dayHeaders.map((header) => (
               <div
                 key={header}
@@ -194,9 +194,9 @@ const CampaignsAndCyclesPage: React.FC = () => {
         </section>
       </main>
 
-      <footer className="sticky bottom-0 z-20 flex flex-wrap items-center justify-center gap-2 px-6 py-3 md:justify-between">
+      <footer className="flex flex-wrap items-center justify-center gap-2 px-6 pb-3 md:justify-between">
         <div></div>
-        <button className="hover:bg-secondary flex cursor-pointer items-center space-x-2 rounded-lg bg-[#74ACDA] px-4 py-2 text-lg font-medium text-white transition-colors duration-150">
+        <button className="hover:bg-secondary mr-10 flex cursor-pointer items-center space-x-2 rounded-lg bg-[#74ACDA] px-4 py-2 text-lg font-medium text-white transition-colors duration-150">
           <Image
             src="/images/campaigns/icon3.svg"
             alt={"icon"}
