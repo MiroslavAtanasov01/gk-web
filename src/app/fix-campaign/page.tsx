@@ -2,18 +2,18 @@
 
 import styles from "@/styles/navbar.module.css";
 import Image from "next/image";
-import CampainTable from "@/components/CampainTable";
-import TreeView from "@/components/TreeCampain";
+import CampaignTable from "@/components/CampaignTable";
+import TreeView from "@/components/TreeCampaign";
 import { sampleTreeData } from "@/utils/treeData";
 
-export default function fixCampain() {
+export default function fixCampaign() {
   return (
     <div className="flex flex-col h-screen">
       {/* Header */}
       <div className="flex justify-around items-center p-4 shrink-0">
         <div className="flex place-content-center cursor-pointer">
           <Image
-            src="/images/campain/back-button.svg"
+            src="/images/campaign/back-button.svg"
             alt="back"
             width={40}
             height={40}
@@ -24,7 +24,7 @@ export default function fixCampain() {
         </div>
         <div className="flex place-content-center cursor-pointer">
           <Image
-            src="/images/campain/right-button.svg"
+            src="/images/campaign/right-button.svg"
             alt="next"
             width={40}
             height={40}
@@ -42,7 +42,7 @@ export default function fixCampain() {
             </p>
           </div>
           <div className="flex-1 overflow-hidden">
-            <CampainTable showActions={false} />
+            <CampaignTable showActions={false} />
           </div>
         </div>
 
@@ -65,8 +65,8 @@ export default function fixCampain() {
               <button className="flex bg-secondary text-white p-2 rounded-lg">
                 Продължи
                 <Image
-                  src="/images/campain/right-arrow.svg"
-                  alt="campain"
+                  src="/images/campaign/right-arrow.svg"
+                  alt="campaign"
                   width={20}
                   height={25}
                   className="pl-2"

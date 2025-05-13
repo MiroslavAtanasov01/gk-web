@@ -9,9 +9,10 @@ type TabProps = {
   image: string;
   text: string;
   precents: number;
+  onClick?: () => void;
 };
 
-export default function Tab({ image, text, precents }: TabProps) {
+export default function Tab({ image, text, precents, onClick }: TabProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   const defaultBackground = "transparent";
@@ -27,6 +28,7 @@ export default function Tab({ image, text, precents }: TabProps) {
         background: isHovered ? hoverBackground : defaultBackground,
         transition: "background 0.3s ease",
       }}
+      onClick={onClick}
     >
       <Image
         src={image}

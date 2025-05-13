@@ -15,7 +15,7 @@ export default function Navbar() {
         onClick={() => router.back()}
       >
         <Image
-          src="/images/campain/back-button.svg"
+          src="/images/campaign/back-button.svg"
           alt="back"
           width={40}
           height={40}
@@ -23,15 +23,15 @@ export default function Navbar() {
       </div>
 
       {/* Tabs Section */}
-      <div className="flex justify-center col-span-3">
+      <div className="flex justify-center col-span-3 gap-1">
         <div
           className={`${styles.tab} flex items-center cursor-pointer`}
           style={{ borderBottomLeftRadius: 50 }}
-          onClick={() => router.push("/topicCampain")}
+          onClick={() => router.push("/topic-campaign")}
         >
           <Image
-            src="/images/campain/campain-white.svg"
-            alt="campain"
+            src="/images/campaign/campaign-white.svg"
+            alt="campaign"
             width={40}
             height={40}
             className="pr-2"
@@ -41,10 +41,10 @@ export default function Navbar() {
 
         <div
           className={`${styles.tab} flex items-center cursor-pointer`}
-          onClick={() => router.push("/topicCampain")}
+          onClick={() => router.push("/topic-campaign")}
         >
           <Image
-            src="/images/campain/topic-white.svg"
+            src="/images/campaign/topic-white.svg"
             alt="topic"
             width={40}
             height={40}
@@ -55,10 +55,10 @@ export default function Navbar() {
 
         <div
           className={`${styles.tab} flex items-center cursor-pointer`}
-          onClick={() => router.push("/questionsCampain")}
+          onClick={() => router.push("/questions-campaign")}
         >
           <Image
-            src="/images/campain/questions.svg"
+            src="/images/campaign/questions.svg"
             alt="questions"
             width={40}
             height={40}
@@ -70,10 +70,10 @@ export default function Navbar() {
         <div
           className={`${styles.tab} flex items-center cursor-pointer`}
           style={{ borderBottomRightRadius: 50 }}
-          onClick={() => router.push("/answersCampain")}
+          onClick={() => router.push("/answers-campaign")}
         >
           <Image
-            src="/images/campain/answer.svg"
+            src="/images/campaign/answer.svg"
             alt="answers"
             width={40}
             height={40}
@@ -90,14 +90,14 @@ export default function Navbar() {
           onClick={() => router.forward()}
         >
           <Image
-            src="/images/campain/right-button.svg"
+            src="/images/campaign/right-button.svg"
             alt="next"
             width={40}
             height={40}
           />
         </div>
         <Image
-          src="/images/campain/logo.svg"
+          src="/images/campaign/logo.svg"
           alt="logo"
           width={150}
           height={80}

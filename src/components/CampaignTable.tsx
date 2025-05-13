@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 // import { useRouter } from "next/navigation"; // Keep if needed
 import Image from "next/image";
-import "@/styles/campain.css"; // Make sure this path is correct
+import "@/styles/campaign.css"; // Make sure this path is correct
 
 // --- Icons ---
 const IconUncheckedCircle = ({ className }) => (
@@ -54,7 +54,7 @@ function CampaignTable({ showActions = true }) {
           <div className="flex items-center space-x-2">
             <button className="btn-primary">
               <Image
-                src="/images/campain/template.svg"
+                src="/images/campaign/template.svg"
                 alt="Шаблон"
                 width={20}
                 height={20}
@@ -64,7 +64,7 @@ function CampaignTable({ showActions = true }) {
             </button>
             <button className="btn-primary">
               <Image
-                src="/images/campain/import.svg"
+                src="/images/campaign/import.svg"
                 alt="Импорт"
                 width={20}
                 height={20}
@@ -74,7 +74,7 @@ function CampaignTable({ showActions = true }) {
             </button>
             <button className="btn-primary btn-icon" title="Изтрий">
               <Image
-                src="/images/campain/delete.svg"
+                src="/images/campaign/delete.svg"
                 alt="Изтрий"
                 width={18}
                 height={18}
@@ -82,7 +82,7 @@ function CampaignTable({ showActions = true }) {
             </button>
             <button className="btn-primary btn-icon" title="Редактирай">
               <Image
-                src="/images/campain/pencil.svg"
+                src="/images/campaign/pencil.svg"
                 alt="Редактирай"
                 width={20}
                 height={20}
@@ -90,7 +90,7 @@ function CampaignTable({ showActions = true }) {
             </button>
             <button className="btn-primary btn-icon" title="Добави">
               <Image
-                src="/images/campain/plus.svg"
+                src="/images/campaign/plus.svg"
                 alt="Добави"
                 width={20}
                 height={20}
@@ -98,7 +98,7 @@ function CampaignTable({ showActions = true }) {
             </button>
             <button className="btn-primary">
               <Image
-                src="/images/campain/import.svg"
+                src="/images/campaign/import.svg"
                 alt="Експорт"
                 width={20}
                 height={20}

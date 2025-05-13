@@ -1,8 +1,11 @@
+"use client";
 import Image from "next/image";
 import Tab from "@/components/HomepageTabs";
 import HomeProgressBar from "@/components/HomeProgressBar";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div style={{ overflow: "hidden" }}>
       <div className="bg-[var(--color-primary)] flex items-center ">
@@ -98,6 +101,7 @@ export default function Home() {
             image="/images/home/speaker.svg"
             text="Планиране на кампании"
             precents={70}
+            onClick={() => router.push("/topic-campaign")}
           ></Tab>
           <Tab
             image="/images/home/group.svg"
