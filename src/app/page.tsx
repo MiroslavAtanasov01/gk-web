@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Tab from "@/components/HomepageTabs";
+import Tab from "@/components/HomepageTabs2";
 import HomeProgressBar from "@/components/HomeProgressBar";
 import { useRouter } from "next/navigation";
 import ProtectedRoute from "@/components/ProtectedRoute";
