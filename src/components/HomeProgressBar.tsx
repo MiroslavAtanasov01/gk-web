@@ -22,10 +22,10 @@ export default function HomeProgressBar({ value }: HomeProgressBarProps) {
   };
 
   return (
-    <div className="flex items-center ">
+    <div className="flex items-center">
       {/* Percentage box */}
       <div
-        className="text-white text-sm font-bold px-2 py-0.5 "
+        className="px-2 py-0.5 text-sm font-bold text-white"
         style={{
           background: getCustomGradient(),
           border: `2px solid ${getBorderColor()}`,
@@ -40,9 +40,9 @@ export default function HomeProgressBar({ value }: HomeProgressBarProps) {
       </div>
 
       {/* Progress bar */}
-      <div className="w-full max-w-xl h-6 bg-gray-200  relative overflow-hidden">
+      <div className="relative h-6 w-full max-w-xl overflow-hidden bg-gray-200">
         <div
-          className="h-full absolute  rounded-r-full transition-all duration-300"
+          className="absolute h-full rounded-r-full transition-all duration-300"
           style={{
             width: `${value}%`,
             background: getCustomGradient(),
