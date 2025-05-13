@@ -1,19 +1,18 @@
 "use client";
-
 import Image from "next/image";
-import Tab from "@/components/HomepageTabs";
+import Tab from "@/components/HomepageTabs2";
 import HomeProgressBar from "@/components/HomeProgressBar";
-import { useAuth } from "@/context/AuthContext";
-import ProtectedRoute from "@/components/ProtectedRoute";
 import { useRouter } from "next/navigation";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Home() {
-  const { logout } = useAuth();
   const router = useRouter();
+  const { logout } = useAuth();
   return (
     <ProtectedRoute>
-      <div>
-        <div className="bg-[var(--color-primary)] flex items-center ">
+      <div style={{ overflow: "hidden" }}>
+        <div className="flex items-center bg-[var(--color-primary)]">
           <Image
             src="/images/home/logo.svg"
             width={160}
@@ -22,17 +21,17 @@ export default function Home() {
             alt="Home Logo"
             priority
           />
-          <p className=" text-2xl text-white text-center w-full font-medium -ml-50">
+          <p className="-ml-50 w-full text-center text-2xl font-medium text-white">
             КАЧВАНЕ НА ДАННИТЕ В ИНФОРМАЦИОНЕН МОДЕЛ
           </p>
           <button
             onClick={logout}
-            className="text-white pr-5 cursor-pointer hover:opacity-80"
+            className="cursor-pointer pr-5 text-white hover:opacity-80"
           >
             Logout
           </button>
         </div>
-        <div className="relative flex items-center justify-center mt-8">
+        <div className="relative mt-8 flex items-center justify-center">
           {/* Background image */}
           <Image
             src="/images/home/backgroundLogo.svg"
@@ -40,7 +39,7 @@ export default function Home() {
             alt="Background"
             className="object-contain"
           />
-          <p className="text-[var(--color-text-main)] font-bold pr-6 w-30">
+          <p className="w-30 pr-6 font-bold text-[var(--color-text-main)]">
             ГИС СИСТЕМА
           </p>
           {/* Foreground logo */}
@@ -50,16 +49,16 @@ export default function Home() {
             height={220}
             alt="Home Logo"
             priority
-            className="z-10"
+            className="z-10 md:h-32"
           />
-          <p className="text-[var(--color-text-main)] font-bold -ml-6 w-50 text-end">
+          <p className="-ml-6 w-50 text-end font-bold text-[var(--color-text-main)]">
             СТАТИСТИЧЕСКИ АНАЛИЗ
           </p>
         </div>
-        <div className="flex flex-row gap-20 p-4  ">
+        <div className="flex flex-row gap-20 p-4">
           {/* First column */}
-          <div className="p-4 flex-1  -mt-17">
-            <div className="flex text-center justify-center">
+          <div className="-mt-17 flex-1 p-4">
+            <div className="flex justify-center text-center">
               <Image
                 src="/images/home/settings.svg"
                 alt="icon"
@@ -68,9 +67,13 @@ export default function Home() {
                 className="pb-5"
               ></Image>
             </div>
-            <div className="flex items-center text-[var(--color-text-main)] text-2xl">
-              <p className="text-center pl-5 pr-5 text-[60px]">1</p>
-              <p className="flex-1 text-center ">ПЕРСОНАЛИЗАЦИЯ НА ЦИМ</p>
+            <div className="flex items-center text-2xl text-[var(--color-text-main)]">
+              <p className="pr-5 pl-5 text-center text-[60px] md:text-[50px]">
+                1
+              </p>
+              <p className="flex-1 text-center md:text-[20px]">
+                ПЕРСОНАЛИЗАЦИЯ НА ЦИМ
+              </p>
             </div>
             <Tab
               image="/images/home/profile.svg"
@@ -95,15 +98,20 @@ export default function Home() {
           </div>
 
           {/* Second column  */}
-          <div className="p-4 flex-1">
-            <div className="flex items-center text-[var(--color-text-main)] text-2xl">
-              <p className="text-center pl-5 pr-5 text-[60px]">2</p>
-              <p className="flex-1 text-center ">УПРАВЛЕНИЕ НА ИМ ПО БАЗИ</p>
+          <div className="flex-1 p-4">
+            <div className="flex items-center text-2xl text-[var(--color-text-main)]">
+              <p className="pr-5 pl-5 text-center text-[60px] md:text-[50px]">
+                2
+              </p>
+              <p className="flex-1 text-center md:text-[20px]">
+                УПРАВЛЕНИЕ НА ИМ ПО БАЗИ
+              </p>
             </div>
             <Tab
               image="/images/home/speaker.svg"
               text="Планиране на кампании"
               percents={70}
+              onClick={() => router.push("/topic-campaign")}
             ></Tab>
             <Tab
               image="/images/home/group.svg"
@@ -118,8 +126,8 @@ export default function Home() {
           </div>
 
           {/* Third column  */}
-          <div className="p-4 flex-1 -mt-17">
-            <div className="flex text-center justify-center">
+          <div className="-mt-17 flex-1 p-4">
+            <div className="flex justify-center text-center">
               <Image
                 src="/images/home/colorfullChart.svg"
                 alt="icon"
@@ -128,9 +136,13 @@ export default function Home() {
                 className="pb-5"
               ></Image>
             </div>
-            <div className="flex items-center text-[var(--color-text-main)] text-2xl">
-              <p className="text-center pl-5 pr-5 text-[60px]">3</p>
-              <p className="flex-1 text-center ">УПРАВЛЕНИЕ НА КАМПАНИЯТА</p>
+            <div className="flex items-center text-2xl text-[var(--color-text-main)]">
+              <p className="pr-5 pl-5 text-center text-[60px] md:text-[50px]">
+                3
+              </p>
+              <p className="flex-1 text-center md:text-[20px]">
+                УПРАВЛЕНИЕ НА КАМПАНИЯТА
+              </p>
             </div>
             <Tab
               image="/images/home/calendar.svg"
@@ -151,7 +163,7 @@ export default function Home() {
           </div>
           {/* Progress Bars  */}
         </div>
-        <div className="flex items-end w-full px-10">
+        <div className="flex w-full items-end px-10">
           <div className="flex-1">
             <HomeProgressBar value={10} />
           </div>
@@ -164,7 +176,7 @@ export default function Home() {
         </div>
         <div className="py-5">
           <p
-            className="text-center font-bold "
+            className="text-center font-bold"
             style={{ color: "var(  --color-gray)" }}
           >
             ИНДИКАТОР ЗА ПОПЪЛВАНЕ НА МАТРИЦАТА

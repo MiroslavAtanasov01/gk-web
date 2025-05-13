@@ -1,21 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-interface SegmentedCircularProgressProps {
+type SegmentedCircularProgressProps = {
   value: number;
-}
+};
 
-type ColorKey = "red" | "yellow" | "green" | "gray";
-
-const SegmentedCircularProgress: React.FC<SegmentedCircularProgressProps> = ({
+export default function SegmentedCircularProgress({
   value,
-}) => {
-  const size = 60;
+}: SegmentedCircularProgressProps) {
+  const [size, setSize] = useState(60);
+
+  useEffect(() => {
+    const updateSize = () => {
+      setSize(
+        window.innerHeight > 700 && window.innerHeight < 850
+          ? 50
+          : window.innerHeight > 850 && window.innerHeight < 950
+            ? 60
+            : 70,
+      );
+    };
+
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
   const stroke = 6;
   const segments = 8;
   const gapDeg = 8;
   const center = size / 2;
   const radius = center - stroke;
   const filledSegments = Math.round((value / 100) * segments);
+
+  type ColorKey = "red" | "yellow" | "green" | "gray";
 
   const getColorKey = (): ColorKey => {
     if (value === 0) return "gray";
@@ -24,13 +41,13 @@ const SegmentedCircularProgress: React.FC<SegmentedCircularProgressProps> = ({
     return "green";
   };
 
-  const colorKey = getColorKey();
+  const colorKey: ColorKey = getColorKey();
 
-  const colorMap: Record<string, string> = {
-    red: "#ef4444", // Tailwind red-500
-    yellow: "#EFB333", // Tailwind yellow-400
-    green: "#7BBA3A", // Tailwind green-500
-    gray: "#d1d5db", // Tailwind gray-300
+  const colorMap: Record<ColorKey, string> = {
+    red: "#ef4444",
+    yellow: "#EFB333",
+    green: "#7BBA3A",
+    gray: "#d1d5db",
   };
 
   const polarToCartesian = (
@@ -87,18 +104,22 @@ const SegmentedCircularProgress: React.FC<SegmentedCircularProgressProps> = ({
   });
 
   return (
-    <div className="relative w-16 h-16 flex items-center justify-center">
-      <svg width={size} height={size}>
+    <div
+      className="relative flex items-center justify-center"
+      style={{ width: size, height: size }}
+    >
+      <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-full">
         {paths}
       </svg>
       <div
-        className={`absolute text-sm font-bold`}
-        style={{ color: colorMap[colorKey] }}
+        className="absolute font-bold"
+        style={{
+          color: colorMap[colorKey],
+          fontSize: `${size * 0.25}px`,
+        }}
       >
         {value}%
       </div>
     </div>
   );
-};
-
-export default SegmentedCircularProgress;
+}

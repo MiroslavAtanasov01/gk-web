@@ -1,0 +1,13 @@
+.tab {
+  min-height: 50px;
+}
+
+@media (min-height: 850px) {
+  .tab {
+    min-height: 90px;
+  }
+  .icon {
+    width: 65px !important;
+    height: 65px !important;
+  }
+}

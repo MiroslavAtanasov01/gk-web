@@ -1,0 +1,20 @@
+@layer components {
+  .btn-primary {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    background-color: var(--color-secondary);
+    padding: 6px 5px;
+    min-height: 35px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-white);
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-text-secondary);
+      }
+    }
+  }
+  .custom-scrollbar {
+    scrollbar-color: #74acda #ffffff;
+  }
+}
