@@ -5,6 +5,7 @@ import { formatDateToDayKey, parseDateString } from "@/utils/getDateTime";
 import { sampleCampaigns } from "@/utils/mockData";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import Calendar from "@/components/Calendar";
 
 const StarIcon = (color: string) => (
   <Image src={`/images/${color}-star.svg`} alt="star" width={30} height={30} />
@@ -41,61 +42,6 @@ const CampaignsAndCyclesPage: React.FC = () => {
     });
   };
 
-  const getDaysInMonth = (year: number, month: number) => {
-    return new Date(year, month + 1, 0).getDate();
-  };
-
-  const getFirstDayOfMonth = (year: number, month: number) => {
-    const day = new Date(year, month, 1).getDay();
-    return day === 0 ? 6 : day - 1; // Adjust so Monday is 0 and Sunday is 6
-  };
-
-  const monthNames = [
-    "ЯНУАРИ",
-    "ФЕВРУАРИ",
-    "МАРТ",
-    "АПРИЛ",
-    "МАЙ",
-    "ЮНИ",
-    "ЮЛИ",
-    "АВГУСТ",
-    "СЕПТЕМВРИ",
-    "ОКТОМВРИ",
-    "НОЕМВРИ",
-    "ДЕКЕМВРИ",
-  ];
-  const dayHeaders = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"];
-
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-  const numDays = getDaysInMonth(year, month);
-  const firstDayIndex = getFirstDayOfMonth(year, month);
-
-  const calendarDays = [];
-  for (let i = 0; i < firstDayIndex; i++) {
-    calendarDays.push(<div key={`empty-${i}`} className="p-1"></div>);
-  }
-  for (let day = 1; day <= numDays; day++) {
-    const dateKey = formatDateToDayKey(new Date(year, month, day));
-    const event = campaignEvents[dateKey];
-    const isToday =
-      new Date().toDateString() === new Date(year, month, day).toDateString();
-
-    calendarDays.push(
-      <div
-        key={day}
-        className={`relative flex items-center justify-center p-1 ${isToday ? "bg-blue-100" : ""}`}
-      >
-        <span className="z-10 text-3xl">{day}</span>
-
-        <div className="absolute right-1 flex">
-          {event?.start && StarIcon("red")}
-          {event?.end && StarIcon("green")}
-        </div>
-      </div>,
-    );
-  }
-
   return (
     <div className="flex min-h-screen flex-col">
       <Header title="Кампании и Цикли" />
@@ -103,7 +49,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
       <main className="grid flex-grow grid-cols-1 gap-6 p-4 md:p-6 lg:grid-cols-[1fr_1.5fr]">
         {/* Left Column: Active Campaigns */}
         <section className="border-primary flex flex-col">
-          <h2 className="text-primary mb-3 text-center text-2xl font-semibold">
+          <h2 className="text-primary mb-3 text-center text-2xl font-semibold ml-25">
             АКТИВНИ КАМПАНИИ
           </h2>
           <div className="border-primary ml-25 rounded-xl border-2 py-3 pr-3">
@@ -157,39 +103,13 @@ const CampaignsAndCyclesPage: React.FC = () => {
           <h2 className="text-primary mb-3 text-center text-2xl font-semibold">
             ГРАФИК КАМПАНИИ
           </h2>
-          {/* Calendar Header */}
-          <div className="bg-primary flex h-25 items-center justify-between rounded-t-xl px-1 py-2 text-white">
-            <button onClick={() => changeMonth(-1)} className="ml-15 p-2">
-              <Image
-                src="/images/left-arrow.svg"
-                alt="next"
-                width={25}
-                height={40}
-              />
-            </button>
-            <h3 className="text-5xl">
-              {monthNames[month]}, {year}
-            </h3>
-            <button onClick={() => changeMonth(1)} className="mr-15 p-2">
-              <Image
-                src="/images/right-arrow.svg"
-                alt="next"
-                width={25}
-                height={40}
-              />
-            </button>
-          </div>
-          {/* Calendar Grid */}
-          <div className="border-primary grid flex-grow grid-cols-7 rounded-b-xl border-2">
-            {dayHeaders.map((header) => (
-              <div
-                key={header}
-                className="text-secondary py-5 text-center text-4xl font-bold"
-              >
-                {header}
-              </div>
-            ))}
-            {calendarDays}
+          <div className="flex flex-col h-full border-2 border-primary rounded-xl">
+            {/* Calendar */}
+            <Calendar
+              currentDate={currentDate}
+              onMonthChange={changeMonth}
+              events={campaignEvents}
+            />
           </div>
         </section>
       </main>

@@ -89,6 +89,7 @@ export default function Home() {
               image="/images/home/gift.svg"
               text="Подаръци - площадка"
               percents={100}
+              onClick={() => router.push("/gifts")}
             ></Tab>
             <Tab
               image="/images/home/listX.svg"
