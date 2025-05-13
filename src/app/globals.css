@@ -12,11 +12,14 @@
   --color-gray-light: #8e8e8e;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-primary: #27519b;
+  --color-secondary: #74acda;
+  --color-text-main: #efb333;
+  --color-text-secondary: #25509a;
+  --color-gray: #6d6e70;
+  --color-gray-light: #8e8e8e;
+  /* --font-sans: "Inter", sans-serif; */
 }
 
 /* @media (prefers-color-scheme: dark) {

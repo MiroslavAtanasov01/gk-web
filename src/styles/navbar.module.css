@@ -1,0 +1,14 @@
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 4.5em;
+  width: 10em;
+  background: linear-gradient(
+    360deg,
+    rgba(116, 172, 218, 1) 0%,
+    rgba(37, 80, 154, 1) 50%,
+    rgba(116, 172, 218, 1) 100%
+  );
+}
