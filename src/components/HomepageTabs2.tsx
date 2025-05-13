@@ -8,11 +8,11 @@ import styles from "../styles/homapageTabs.module.css";
 type TabProps = {
   image: string;
   text: string;
-  precents: number;
+  percents: number;
   onClick?: () => void;
 };
 
-export default function Tab({ image, text, precents, onClick }: TabProps) {
+export default function Tab({ image, text, percents, onClick }: TabProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   const defaultBackground = "transparent";
@@ -21,7 +21,7 @@ export default function Tab({ image, text, precents, onClick }: TabProps) {
 
   return (
     <div
-      className={`flex items-center m-3 ${styles.tab}`}
+      className={`flex items-center m-3 ${styles.tab} cursor-pointer`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
@@ -52,7 +52,7 @@ export default function Tab({ image, text, precents, onClick }: TabProps) {
             className="rounded m-1"
           />
         ) : (
-          <CircularProgressBar value={precents} />
+          <CircularProgressBar value={percents} />
         )}
       </div>
     </div>

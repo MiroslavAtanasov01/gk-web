@@ -3,13 +3,6 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-
-  --color-primary: #27519b;
-  --color-secondary: #74acda;
-  --color-text-main: #efb333;
-  --color-text-secondary: #25509a;
-  --color-gray: #6d6e70;
-  --color-gray-light: #8e8e8e;
 }
 
 @theme {
@@ -19,18 +12,33 @@
   --color-text-secondary: #25509a;
   --color-gray: #6d6e70;
   --color-gray-light: #8e8e8e;
-  /* --font-sans: "Inter", sans-serif; */
+  --color-gray-bg: #d7d8d9;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 19px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #74acda;
+  border: 7px solid white;
+}
+.custom-scrollbar::-webkit-scrollbar-button:single-button:decrement {
+  height: 20px;
+  background: url("/images/up-arrow.svg") no-repeat center;
+  background-size: 22px 13px;
+}
+.custom-scrollbar::-webkit-scrollbar-button:single-button:increment {
+  height: 20px;
+  background: url("/images/down-arrow.svg") no-repeat center;
+  background-size: 22px 13px;
 }

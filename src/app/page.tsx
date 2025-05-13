@@ -28,7 +28,7 @@ export default function Home() {
             onClick={logout}
             className="cursor-pointer pr-5 text-white hover:opacity-80"
           >
-            Logout
+            Изход
           </button>
         </div>
         <div className="relative mt-8 flex items-center justify-center">
@@ -78,22 +78,22 @@ export default function Home() {
             <Tab
               image="/images/home/profile.svg"
               text="Потребители, роли и права на достъп"
-              precents={50}
+              percents={50}
             ></Tab>
             <Tab
               image="/images/home/location.svg"
               text="Настройка на ГИС"
-              precents={10}
+              percents={10}
             ></Tab>
             <Tab
               image="/images/home/gift.svg"
               text="Подаръци - площадка"
-              precents={100}
+              percents={100}
             ></Tab>
             <Tab
               image="/images/home/listX.svg"
               text="Шаблони"
-              precents={60}
+              percents={60}
             ></Tab>
           </div>
 
@@ -110,18 +110,18 @@ export default function Home() {
             <Tab
               image="/images/home/speaker.svg"
               text="Планиране на кампании"
-              precents={70}
+              percents={70}
               onClick={() => router.push("/topic-campaign")}
             ></Tab>
             <Tab
               image="/images/home/group.svg"
               text='Потребители на "Кампании"'
-              precents={30}
+              percents={30}
             ></Tab>
             <Tab
               image="/images/home/glass.svg"
               text="Обзор на кампании"
-              precents={45}
+              percents={45}
             ></Tab>
           </div>
 
@@ -147,17 +147,18 @@ export default function Home() {
             <Tab
               image="/images/home/calendar.svg"
               text="Управление на кампаниите"
-              precents={25}
+              percents={25}
+              onClick={() => router.push("/campaigns")}
             ></Tab>
             <Tab
               image="/images/home/barchart.svg"
               text="Справки, репорт, доклад"
-              precents={60}
+              percents={60}
             ></Tab>
             <Tab
               image="/images/home/archive.svg"
               text="Архив"
-              precents={0}
+              percents={0}
             ></Tab>
           </div>
           {/* Progress Bars  */}
