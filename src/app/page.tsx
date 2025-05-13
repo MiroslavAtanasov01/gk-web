@@ -28,7 +28,7 @@ export default function Home() {
             onClick={logout}
             className="cursor-pointer pr-5 text-white hover:opacity-80"
           >
-            Logout
+            Изход
           </button>
         </div>
         <div className="relative mt-8 flex items-center justify-center">

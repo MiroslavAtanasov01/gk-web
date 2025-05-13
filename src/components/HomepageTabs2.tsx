@@ -21,7 +21,7 @@ export default function Tab({ image, text, percents, onClick }: TabProps) {
 
   return (
     <div
-      className={`flex items-center m-3 ${styles.tab}`}
+      className={`flex items-center m-3 ${styles.tab} cursor-pointer`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{

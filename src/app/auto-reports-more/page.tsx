@@ -33,7 +33,7 @@ const AutoReportsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen font-sans">
-      <Header />
+      <Header title="Автоотчети" />
       {/* Main Content Area */}
       <div className="grid grid-cols-1 gap-6 px-8 pt-8 md:px-8 md:pt-8 lg:grid-cols-3">
         {/* Left Section */}
