@@ -29,7 +29,7 @@ export default function TextInput({
       <div className={`w-full ${className}`}>
         {label && (
           <label
-            className={`text-${activate ? "secondary" : "gray-500"} mb-1 ml-2 block text-xl font-medium`}
+            className={`${activate ? "text-secondary" : "text-[#9F9FA3]"} mb-1 ml-2 block text-xl font-medium`}
           >
             {label}
           </label>

@@ -57,7 +57,7 @@ const GISConfigPage: React.FC = () => {
 
         {/* Right Column */}
         <section className="flex flex-col">
-          <div className="flex-1">
+          <div className="flex flex-grow flex-col">
             <h2 className="text-primary mb-3 text-center text-xl font-semibold">
               СТАТУС 1. ЛОКАЛИЗАЦИ НА РЕГИОН
             </h2>
@@ -222,11 +222,11 @@ const GISConfigPage: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="">
+          <div className="mt-5">
             <h2 className="text-primary mb-3 text-center text-xl font-semibold">
               СТАТУС 2. СЪЗДАДЕН МОДЕЛ С ГЕОГРАФСКИ ДАННИ
             </h2>
-            <div className="text-md border-primary h-25 rounded-xl border-2 p-3">
+            <div className="text-md border-primary h-20 rounded-xl border-2 p-3">
               <p className="font-bold">№ 232356/01.01.2023 г.</p>
               <p>България, гр. Варна, кв. Владиславово</p>
             </div>

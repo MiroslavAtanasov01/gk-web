@@ -26,12 +26,15 @@ export default function Dropdown({
   activate = false,
   onToggleActivate,
 }: DropdownProps) {
+  const getLabelColorClass = (active: boolean, color: string) =>
+    active ? `text-${color}` : "text-[#9F9FA3]";
+
   return (
     <div className="flex flex-row items-end">
       <div className={`w-full ${className}`}>
         {label && (
           <label
-            className={`text-${activate ? labelColor : "gray-500"} mb-1 ml-2 block text-xl font-medium`}
+            className={`mb-1 ml-2 block text-xl font-medium ${getLabelColorClass(activate, labelColor)}`}
           >
             {label}
           </label>
