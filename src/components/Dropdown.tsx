@@ -12,6 +12,7 @@ interface DropdownProps {
   disabled?: boolean;
   labelColor?: string;
   activate?: boolean;
+  onToggleActivate?: () => void;
 }
 
 export default function Dropdown({
@@ -21,22 +22,23 @@ export default function Dropdown({
   onChange,
   className = "",
   disabled = false,
-  labelColor = "gray-950",
+  labelColor = "black",
   activate = false,
+  onToggleActivate,
 }: DropdownProps) {
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row items-end">
       <div className={`w-full ${className}`}>
         {label && (
           <label
-            className={`text-${labelColor} mb-1 ml-2 block text-xl font-medium`}
+            className={`text-${activate ? labelColor : "gray-500"} mb-1 ml-2 block text-xl font-medium`}
           >
             {label}
           </label>
         )}
         <div className="relative w-full">
           <select
-            className="border-secondary focus:border-secondary w-full appearance-none rounded-xl border-2 bg-white px-2 pr-10 text-xl focus:ring-0 focus:outline-none"
+            className={`${activate ? "border-secondary" : "border-[#9F9FA3]"} focus:border-secondary w-full appearance-none rounded-xl border-2 bg-white px-2 pr-10 text-xl focus:outline-none`}
             value={value}
             disabled={disabled}
             onChange={(e: ChangeEvent<HTMLSelectElement>) =>
@@ -59,24 +61,21 @@ export default function Dropdown({
           </span>
         </div>
       </div>
-      {activate ? (
-        <div className="flex flex-col items-center">
-          <label
-            className={`text-secondary mb-2 ml-2 block text-xl font-medium`}
-          >
-            Активиране
-          </label>
-          <Image
-            src="/images/checked.svg"
-            alt="check"
-            width={25}
-            height={25}
-            className="cursor-pointer"
-          />
-        </div>
-      ) : (
-        <div></div>
-      )}
+      <div className="ml-2 flex flex-col items-center">
+        <label
+          className={`text-${activate ? "secondary" : "black"} mb-2 block text-xl font-medium`}
+        >
+          Активиране
+        </label>
+        <Image
+          src={activate ? "/images/checked.svg" : "/images/not-checked.svg"}
+          alt="toggle"
+          width={25}
+          height={25}
+          className="cursor-pointer"
+          onClick={onToggleActivate}
+        />
+      </div>
     </div>
   );
 }
