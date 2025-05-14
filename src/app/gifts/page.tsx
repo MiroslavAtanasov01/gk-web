@@ -148,7 +148,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
             </h2>
           </div>
           <div className="grid min-h-0 flex-grow grid-cols-[1fr_2fr]">
-            <div className="flex h-full flex-col">
+            <div className="flex flex-col">
               <div className="border-primary h-full flex-grow rounded-l-xl border-y-2 border-l-2">
                 <div className="relative mx-auto mt-5 w-fit">
                   <input
@@ -178,7 +178,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                   alt="sample"
                   width={300}
                   height={200}
-                  className="mx-auto mb-3"
+                  className="mx-auto mb-3 h-auto max-h-[25vh] object-contain"
                 />
                 <span className="flex justify-center text-sm font-bold">
                   Мероприятия граждани на квартала
@@ -190,7 +190,9 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       alt="sample"
                       width={100}
                       height={100}
+                      className="h-auto max-h-[12vh] object-contain"
                     />
+
                     <span className="flex justify-center text-xs">
                       Мероприятие 1
                     </span>
@@ -201,7 +203,9 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       alt="sample"
                       width={100}
                       height={100}
+                      className="h-auto max-h-[12vh] object-contain"
                     />
+
                     <span className="flex justify-center text-xs">
                       Мероприятие 1
                     </span>
@@ -212,7 +216,9 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       alt="sample"
                       width={100}
                       height={100}
+                      className="h-auto max-h-[12vh] object-contain"
                     />
+
                     <span className="flex justify-center text-xs">
                       Мероприятие 1
                     </span>
@@ -228,6 +234,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       alt="sample"
                       width={100}
                       height={100}
+                      className="h-auto max-h-[12vh] object-contain"
                     />
                   </div>
                   <div>
@@ -236,6 +243,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       alt="sample"
                       width={100}
                       height={100}
+                      className="h-auto max-h-[12vh] object-contain"
                     />
                   </div>
                   <div>
@@ -244,6 +252,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       alt="sample"
                       width={100}
                       height={100}
+                      className="h-auto max-h-[12vh] object-contain"
                     />
                   </div>
                 </div>
