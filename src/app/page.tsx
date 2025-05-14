@@ -84,6 +84,7 @@ export default function Home() {
               image="/images/home/location.svg"
               text="Настройка на ГИС"
               percents={10}
+              onClick={() => router.push("/gis")}
             ></Tab>
             <Tab
               image="/images/home/gift.svg"
