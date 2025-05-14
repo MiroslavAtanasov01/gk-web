@@ -68,7 +68,7 @@ const ButtonBar: React.FC = () => {
   return (
     <div className="flex items-stretch justify-between gap-1 bg-gray-100 p-1 py-2">
       {/* Logo Section */}
-      <div className="flex cursor-pointer items-center justify-center rounded-2xl border-2 border-[var(--color-primary)] bg-white px-5 py-5 shadow-lg shadow-gray-400 transition duration-150 ease-in-out hover:bg-gray-100">
+      <div className="flex cursor-pointer items-center justify-center rounded-2xl border-2 border-primary bg-white px-5 py-5 shadow-lg shadow-gray-400 transition duration-150 ease-in-out hover:bg-gray-100">
         <Image
           src="/images/campaigns/logo.svg"
           alt="ГРАЖДАНИ на квартала Logo"
@@ -83,7 +83,7 @@ const ButtonBar: React.FC = () => {
           <button
             key={button.id}
             style={{ width: button.large ? "200px" : "100px" }}
-            className="flex flex-grow cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-[var(--color-secondary)] bg-[radial-gradient(circle,#74ACDA,_#25509A)] px-3 py-2 text-center text-white transition duration-150 ease-in-out hover:opacity-80"
+            className="flex flex-grow cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-secondary bg-[radial-gradient(circle,#74ACDA,_#25509A)] px-3 py-2 text-center text-white transition duration-150 ease-in-out hover:opacity-80"
             onClick={() => {
               router.push(buttonsLinks[button.label]);
             }}
@@ -101,7 +101,7 @@ const ButtonBar: React.FC = () => {
         ))}
       </div>
       {/* Date/Time Section */}
-      <div className="flex min-w-[100px] flex-col items-center justify-center rounded-xl border-2 border-[var(--color-primary)] bg-white px-4 py-2 text-[var(--color-primary)]">
+      <div className="flex min-w-[100px] flex-col items-center justify-center rounded-xl border-2 border-primary bg-white px-4 py-2 text-primary">
         <span className="text-3xl font-bold">{time}</span>
         <span className="text-lg">{date}</span>
       </div>

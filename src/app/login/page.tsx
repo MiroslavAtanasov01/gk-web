@@ -67,10 +67,10 @@ export default function LoginPage() {
             width={700}
             height={273}
           />
-          <h2 className="text-4xl font-bold text-[var(--color-secondary)] mb-1 mt-10 ml-13 w-md">
+          <h2 className="text-4xl font-bold text-secondary b-1 mt-10 ml-13 w-md">
             Вход в системата
           </h2>
-          <p className="text-lg text-[var(--color-primary)] mb-5  ml-13">
+          <p className="text-lg text-primary mb-5  ml-13">
             Моля, въведете вашите данни по-долу.
           </p>
           <form onSubmit={handleSubmit} className="w-sm ml-13">
@@ -97,13 +97,13 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => router.push("/register")}
-                className="py-2 w-full rounded-lg bg-[var(--color-gray-light)] text-white text-2xl hover:bg-gray-300 cursor-pointer"
+                className="py-2 w-full rounded-lg bg-gray-light text-white text-2xl hover:bg-gray-300 cursor-pointer"
               >
                 Отмяна
               </button>
               <button
                 type="submit"
-                className="w-full py-2 rounded-lg bg-[var(--color-secondary)] text-white text-2xl hover:bg-[var(--color-primary)] flex items-center justify-center relative cursor-pointer"
+                className="w-full py-2 rounded-lg bg-secondary text-white text-2xl hover:bg-primary flex items-center justify-center relative cursor-pointer"
               >
                 Вход
                 <div className="absolute right-2">

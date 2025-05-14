@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <ProtectedRoute>
       <div style={{ overflow: "hidden" }}>
-        <div className="flex items-center bg-[var(--color-primary)]">
+        <div className="bg-primary flex items-center">
           <Image
             src="/images/home/logo.svg"
             width={160}
@@ -39,9 +39,7 @@ export default function Home() {
             alt="Background"
             className="object-contain"
           />
-          <p className="w-30 pr-6 font-bold text-[var(--color-text-main)]">
-            ГИС СИСТЕМА
-          </p>
+          <p className="text-text-main w-30 pr-6 font-bold">ГИС СИСТЕМА</p>
           {/* Foreground logo */}
           <Image
             src="/images/home-logo.svg"
@@ -51,7 +49,7 @@ export default function Home() {
             priority
             className="z-10 md:h-32"
           />
-          <p className="-ml-6 w-50 text-end font-bold text-[var(--color-text-main)]">
+          <p className="text-text-main -ml-6 w-50 text-end font-bold">
             СТАТИСТИЧЕСКИ АНАЛИЗ
           </p>
         </div>
@@ -67,7 +65,7 @@ export default function Home() {
                 className="pb-5"
               ></Image>
             </div>
-            <div className="flex items-center text-2xl text-[var(--color-text-main)]">
+            <div className="text-text-main flex items-center text-2xl">
               <p className="pr-5 pl-5 text-center text-[60px] md:text-[50px]">
                 1
               </p>
@@ -99,7 +97,7 @@ export default function Home() {
 
           {/* Second column  */}
           <div className="flex-1 p-4">
-            <div className="flex items-center text-2xl text-[var(--color-text-main)]">
+            <div className="text-text-main flex items-center text-2xl">
               <p className="pr-5 pl-5 text-center text-[60px] md:text-[50px]">
                 2
               </p>
@@ -136,7 +134,7 @@ export default function Home() {
                 className="pb-5"
               ></Image>
             </div>
-            <div className="flex items-center text-2xl text-[var(--color-text-main)]">
+            <div className="text-text-main flex items-center text-2xl">
               <p className="pr-5 pl-5 text-center text-[60px] md:text-[50px]">
                 3
               </p>
@@ -154,11 +152,13 @@ export default function Home() {
               image="/images/home/barchart.svg"
               text="Справки, репорт, доклад"
               percents={60}
+              onClick={() => router.push("/fisc-campaign")}
             ></Tab>
             <Tab
               image="/images/home/archive.svg"
               text="Архив"
               percents={0}
+              onClick={() => router.push("/question-answer-archive")}
             ></Tab>
           </div>
           {/* Progress Bars  */}

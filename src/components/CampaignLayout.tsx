@@ -31,12 +31,12 @@ const CampaignLayout: React.FC<CampaignLayoutProps> = ({
       <Navbar />
 
       {/* Page Title */}
-      <p className="text-center w-full text-[var(--color-primary)] p-3 font-bold text-2xl tracking-wide">
+      <p className="text-center w-full text-primary p-3 font-bold text-2xl tracking-wide">
         {title}
       </p>
 
       {/* Two Columns */}
-      <div className="flex w-full gap-3 p-1 flex-1 overflow-hidden">
+      <div className="flex w-full gap-3 p-1 px-7 flex-1 overflow-hidden">
         {/* Left Column */}
         <div className="flex-1 flex flex-col overflow-hidden">
           <div className="flex justify-center items-center">
@@ -66,7 +66,7 @@ const CampaignLayout: React.FC<CampaignLayoutProps> = ({
           </div>
           <div className="flex-1 overflow-hidden flex flex-col">
             <div className="flex-1 overflow-hidden">{rightContent}</div>
-            <div className="flex justify-end pr-5 pt-2 shrink-0">
+            <div className="flex justify-end  p-3 shrink-0">
               <button
                 onClick={onSave}
                 className="flex bg-secondary text-white p-2 rounded-lg"
@@ -83,6 +83,11 @@ const CampaignLayout: React.FC<CampaignLayoutProps> = ({
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <p className="text-end text-xs text-gray-400 pr-7">
+          © Copyright 2025 Interactive Business Partners Petersburg
+        </p>
       </div>
     </div>
   );

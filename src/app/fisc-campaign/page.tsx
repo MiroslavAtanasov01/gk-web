@@ -5,13 +5,16 @@ import Image from "next/image";
 import CampaignTable from "@/components/CampaignTable";
 import TreeView from "@/components/TreeCampaign";
 import { sampleTreeData } from "@/utils/treeData";
+import { useRouter } from "next/navigation";
 
 export default function fixCampaign() {
+  const router = useRouter();
+
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex h-screen flex-col">
       {/* Header */}
-      <div className="flex justify-around items-center p-4 shrink-0">
-        <div className="flex place-content-center cursor-pointer">
+      <div className="flex shrink-0 p-4">
+        <div className="flex cursor-pointer place-content-center">
           <Image
             src="/images/campaign/back-button.svg"
             alt="back"
@@ -19,50 +22,58 @@ export default function fixCampaign() {
             height={40}
           />
         </div>
-        <div className="text-primary font-bold text-4xl">
-          Фиксализация на Кампаниите
+        <div className="text-primary col-span-4 mr-auto ml-5 text-start text-4xl font-bold">
+          Фискализация на кампаниите
         </div>
-        <div className="flex place-content-center cursor-pointer">
+        <div className="flex cursor-pointer place-content-center">
           <Image
             src="/images/campaign/right-button.svg"
             alt="next"
             width={40}
             height={40}
+            className="mr-5"
+          />
+          <Image
+            src="/images/campaign/logo.svg"
+            alt="logo"
+            width={150}
+            height={80}
+            onClick={() => router.push("/")}
           />
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex w-full gap-3 p-1 grow overflow-hidden">
+      <div className="flex w-full grow gap-3 overflow-hidden p-1 px-7">
         {/* Left Side - Campaign Table */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="p-5 pl-1 text-[#25509A] font-bold">
+            <p className="pt-5 pb-2 pl-1 font-bold text-[#25509A]">
               АКТИВИРАНЕ НА КАМПАНИЯ
             </p>
           </div>
           <div className="flex-1 overflow-hidden">
-            <CampaignTable showActions={false} />
+            <CampaignTable headerMode="statusDisplay" />
           </div>
         </div>
 
         {/* Right Side - Tree View */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="p-5 pl-1 text-[#25509A] font-bold">
+            <p className="pt-5 pb-2 pl-1 font-bold text-[#25509A]">
               ПРЕГЛЕД НА КАМПАНИЯТА
             </p>
           </div>
-          <div className="flex-1 overflow-hidden flex flex-col">
-            <div className="flex-1 p-4 bg-white rounded-lg shadow-md w-full border-2 border-blue-700 mx-auto overflow-hidden">
+          <div className="flex flex-1 flex-col overflow-hidden">
+            <div className="mx-auto w-full flex-1 overflow-hidden rounded-lg border-2 border-blue-700 bg-white p-4 shadow-md">
               <TreeView
                 title="Шифр 001/001 кампания № 002"
                 data={sampleTreeData}
-                className="max-w-md mx-3 h-full"
+                className="mx-3 h-full max-w-md"
               />
             </div>
-            <div className="flex justify-end pr-5 pt-2 shrink-0">
-              <button className="flex bg-secondary text-white p-2 rounded-lg">
+            <div className="flex shrink-0 justify-end py-3">
+              <button className="bg-secondary flex rounded-lg p-2 text-white">
                 Продължи
                 <Image
                   src="/images/campaign/right-arrow.svg"
@@ -75,6 +86,11 @@ export default function fixCampaign() {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <p className="pr-7 text-end text-xs text-gray-400">
+          © Copyright 2025 Interactive Business Partners Petersburg
+        </p>
       </div>
     </div>
   );

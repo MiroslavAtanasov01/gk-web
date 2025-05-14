@@ -1,56 +1,50 @@
 "use client";
 
 import React, { useState } from "react";
-// import { useRouter } from "next/navigation"; // Keep if needed
 import Image from "next/image";
-import "@/styles/campaign.css"; // Make sure this path is correct
+import "@/styles/campaign.css";
 
-// --- Icons ---
-const IconUncheckedCircle = ({ className }) => (
-  <span className={className}>⚪</span>
-);
-const IconCheckedCircle = ({ className }) => (
-  <span className={className}>✔️</span>
+const IconUncheckedCircle = ({ className }: { className?: string }) => (
+  <div
+    className={`${className} h-5 w-5 rounded-full border-2 border-black`}
+    style={{ backgroundColor: "transparent" }}
+  />
 );
 
-// --- Data (add more items to make scrolling likely) ---
+const IconCheckedCircle = ({ className }: { className?: string }) => (
+  <Image
+    src="/images/campaign/check.svg"
+    alt="Checked"
+    width={20}
+    height={20}
+    className={className}
+  />
+);
+
 const campaignData = [
   { id: 1, code: "001/001", name: "кампания № 001" },
   { id: 2, code: "001/001", name: "кампания № 002" },
-  { id: 3, code: "001/001", name: "кампания № 003" },
-  { id: 4, code: "001/001", name: "кампания № 004" },
-  { id: 5, code: "001/001", name: "кампания № 005" },
-  { id: 6, code: "001/001", name: "кампания № 006" },
-  { id: 7, code: "001/001", name: "кампания № 007" },
-  { id: 8, code: "001/001", name: "кампания № 008" },
-  { id: 9, code: "001/001", name: "кампания № 009" },
   { id: 10, code: "001/001", name: "кампания № 010" },
 ];
 
-function CampaignTable({ showActions = true }) {
+type HeaderMode = "mainActions" | "statusDisplay" | "questions" | "answers";
+
+interface CampaignTableProps {
+  headerMode?: HeaderMode;
+}
+
+function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
   const [selectedId, setSelectedId] = useState(2);
 
-  const handleRowClick = (id) => {
+  const handleRowClick = (id: number) => {
     setSelectedId(id);
     console.log(`Selected campaign ID: ${id}`);
   };
 
-  return (
-    <div className="flex flex-col h-full p-4 bg-white rounded-lg shadow-md w-full max-w-2xl mx-auto border-2 border-blue-700">
-      {/* Header Row */}
-      <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-200 pr-2">
-        <div className="flex items-center space-x-4">
-          <div className="w-8 mr-1"></div>
-          <span className="font-semibold w-11 text-center text-[var(--color-text-secondary)]">
-            №
-          </span>
-          <span className="font-semibold ml-2 mr-2 text-[var(--color-text-secondary)]">
-            Кампания
-          </span>
-        </div>
-
-        {/* Conditional actions */}
-        {showActions ? (
+  const renderHeaderActions = () => {
+    switch (headerMode) {
+      case "mainActions":
+        return (
           <div className="flex items-center space-x-2">
             <button className="btn-primary">
               <Image
@@ -107,47 +101,161 @@ function CampaignTable({ showActions = true }) {
               <p className="pr-2">Експорт</p>
             </button>
           </div>
-        ) : (
-          <div className="font-semibold mr-5 text-primary">Статус</div>
-        )}
+        );
+      case "statusDisplay":
+        return <div className="text-primary mr-5 font-semibold">Статус</div>;
+      case "questions":
+        return null;
+      case "answers":
+        return null;
+      default:
+        return null;
+    }
+  };
+
+  const renderHeaderTitles = () => {
+    switch (headerMode) {
+      case "mainActions":
+      case "statusDisplay":
+        return (
+          <>
+            <div className="mr-1 w-8"></div>{" "}
+            <span className="text-text-secondary w-11 text-center font-semibold">
+              №
+            </span>
+            <span className="text-text-secondary mr-2 ml-2 font-semibold">
+              Кампания
+            </span>
+          </>
+        );
+      case "questions":
+        return (
+          <>
+            <div className="mr-1 w-8"></div>{" "}
+            <span className="text-text-secondary w-11 text-center font-semibold">
+              №
+            </span>
+            <span className="text-text-secondary mr-2 ml-2 font-semibold">
+              Въпрос
+            </span>
+          </>
+        );
+      case "answers":
+        return (
+          <div className="text-text-secondary w-full text-center font-semibold">
+            Въпрос номер {selectedId}
+          </div>
+        );
+      default:
+        return (
+          <>
+            <div className="mr-1 w-8"></div>
+            <span className="text-text-secondary w-11 text-center font-semibold">
+              №
+            </span>
+            <span className="text-text-secondary mr-2 ml-2 font-semibold">
+              Кампания
+            </span>
+          </>
+        );
+    }
+  };
+
+  return (
+    <div className="flex h-full w-full flex-col rounded-lg border-2 border-blue-700 bg-white p-4 shadow-md">
+      {/* Header Row */}
+      <div className="mb-2 flex items-center justify-between">
+        <div className="flex items-center space-x-4">
+          {renderHeaderTitles()}
+        </div>
+
+        {renderHeaderActions()}
       </div>
 
       {/* Data Rows */}
-      <div className="custom-scrollbar flex-1 overflow-y-auto pr-1 space-y-1 min-h-0">
-        {campaignData.map((campaign, index) => {
-          const isSelected = campaign.id === selectedId;
+
+      <div className="custom-scrollbar min-h-0 flex-1 space-y-1 overflow-y-auto">
+        {campaignData.map((item, index) => {
+          const isSelected = item.id === selectedId;
           const isEven = index % 2 === 0;
+
+          let rowContent;
+          if (headerMode === "mainActions" || headerMode === "statusDisplay") {
+            rowContent = (
+              <>
+                <span
+                  className={`w-8 text-center ${isSelected ? "" : "text-gray-700"}`}
+                >
+                  {item.id}
+                </span>
+                <span className={`ml-4 ${isSelected ? "" : "text-gray-900"}`}>
+                  Шифр {item.code} {item.name}{" "}
+                </span>
+              </>
+            );
+          } else if (headerMode === "questions") {
+            rowContent = (
+              <>
+                <span
+                  className={`w-8 text-center ${isSelected ? "" : "text-gray-700"}`}
+                >
+                  {item.id}
+                </span>
+                <span className={`ml-4 ${isSelected ? "" : "text-gray-900"}`}>
+                  {item.name}{" "}
+                </span>
+              </>
+            );
+          } else if (headerMode === "answers") {
+            rowContent = (
+              <>
+                <span
+                  className={`w-8 text-center ${isSelected ? "" : "text-gray-700"}`}
+                >
+                  {item.id}
+                </span>
+                <span className={`ml-4 ${isSelected ? "" : "text-gray-900"}`}>
+                  {item.name}{" "}
+                </span>
+              </>
+            );
+          } else {
+            rowContent = (
+              <>
+                <span
+                  className={`w-8 text-center ${isSelected ? "" : "text-gray-700"}`}
+                >
+                  {item.id}
+                </span>
+                <span className={`ml-4 ${isSelected ? "" : "text-gray-900"}`}>
+                  Шифр {item.code} {item.name}
+                </span>
+              </>
+            );
+          }
 
           return (
             <div
-              key={campaign.id}
-              onClick={() => handleRowClick(campaign.id)}
-              className={`flex items-center p-1 rounded-lg cursor-pointer transition duration-150 ease-in-out mr-1 ${
+              key={item.id}
+              onClick={() => handleRowClick(item.id)}
+              className={`flex cursor-pointer items-center rounded-xl transition duration-150 ease-in-out ${
                 isSelected
-                  ? "bg-[#7FBB48] text-white font-semibold"
+                  ? "bg-[#7FBB48] font-normal text-white"
                   : isEven
-                    ? "bg-white hover:bg-gray-400 text-gray-800"
-                    : "bg-[#D7D8D9] hover:bg-gray-400 text-gray-800"
+                    ? "bg-[#D7D8D9] text-gray-800 hover:bg-gray-400"
+                    : "bg-white text-gray-800 hover:bg-gray-400"
               }`}
             >
-              <div className="w-8 flex justify-center items-center mr-1">
+              <div className="mr-1 flex w-8 items-center justify-center">
                 {isSelected ? (
                   <IconCheckedCircle className="text-xl" />
                 ) : (
-                  <IconUncheckedCircle className="text-xl text-gray-500" />
+                  <IconUncheckedCircle className="text-xl" />
                 )}
               </div>
-              <span
-                className={`w-8 text-center ${isSelected ? "" : "text-gray-700"}`}
-              >
-                {campaign.id}
-              </span>
-              <span className={`ml-4 ${isSelected ? "" : "text-gray-900"}`}>
-                Шифр {campaign.code} {campaign.name}
-              </span>
-
-              {isSelected && !showActions && (
-                <span className="ml-auto mr-5  text-sm">OK</span>
+              {rowContent}
+              {isSelected && headerMode === "statusDisplay" && (
+                <span className="mr-5 ml-auto text-sm">OK</span>
               )}
             </div>
           );

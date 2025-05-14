@@ -8,10 +8,10 @@ export default function Navbar() {
   const router = useRouter();
 
   return (
-    <div className="grid grid-cols-5 items-center w-full px-4">
+    <div className="grid w-full grid-cols-5 items-center px-4">
       {/* Back Button */}
       <div
-        className="flex justify-center ml-5 cursor-pointer"
+        className="ml-5 flex cursor-pointer justify-center"
         onClick={() => router.back()}
       >
         <Image
@@ -23,9 +23,9 @@ export default function Navbar() {
       </div>
 
       {/* Tabs Section */}
-      <div className="flex justify-center col-span-3 gap-1">
+      <div className="col-span-3 flex justify-center gap-1">
         <div
-          className={`${styles.tab} flex items-center cursor-pointer`}
+          className={`${styles.tab} flex cursor-pointer items-center`}
           style={{ borderBottomLeftRadius: 50 }}
           onClick={() => router.push("/topic-campaign")}
         >
@@ -40,7 +40,7 @@ export default function Navbar() {
         </div>
 
         <div
-          className={`${styles.tab} flex items-center cursor-pointer`}
+          className={`${styles.tab} flex cursor-pointer items-center`}
           onClick={() => router.push("/topic-campaign")}
         >
           <Image
@@ -54,7 +54,7 @@ export default function Navbar() {
         </div>
 
         <div
-          className={`${styles.tab} flex items-center cursor-pointer`}
+          className={`${styles.tab} flex cursor-pointer items-center`}
           onClick={() => router.push("/questions-campaign")}
         >
           <Image
@@ -68,7 +68,7 @@ export default function Navbar() {
         </div>
 
         <div
-          className={`${styles.tab} flex items-center cursor-pointer`}
+          className={`${styles.tab} flex cursor-pointer items-center`}
           style={{ borderBottomRightRadius: 50 }}
           onClick={() => router.push("/answers-campaign")}
         >
@@ -86,7 +86,7 @@ export default function Navbar() {
       {/* Logo */}
       <div className="flex justify-center">
         <div
-          className="flex mr-5 justify-center cursor-pointer"
+          className="mr-5 flex cursor-pointer justify-center"
           onClick={() => router.forward()}
         >
           <Image
@@ -101,6 +101,8 @@ export default function Navbar() {
           alt="logo"
           width={150}
           height={80}
+          onClick={() => router.push("/")}
+          className="cursor-pointer"
         />
       </div>
     </div>
