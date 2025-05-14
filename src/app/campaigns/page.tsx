@@ -134,6 +134,12 @@ function Campaigns() {
           </div>
         </div>
       </div>
+      <footer className="fixed right-0 bottom-0 z-50 mr-8 mb-1 text-right">
+        <p className="rounded bg-white/80 px-2 text-xs text-gray-500">
+          &copy; {new Date().getFullYear()} Interactive Business Partners
+          Petersburg
+        </p>
+      </footer>
     </div>
   );
 }
