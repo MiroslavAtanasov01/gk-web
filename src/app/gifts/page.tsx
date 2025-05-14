@@ -50,29 +50,29 @@ const CampaignsAndCyclesPage: React.FC = () => {
       {/* Main Content Area */}
       <main className="grid flex-grow grid-cols-1 gap-6 p-4 md:p-6 lg:grid-cols-[1fr_1.5fr]">
         {/* Left Column: Active Campaigns */}
-        <section className="border-primary flex flex-grow overflow-hidden flex-col">
-          <h2 className="text-primary mb-3 text-center text-2xl font-semibold ml-25">
+        <section className="border-primary flex flex-grow flex-col overflow-hidden">
+          <h2 className="text-primary mb-3 ml-25 text-center text-2xl font-semibold">
             НАСТРОЙКИ
           </h2>
-          <div className="border-primary ml-25 rounded-xl border-2 py-3 flex flex-grow">
+          <div className="border-primary ml-25 flex flex-grow rounded-xl border-2 py-3">
             <div className="max-h-[calc(100vh-270px)] flex-grow space-y-3 py-5">
               <div className="mb-7">
-                <p className="text-primary text-center text-xl font-semibold mb-3">
+                <p className="text-primary mb-3 text-center text-xl font-semibold">
                   Бонус Подаръци
                 </p>
-                <div className="flex justify-center bg-gray-bg py-5">
+                <div className="bg-gray-bg flex justify-center py-5">
                   <div className="items-center">
                     <div className="flex items-center">
                       <span className="text-xl">На всеки</span>
                       <div className="relative inline-block">
                         <select
-                          className="mx-3 rounded-xl border-2 border-secondary bg-white px-2 text-xl appearance-none pr-10"
+                          className="border-secondary mx-3 appearance-none rounded-xl border-2 bg-white px-2 pr-10 text-xl"
                           defaultValue=""
                         >
                           <option value="5">5</option>
                           <option value="50">50</option>
                         </select>
-                        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
+                        <span className="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2">
                           <Image
                             src="/images/down-arrow.svg"
                             alt="arrow"
@@ -88,22 +88,22 @@ const CampaignsAndCyclesPage: React.FC = () => {
                 </div>
               </div>
               <div className="mb-7">
-                <p className="text-primary text-center text-xl font-semibold mb-3">
+                <p className="text-primary mb-3 text-center text-xl font-semibold">
                   Бонус Подаръци
                 </p>
-                <div className="flex justify-center bg-gray-bg py-5">
+                <div className="bg-gray-bg flex justify-center py-5">
                   <div className="items-center">
                     <div className="flex items-center">
                       <span className="text-xl">На всеки</span>
                       <div className="relative inline-block">
                         <select
-                          className="mx-3 rounded-xl border-2 border-secondary bg-white px-2 text-xl appearance-none pr-10"
+                          className="border-secondary mx-3 appearance-none rounded-xl border-2 bg-white px-2 pr-10 text-xl"
                           defaultValue=""
                         >
                           <option value="5">5</option>
                           <option value="50">50</option>
                         </select>
-                        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
+                        <span className="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2">
                           <Image
                             src="/images/down-arrow.svg"
                             alt="arrow"
@@ -119,15 +119,15 @@ const CampaignsAndCyclesPage: React.FC = () => {
                 </div>
               </div>
               <div>
-                <p className="text-primary text-center text-xl font-semibold mb-3">
+                <p className="text-primary mb-3 text-center text-xl font-semibold">
                   Линк към площадката за благодарности
                 </p>
-                <div className="flex justify-center bg-gray-bg py-10">
+                <div className="bg-gray-bg flex justify-center py-10">
                   <Link
                     href="https://varnahub.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-950 underline hover:text-blue-800 text-xl"
+                    className="text-xl text-gray-950 underline hover:text-blue-800"
                   >
                     www.varnahub.com
                   </Link>
@@ -138,7 +138,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
         </section>
 
         {/* Right Column: Calendar */}
-        <section className="flex flex-col flex-grow">
+        <section className="flex flex-grow flex-col">
           <div className="flex flex-row items-center justify-between px-15">
             <h2 className="text-primary mb-3 text-center text-2xl font-semibold">
               ПЛОЩАДКА ЗА БЛАГОДАРНОСТ
@@ -147,19 +147,19 @@ const CampaignsAndCyclesPage: React.FC = () => {
               ГРАФИК КАМПАНИИ
             </h2>
           </div>
-          <div className="grid flex-grow grid-cols-[1fr_2fr] min-h-0">
-            <div className="flex flex-col h-full">
-              <div className="border-y-2 border-l-2 border-primary flex-grow rounded-l-xl h-full">
-                <div className="relative w-fit mt-5 mx-auto">
+          <div className="grid min-h-0 flex-grow grid-cols-[1fr_2fr]">
+            <div className="flex h-full flex-col">
+              <div className="border-primary h-full flex-grow rounded-l-xl border-y-2 border-l-2">
+                <div className="relative mx-auto mt-5 w-fit">
                   <input
                     type="text"
                     id="searchCampaign"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Търси..."
-                    className="border-secondary rounded-2xl border-2 py-1 pr-10 pl-3 sm:text-sm text-center"
+                    className="border-secondary rounded-2xl border-2 py-1 pr-10 pl-3 text-center sm:text-sm"
                   />
-                  <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
+                  <span className="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2">
                     <Image
                       src="/images/search.svg"
                       alt="search"
@@ -168,7 +168,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                     />
                   </span>
                 </div>
-                <div className="flex flex-row justify-between items-center px-5 py-3">
+                <div className="flex flex-row items-center justify-between px-5 py-3">
                   <span className="font-bold">Препоръчваме</span>
                   <span className="text-primary underline">Мероприятия</span>
                   <span className="text-primary underline">Помощ</span>
@@ -180,10 +180,10 @@ const CampaignsAndCyclesPage: React.FC = () => {
                   height={200}
                   className="mx-auto mb-3"
                 />
-                <span className="font-bold flex justify-center text-sm">
+                <span className="flex justify-center text-sm font-bold">
                   Мероприятия граждани на квартала
                 </span>
-                <div className="flex flex-row justify-between items-center px-5 py-3">
+                <div className="flex flex-row items-center justify-between px-5 py-3">
                   <div>
                     <Image
                       src="/images/gift.svg"
@@ -191,7 +191,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       width={100}
                       height={100}
                     />
-                    <span className="text-xs flex justify-center">
+                    <span className="flex justify-center text-xs">
                       Мероприятие 1
                     </span>
                   </div>
@@ -202,7 +202,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       width={100}
                       height={100}
                     />
-                    <span className="text-xs flex justify-center">
+                    <span className="flex justify-center text-xs">
                       Мероприятие 1
                     </span>
                   </div>
@@ -213,39 +213,43 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       width={100}
                       height={100}
                     />
-                    <span className="text-xs flex justify-center">
+                    <span className="flex justify-center text-xs">
                       Мероприятие 1
                     </span>
                   </div>
                 </div>
-                <span className="font-bold flex justify-center text-sm">
+                <span className="flex justify-center text-sm font-bold">
                   Нека ви подкрепим да пазите Вашите права
                 </span>
-                <div className="flex flex-row justify-between items-center px-5 py-3">
-                  <Image
-                    src="/images/gift.svg"
-                    alt="sample"
-                    width={100}
-                    height={100}
-                  />
-
-                  <Image
-                    src="/images/gift.svg"
-                    alt="sample"
-                    width={100}
-                    height={100}
-                  />
-
-                  <Image
-                    src="/images/gift.svg"
-                    alt="sample"
-                    width={100}
-                    height={100}
-                  />
+                <div className="flex flex-row items-center justify-between px-5 py-3">
+                  <div>
+                    <Image
+                      src="/images/gift.svg"
+                      alt="sample"
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                  <div>
+                    <Image
+                      src="/images/gift.svg"
+                      alt="sample"
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                  <div>
+                    <Image
+                      src="/images/gift.svg"
+                      alt="sample"
+                      width={100}
+                      height={100}
+                    />
+                  </div>
                 </div>
-                <div className="flex flex-row justify-between items-center px-10 py-3">
+                <div className="flex flex-row items-center justify-between px-10 py-3">
                   <button
-                    className="text-white py-3 px-5 rounded-3xl shadow-sm shadow-gray-950"
+                    className="rounded-3xl px-5 py-3 text-white shadow-sm shadow-gray-950"
                     style={{
                       background:
                         "linear-gradient(90deg, #1D71B8 0%, #52A3DB 50%, #1D71B8 100%)",
@@ -254,7 +258,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                     ВЪПРОСИ
                   </button>
                   <button
-                    className="text-white py-3 px-5 rounded-3xl shadow-sm shadow-gray-950"
+                    className="rounded-3xl px-5 py-3 text-white shadow-sm shadow-gray-950"
                     style={{
                       background:
                         "linear-gradient(90deg, #1D71B8 0%, #52A3DB 50%, #1D71B8 100%)",
@@ -265,7 +269,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col h-full border-2 border-primary rounded-r-xl">
+            <div className="border-primary flex h-full flex-col rounded-r-xl border-2">
               {/* Calendar */}
               <Calendar
                 currentDate={currentDate}

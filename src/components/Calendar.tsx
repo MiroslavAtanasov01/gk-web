@@ -13,7 +13,7 @@ type CalendarProps = {
 };
 
 const StarIcon = (color: string) => (
-  <Image src={`/images/${color}-star.svg`} alt="star" width={30} height={30} />
+  <Image src={`/images/${color}-star.svg`} alt="star" width={20} height={20} />
 );
 
 const Calendar: React.FC<CalendarProps> = ({
@@ -68,7 +68,7 @@ const Calendar: React.FC<CalendarProps> = ({
           isToday ? "bg-blue-100" : ""
         }`}
       >
-        <span className="z-10 text-3xl">{day}</span>
+        <span className="z-10 mr-1 text-3xl">{day}</span>
         <div className="absolute right-1 flex">
           {event?.start && StarIcon("red")}
           {event?.end && StarIcon("green")}
