@@ -48,7 +48,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
     <div className="flex min-h-screen flex-col">
       <Header title="Кампании и Цикли" />
       {/* Main Content Area */}
-      <main className="grid flex-grow grid-cols-1 gap-6 p-4 md:p-6 lg:grid-cols-[1fr_1.5fr]">
+      <main className="grid flex-grow grid-cols-1 gap-6 p-4 md:p-6 lg:grid-cols-[1fr_2fr]">
         {/* Left Column: Active Campaigns */}
         <section className="border-primary flex flex-grow flex-col overflow-hidden">
           <h2 className="text-primary mb-3 ml-25 text-center text-2xl font-semibold">
@@ -292,7 +292,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
 
       <footer className="flex flex-wrap items-center justify-center gap-2 px-6 pb-3 md:justify-between">
         <div></div>
-        <button className="hover:bg-secondary mr-50 flex cursor-pointer items-center space-x-2 rounded-lg bg-[#74ACDA] px-4 py-2 text-lg font-medium text-white transition-colors duration-150">
+        <button className="hover:bg-secondary mr-20 flex cursor-pointer items-center space-x-2 rounded-lg bg-[#74ACDA] px-4 py-2 text-lg font-medium text-white transition-colors duration-150">
           <Image
             src="/images/connect.svg"
             alt={"icon"}
@@ -301,6 +301,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
           />
           <span>Провери връзката</span>
         </button>
+        <div></div>
 
         <div className="flex items-center space-x-2">
           <div className="mr-10 flex items-center justify-center space-x-10 text-xl">

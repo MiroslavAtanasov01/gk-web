@@ -13,7 +13,7 @@ type CalendarProps = {
 };
 
 const StarIcon = (color: string) => (
-  <Image src={`/images/${color}-star.svg`} alt="star" width={20} height={20} />
+  <Image src={`/images/${color}-star.svg`} alt="star" width={25} height={25} />
 );
 
 const Calendar: React.FC<CalendarProps> = ({
