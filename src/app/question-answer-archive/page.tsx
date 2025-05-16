@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import CampaignTable from "@/components/CampaignTable";
+import Header from "@/components/auto-reports/Header";
 import { useRouter } from "next/navigation";
 
 export default function fixCampaign() {
@@ -10,42 +11,14 @@ export default function fixCampaign() {
   return (
     <div className="flex h-screen flex-col">
       {/* Header */}
-      <div className="flex shrink-0 p-4">
-        <div className="flex cursor-pointer place-content-center">
-          <Image
-            src="/images/campaign/back-button.svg"
-            alt="back"
-            width={40}
-            height={40}
-          />
-        </div>
-        <div className="text-primary col-span-4 mr-auto ml-5 text-start text-4xl font-bold">
-          Архивиране на въпроси и отговори
-        </div>
-        <div className="flex cursor-pointer place-content-center">
-          <Image
-            src="/images/campaign/right-button.svg"
-            alt="next"
-            width={40}
-            height={40}
-            className="mr-5"
-          />
-          <Image
-            src="/images/campaign/logo.svg"
-            alt="logo"
-            width={150}
-            height={80}
-            onClick={() => router.push("/")}
-          />
-        </div>
-      </div>
+      <Header title="Архивиране на въпроси и отговори" />
 
       {/* Main Content */}
-      <div className="flex w-full grow gap-3 overflow-hidden p-1 px-7">
+      <div className="flex w-full grow gap-10 overflow-hidden p-1 px-7 pl-17">
         {/* Left Side - Campaign Table */}
         <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="pt-5 pb-2 pl-1 font-bold text-[#25509A] uppercase">
+            <p className="text-text-secondary pt-5 pb-2 pl-1 font-bold uppercase">
               Архив "Въпроси" и "Отговори"
             </p>
           </div>
@@ -57,7 +30,7 @@ export default function fixCampaign() {
         {/* Right Side - Tree View */}
         <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="pt-5 pb-2 pl-1 font-bold text-[#25509A]">
+            <p className="text-text-secondary pt-5 pb-2 pl-1 font-bold">
               ВИЗУАЛИЗАЦИЯ НА ВЪПРОСА
             </p>
           </div>
@@ -66,7 +39,7 @@ export default function fixCampaign() {
               <CampaignTable headerMode="answers" />
             </div>
             <div className="flex shrink-0 justify-end py-3">
-              <button className="bg-secondary mr-2 flex rounded-lg p-2 text-white">
+              <button className="bg-secondary mr-2 flex min-w-1/5 items-center justify-center rounded-xl p-2 text-white">
                 <Image
                   src="/images/campaign/topic-white.svg"
                   alt="campaign"
@@ -76,10 +49,12 @@ export default function fixCampaign() {
                 />
                 Качи в тема
               </button>
-              <button className="bg-secondary mr-2 flex rounded-lg p-2 text-white">
+
+              <button className="bg-secondary mr-2 flex min-w-1/5 items-center justify-center rounded-xl p-2 text-white">
                 Откажи
               </button>
-              <button className="bg-secondary flex rounded-lg p-2 text-white">
+
+              <button className="bg-secondary flex min-w-1/5 items-center justify-center rounded-xl p-2 text-white">
                 Продължи
                 <Image
                   src="/images/campaign/right-arrow.svg"

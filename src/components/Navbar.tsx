@@ -11,7 +11,7 @@ export default function Navbar() {
     <div className="grid w-full grid-cols-5 items-center px-4">
       {/* Back Button */}
       <div
-        className="ml-5 flex cursor-pointer justify-center"
+        className="mr-15 flex cursor-pointer justify-end"
         onClick={() => router.back()}
       >
         <Image
@@ -23,7 +23,7 @@ export default function Navbar() {
       </div>
 
       {/* Tabs Section */}
-      <div className="col-span-3 flex justify-center gap-1">
+      <div className="col-span-3 flex w-full justify-center gap-1">
         <div
           className={`${styles.tab} flex cursor-pointer items-center`}
           style={{ borderBottomLeftRadius: 50 }}
@@ -84,9 +84,9 @@ export default function Navbar() {
       </div>
 
       {/* Logo */}
-      <div className="flex justify-center">
+      <div className="ml-15 flex justify-start">
         <div
-          className="mr-5 flex cursor-pointer justify-center"
+          className="mr-5 flex cursor-pointer justify-start"
           onClick={() => router.forward()}
         >
           <Image

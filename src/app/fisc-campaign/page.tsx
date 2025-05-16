@@ -1,11 +1,11 @@
 "use client";
 
-import styles from "@/styles/navbar.module.css";
 import Image from "next/image";
 import CampaignTable from "@/components/CampaignTable";
 import TreeView from "@/components/TreeCampaign";
 import { sampleTreeData } from "@/utils/treeData";
 import { useRouter } from "next/navigation";
+import Header from "@/components/auto-reports/Header";
 
 export default function fixCampaign() {
   const router = useRouter();
@@ -13,42 +13,14 @@ export default function fixCampaign() {
   return (
     <div className="flex h-screen flex-col">
       {/* Header */}
-      <div className="flex shrink-0 p-4">
-        <div className="flex cursor-pointer place-content-center">
-          <Image
-            src="/images/campaign/back-button.svg"
-            alt="back"
-            width={40}
-            height={40}
-          />
-        </div>
-        <div className="text-primary col-span-4 mr-auto ml-5 text-start text-4xl font-bold">
-          Фискализация на кампаниите
-        </div>
-        <div className="flex cursor-pointer place-content-center">
-          <Image
-            src="/images/campaign/right-button.svg"
-            alt="next"
-            width={40}
-            height={40}
-            className="mr-5"
-          />
-          <Image
-            src="/images/campaign/logo.svg"
-            alt="logo"
-            width={150}
-            height={80}
-            onClick={() => router.push("/")}
-          />
-        </div>
-      </div>
+      <Header title="Фискализация на кампаниите" />
 
       {/* Main Content */}
-      <div className="flex w-full grow gap-3 overflow-hidden p-1 px-7">
+      <div className="flex w-full grow gap-7 overflow-hidden p-1 px-7 pl-20">
         {/* Left Side - Campaign Table */}
         <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="pt-5 pb-2 pl-1 font-bold text-[#25509A]">
+            <p className="text-text-secondary pt-5 pb-2 pl-1 font-bold">
               АКТИВИРАНЕ НА КАМПАНИЯ
             </p>
           </div>
@@ -60,12 +32,12 @@ export default function fixCampaign() {
         {/* Right Side - Tree View */}
         <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="pt-5 pb-2 pl-1 font-bold text-[#25509A]">
+            <p className="text-text-secondary pt-5 pb-2 pl-1 font-bold">
               ПРЕГЛЕД НА КАМПАНИЯТА
             </p>
           </div>
           <div className="flex flex-1 flex-col overflow-hidden">
-            <div className="mx-auto w-full flex-1 overflow-hidden rounded-lg border-2 border-blue-700 bg-white p-4 shadow-md">
+            <div className="border-text-secondary mx-auto w-full flex-1 overflow-hidden rounded-lg border-2 bg-white p-4 shadow-md">
               <TreeView
                 title="Шифр 001/001 кампания № 002"
                 data={sampleTreeData}

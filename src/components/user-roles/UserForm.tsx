@@ -25,7 +25,7 @@ const FormField: React.FC<FormFieldProps> = ({
   const fieldId = id || label.toLowerCase().replace(/\s+/g, "-");
 
   const baseInputClasses =
-    "w-full border rounded-md px-2 py-1 mb-1 text-sm text-gray-700 bg-white leading-tight border-secondary focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500";
+    "w-full border-2 rounded-lg px-2 py-1 mb-1 text-sm text-gray-700 bg-white leading-tight border-secondary focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary";
 
   return (
     <div className="mb-0">
@@ -76,7 +76,7 @@ function UserForm() {
     <>
       <div className="flex flex-row items-start">
         {/* Profile Picture Area */}
-        <div className="mx-2 flex shrink-0 items-center justify-center rounded-md">
+        <div className="mr-5 flex shrink-0 items-center justify-center rounded-md">
           <Image
             src="/images/user-roles/profile.svg"
             alt="Profile"

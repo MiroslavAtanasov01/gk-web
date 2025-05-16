@@ -1,4 +1,3 @@
-// OptionsList.tsx
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -60,12 +59,12 @@ const OptionsList: React.FC<MultiSelectProps> = ({
 
   return (
     <div
-      className={`border-primary flex flex-col rounded-lg border-2 bg-white p-4 ${className}`}
+      className={`border-text-secondary flex flex-col rounded-lg border-2 bg-white p-5 ${className}`}
     >
       {items.length === 0 ? (
         <p className="text-sm text-gray-500">No options available.</p>
       ) : (
-        <ul className="space-y-2.5 overflow-y-auto">
+        <ul className="custom-scrollbar space-y-2.5 overflow-y-auto">
           {items.map((item) => {
             const isSelected = selectedIds.has(item.id);
             return (
@@ -92,7 +91,7 @@ const OptionsList: React.FC<MultiSelectProps> = ({
                   className={`ml-2 text-sm ${
                     isSelected
                       ? "text-sky-500"
-                      : "text-gray-700 group-hover:text-sky-600"
+                      : "group-hover:text-secondary text-gray-700"
                   }`}
                 >
                   {item.label}

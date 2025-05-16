@@ -161,7 +161,7 @@ function UserListComponent() {
       </div>
 
       {/* Table Body */}
-      <div className="custom-scrollbar min-h-0 flex-1 space-y-px overflow-y-auto pr-0.5">
+      <div className="custom-scrollbar min-h-0 flex-1 space-y-px overflow-y-auto pr-3">
         {filteredUsers.map((user) => {
           const isSelected = user.id === selectedUserId;
 

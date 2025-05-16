@@ -103,7 +103,9 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
           </div>
         );
       case "statusDisplay":
-        return <div className="text-primary mr-5 font-semibold">Статус</div>;
+        return (
+          <div className="text-text-secondary mr-5 font-semibold">Статус</div>
+        );
       case "questions":
         return null;
       case "answers":
@@ -116,10 +118,24 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
   const renderHeaderTitles = () => {
     switch (headerMode) {
       case "mainActions":
+        return (
+          <>
+            <div className="mr-1 w-7"> </div>{" "}
+            <span className="text-text-secondary w-11 text-center font-semibold">
+              №
+            </span>
+            <span className="text-text-secondary mr-2 ml-2 font-semibold">
+              Кампания
+            </span>
+          </>
+        );
       case "statusDisplay":
         return (
           <>
-            <div className="mr-1 w-8"></div>{" "}
+            <div className="text-text-secondary mr-1 w-20 font-semibold">
+              {" "}
+              Активирай
+            </div>{" "}
             <span className="text-text-secondary w-11 text-center font-semibold">
               №
             </span>
@@ -162,7 +178,7 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
   };
 
   return (
-    <div className="flex h-full w-full flex-col rounded-lg border-2 border-blue-700 bg-white p-4 shadow-md">
+    <div className="border-primary flex h-full w-full flex-col rounded-lg border-2 bg-white p-4 shadow-md">
       {/* Header Row */}
       <div className="mb-2 flex items-center justify-between">
         <div className="flex items-center space-x-4">
@@ -238,7 +254,7 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
             <div
               key={item.id}
               onClick={() => handleRowClick(item.id)}
-              className={`mr-1 flex cursor-pointer items-center rounded-xl transition duration-150 ease-in-out ${
+              className={`mr-3 flex cursor-pointer items-center rounded-xl transition duration-150 ease-in-out ${
                 isSelected
                   ? "bg-[#7FBB48] font-normal text-white"
                   : isEven
@@ -246,7 +262,11 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
                     : "bg-white text-gray-800 hover:bg-gray-400"
               }`}
             >
-              <div className="mr-1 flex w-8 items-center justify-center">
+              <div
+                className={`mr-1 flex items-center justify-center ${
+                  headerMode === "statusDisplay" ? "w-20" : "w-8"
+                }`}
+              >
                 {isSelected ? (
                   <IconCheckedCircle className="text-xl" />
                 ) : (
