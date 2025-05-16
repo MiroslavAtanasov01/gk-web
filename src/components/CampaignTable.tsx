@@ -238,7 +238,7 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
             <div
               key={item.id}
               onClick={() => handleRowClick(item.id)}
-              className={`flex cursor-pointer items-center rounded-xl transition duration-150 ease-in-out ${
+              className={`mr-1 flex cursor-pointer items-center rounded-xl transition duration-150 ease-in-out ${
                 isSelected
                   ? "bg-[#7FBB48] font-normal text-white"
                   : isEven

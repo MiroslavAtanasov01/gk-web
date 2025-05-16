@@ -77,6 +77,7 @@ export default function Home() {
               image="/images/home/profile.svg"
               text="Потребители, роли и права на достъп"
               percents={50}
+              onClick={() => router.push("/user-roles")}
             ></Tab>
             <Tab
               image="/images/home/location.svg"

@@ -66,6 +66,19 @@ export default function fixCampaign() {
               <CampaignTable headerMode="answers" />
             </div>
             <div className="flex shrink-0 justify-end py-3">
+              <button className="bg-secondary mr-2 flex rounded-lg p-2 text-white">
+                <Image
+                  src="/images/campaign/topic-white.svg"
+                  alt="campaign"
+                  width={30}
+                  height={35}
+                  className="pr-2"
+                />
+                Качи в тема
+              </button>
+              <button className="bg-secondary mr-2 flex rounded-lg p-2 text-white">
+                Откажи
+              </button>
               <button className="bg-secondary flex rounded-lg p-2 text-white">
                 Продължи
                 <Image
