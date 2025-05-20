@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Header from "@/components/auto-reports/Header";
 
 interface CampaignStatus {
   id: number;
@@ -99,37 +100,7 @@ const CampaignStatusArchivePage: React.FC = () => {
 
   return (
     <div className="flex min-h-screen flex-col text-gray-950">
-      {/* Header */}
-      <header className="flex items-center justify-between bg-white px-10 pt-5">
-        <div className="flex items-center space-x-2">
-          <Image
-            src="/back-button.svg"
-            alt="next"
-            width={65}
-            height={65}
-            className="mr-10 cursor-pointer"
-            onClick={() => window.history.back()}
-          />
-          <h1 className="text-primary text-5xl font-semibold">
-            {`Статуси на кампаниите "Архив"`}
-          </h1>
-        </div>
-        <div className="flex items-center space-x-2">
-          <Image
-            src="/next-button.svg"
-            alt="next"
-            width={65}
-            height={65}
-            className="mr-10"
-          />
-          <Image
-            src="/images/campaigns/logo.svg"
-            alt="logo"
-            width={200}
-            height={55}
-          />
-        </div>
-      </header>
+      <Header title="Автоотчети" />
 
       {/* Main Content Area */}
       <main className="flex-grow p-4 px-10 md:p-8">

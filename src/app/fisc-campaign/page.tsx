@@ -4,12 +4,9 @@ import Image from "next/image";
 import CampaignTable from "@/components/CampaignTable";
 import TreeView from "@/components/TreeCampaign";
 import { sampleTreeData } from "@/utils/treeData";
-import { useRouter } from "next/navigation";
 import Header from "@/components/auto-reports/Header";
 
 export default function fixCampaign() {
-  const router = useRouter();
-
   return (
     <div className="flex h-screen flex-col">
       {/* Header */}

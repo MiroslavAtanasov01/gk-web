@@ -58,3 +58,12 @@ export const sampleCampaigns: Campaign[] = [
     endDate: "25.08.2020 г.",
   },
 ];
+
+export const campaignData = [
+  { id: 1, code: "001/001", name: "кампания № 001" },
+  { id: 2, code: "001/001", name: "кампания № 002" },
+  { id: 3, code: "001/001", name: "кампания № 010" },
+  { id: 4, code: "001/001", name: "кампания № 010" },
+  { id: 5, code: "001/001", name: "кампания № 010" },
+  { id: 6, code: "001/001", name: "кампания № 010" },
+];

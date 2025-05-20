@@ -11,8 +11,8 @@ export default function NewsCampaignPage() {
       leftTitle="КАМПАНИЯ"
       rightIcon="/images/campaign/topic.svg"
       rightTitle="ТЕМА"
-      leftContent={<CampaignTable />}
-      rightContent={<CampaignTable />}
+      leftContent={<CampaignTable sectionTitle="Кампания" />}
+      rightContent={<CampaignTable sectionTitle="Теми" />}
       onSave={() => {
         console.log("Saving news campaign...");
       }}

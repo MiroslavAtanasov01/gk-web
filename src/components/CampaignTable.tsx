@@ -3,38 +3,20 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import "@/styles/campaign.css";
-
-const IconUncheckedCircle = ({ className }: { className?: string }) => (
-  <div
-    className={`${className} h-5 w-5 rounded-full border-2 border-black`}
-    style={{ backgroundColor: "transparent" }}
-  />
-);
-
-const IconCheckedCircle = ({ className }: { className?: string }) => (
-  <Image
-    src="/images/campaign/check.svg"
-    alt="Checked"
-    width={20}
-    height={20}
-    className={className}
-  />
-);
-
-const campaignData = [
-  { id: 1, code: "001/001", name: "кампания № 001" },
-  { id: 2, code: "001/001", name: "кампания № 002" },
-  { id: 10, code: "001/001", name: "кампания № 010" },
-];
+import { campaignData } from "@/utils/mockData";
 
 type HeaderMode = "mainActions" | "statusDisplay" | "questions" | "answers";
 
 interface CampaignTableProps {
   headerMode?: HeaderMode;
+  sectionTitle?: string;
 }
 
-function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
-  const [selectedId, setSelectedId] = useState(2);
+function CampaignTable({
+  headerMode = "mainActions",
+  sectionTitle,
+}: CampaignTableProps) {
+  const [selectedId, setSelectedId] = useState<number | null>(null);
 
   const handleRowClick = (id: number) => {
     setSelectedId(id);
@@ -125,7 +107,7 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
               №
             </span>
             <span className="text-text-secondary mr-2 ml-2 font-semibold">
-              Кампания
+              {sectionTitle}
             </span>
           </>
         );
@@ -162,34 +144,30 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
             Въпрос номер {selectedId}
           </div>
         );
-      default:
-        return (
-          <>
-            <div className="mr-1 w-8"></div>
-            <span className="text-text-secondary w-11 text-center font-semibold">
-              №
-            </span>
-            <span className="text-text-secondary mr-2 ml-2 font-semibold">
-              Кампания
-            </span>
-          </>
-        );
+      // default:
+      //   return (
+      //     <>
+      //       <div className="mr-1 w-8"></div>
+      //       <span className="text-text-secondary w-11 text-center font-semibold">
+      //         №
+      //       </span>
+      //       <span className="text-text-secondary mr-2 ml-2 font-semibold">
+      //         Кампания
+      //       </span>
+      //     </>
+      //   );
     }
   };
 
   return (
-    <div className="border-primary flex h-full w-full flex-col rounded-lg border-2 bg-white p-4 shadow-md">
+    <div className="border-primary flex h-full w-full flex-col rounded-xl border-2 p-4">
       {/* Header Row */}
-      <div className="mb-2 flex items-center justify-between">
-        <div className="flex items-center space-x-4">
-          {renderHeaderTitles()}
-        </div>
-
+      <div className="mb-5 flex items-center justify-between">
+        <div className="flex items-center text-xl">{renderHeaderTitles()}</div>
         {renderHeaderActions()}
       </div>
 
       {/* Data Rows */}
-
       <div className="custom-scrollbar min-h-0 flex-1 space-y-1 overflow-y-auto">
         {campaignData.map((item, index) => {
           const isSelected = item.id === selectedId;
@@ -200,11 +178,11 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
             rowContent = (
               <>
                 <span
-                  className={`w-8 text-center ${isSelected ? "" : "text-gray-700"}`}
+                  className={`w-8 text-center ${isSelected ? "" : "text-black"}`}
                 >
                   {item.id}
                 </span>
-                <span className={`ml-4 ${isSelected ? "" : "text-gray-900"}`}>
+                <span className={`ml-4 ${isSelected ? "" : "text-black"}`}>
                   Шифр {item.code} {item.name}{" "}
                 </span>
               </>
@@ -213,11 +191,11 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
             rowContent = (
               <>
                 <span
-                  className={`w-8 text-center ${isSelected ? "" : "text-gray-700"}`}
+                  className={`w-8 text-center ${isSelected ? "" : "text-black"}`}
                 >
                   {item.id}
                 </span>
-                <span className={`ml-4 ${isSelected ? "" : "text-gray-900"}`}>
+                <span className={`ml-4 ${isSelected ? "" : "text-black"}`}>
                   {item.name}{" "}
                 </span>
               </>
@@ -226,11 +204,11 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
             rowContent = (
               <>
                 <span
-                  className={`w-8 text-center ${isSelected ? "" : "text-gray-700"}`}
+                  className={`w-8 text-center ${isSelected ? "" : "text-black"}`}
                 >
                   {item.id}
                 </span>
-                <span className={`ml-4 ${isSelected ? "" : "text-gray-900"}`}>
+                <span className={`ml-4 ${isSelected ? "" : "text-black"}`}>
                   {item.name}{" "}
                 </span>
               </>
@@ -239,11 +217,11 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
             rowContent = (
               <>
                 <span
-                  className={`w-8 text-center ${isSelected ? "" : "text-gray-700"}`}
+                  className={`w-8 text-center ${isSelected ? "" : "text-black"}`}
                 >
                   {item.id}
                 </span>
-                <span className={`ml-4 ${isSelected ? "" : "text-gray-900"}`}>
+                <span className={`ml-4 ${isSelected ? "" : "text-black"}`}>
                   Шифр {item.code} {item.name}
                 </span>
               </>
@@ -254,12 +232,12 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
             <div
               key={item.id}
               onClick={() => handleRowClick(item.id)}
-              className={`mr-3 flex cursor-pointer items-center rounded-xl transition duration-150 ease-in-out ${
+              className={`mr-3 flex cursor-pointer items-center rounded-2xl py-1 transition duration-150 ease-in-out ${
                 isSelected
-                  ? "bg-[#7FBB48] font-normal text-white"
+                  ? "bg-custom-green font-normal text-white"
                   : isEven
-                    ? "bg-[#D7D8D9] text-gray-800 hover:bg-gray-400"
-                    : "bg-white text-gray-800 hover:bg-gray-400"
+                    ? "bg-gray-bg text-black hover:bg-gray-200"
+                    : "bg-white text-black hover:bg-gray-200"
               }`}
             >
               <div
@@ -268,9 +246,18 @@ function CampaignTable({ headerMode = "mainActions" }: CampaignTableProps) {
                 }`}
               >
                 {isSelected ? (
-                  <IconCheckedCircle className="text-xl" />
+                  <Image
+                    src="/images/campaign/check.svg"
+                    alt="Checked"
+                    width={20}
+                    height={20}
+                    className="text-xl"
+                  />
                 ) : (
-                  <IconUncheckedCircle className="text-xl" />
+                  <div
+                    className="h-5 w-5 rounded-full border-2 border-black text-xl"
+                    style={{ backgroundColor: "transparent" }}
+                  />
                 )}
               </div>
               {rowContent}
