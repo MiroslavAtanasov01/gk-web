@@ -162,7 +162,7 @@ function CampaignTable({
   return (
     <div className="border-primary flex h-full w-full flex-col rounded-xl border-2 p-4">
       {/* Header Row */}
-      <div className="mb-5 flex items-center justify-between">
+      <div className="mb-5 flex items-center justify-between pr-3">
         <div className="flex items-center text-xl">{renderHeaderTitles()}</div>
         {renderHeaderActions()}
       </div>

@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  height: 4.5em;
+  height: 6.5em;
   width: 100%;
   background: linear-gradient(
     360deg,
@@ -11,4 +11,15 @@
     rgba(37, 80, 154, 1) 50%,
     rgba(116, 172, 218, 1) 100%
   );
+}
+
+.tab:hover {
+  opacity: 0.9;
+}
+.roundedRight {
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+}
+
+.roundedLeft {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
 }

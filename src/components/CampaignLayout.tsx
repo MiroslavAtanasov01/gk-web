@@ -70,16 +70,16 @@ const CampaignLayout: React.FC<CampaignLayoutProps> = ({
           </div>
           <div className="flex flex-1 flex-col overflow-hidden">
             <div className="flex-1 overflow-hidden">{rightContent}</div>
-            <div className="flex shrink-0 justify-end p-3">
+            <div className="mt-5 flex shrink-0 justify-end">
               <button
                 onClick={onSave}
-                className="bg-secondary flex rounded-lg p-2 text-white"
+                className="bg-secondary flex rounded-lg p-2 text-xl text-white"
               >
                 <Image
                   src="/images/campaign/save.svg"
                   alt="Save"
-                  width={30}
-                  height={30}
+                  width={40}
+                  height={40}
                   className="pr-2"
                 />
                 Запази
