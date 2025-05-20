@@ -14,27 +14,30 @@ import {
   ScrollableCampaignList,
 } from "@/components/ScrollableCampaigns";
 
-const Map = dynamic(() => import("@/components/Map"));
+const Map = dynamic(() => import("@/components/Map"), {
+  ssr: false,
+  loading: () => <p className="p-10 text-center">Зареждане на картата...</p>,
+});
 
 function Campaigns() {
   return (
-    <div className="flex flex-col h-screen">
-      <div className="bg-primary flex-shrink-0 flex items-center h-[50px]">
-        <p className="text-3xl text-white text-center w-full">
+    <div className="flex h-screen flex-col">
+      <div className="bg-primary flex h-[50px] flex-shrink-0 items-center">
+        <p className="w-full text-center text-3xl text-white">
           ОПЕРАТИВНО УПРАВЛЕНИЕ КАМПАНИИТЕ
         </p>
       </div>
-      <div className="px-4 md:px-10 pb-8 pt-1 flex flex-col flex-grow overflow-hidden">
-        <div className="flex-shrink-0 mb-1">
+      <div className="flex flex-grow flex-col overflow-hidden px-4 pt-1 pb-8 md:px-10">
+        <div className="mb-1 flex-shrink-0">
           <ButtonBar />
         </div>
 
         {/* Main  */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr_1fr] xl:grid-cols-[3fr_5.5fr_1.9fr] gap-3 flex-grow min-h-0">
-          <div className="flex flex-col gap-2 min-h-0">
-            <div className="grid grid-cols-[1fr_2fr] gap-2 items-stretch flex-shrink-0">
-              <div className="p-3 md:p-5 shadow-lg shadow-gray-400 border-2 border-gray-300 rounded-2xl flex flex-col items-center justify-center bg-white">
-                <span className="text-base md:text-lg font-medium leading-tight text-gray-400 mb-1">
+        <div className="grid min-h-0 flex-grow grid-cols-1 gap-3 lg:grid-cols-[1fr_2fr_1fr] xl:grid-cols-[3fr_5.5fr_1.9fr]">
+          <div className="flex min-h-0 flex-col gap-2">
+            <div className="grid flex-shrink-0 grid-cols-[1fr_2fr] items-stretch gap-2">
+              <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-gray-300 bg-white p-3 shadow-lg shadow-gray-400 md:p-5">
+                <span className="mb-1 text-base leading-tight font-medium text-gray-400 md:text-lg">
                   КАМЕРА
                 </span>
                 <Image
@@ -44,7 +47,7 @@ function Campaigns() {
                   height={50}
                 />
               </div>
-              <div className="p-2 shadow-lg shadow-gray-400 border-2 border-primary rounded-2xl flex flex-col justify-around bg-white">
+              <div className="border-primary flex flex-col justify-around rounded-2xl border-2 bg-white p-2 shadow-lg shadow-gray-400">
                 <div className="flex items-center justify-center gap-2">
                   <Image
                     src="/images/campaigns/icon9.svg"
@@ -53,10 +56,10 @@ function Campaigns() {
                     height={40}
                     className="flex-shrink-0"
                   />
-                  <span className="text-sm md:text-base font-bold leading-tight text-primary text-center flex-grow">
+                  <span className="text-primary flex-grow text-center text-sm leading-tight font-bold md:text-base">
                     АКТИВНИ КАМПАНИИ
                   </span>
-                  <span className="text-2xl md:text-4xl font-bold leading-tight text-primary">
+                  <span className="text-primary text-2xl leading-tight font-bold md:text-4xl">
                     5
                   </span>
                 </div>
@@ -68,10 +71,10 @@ function Campaigns() {
                     height={40}
                     className="flex-shrink-0"
                   />
-                  <span className="text-sm md:text-base font-bold leading-tight text-primary text-center flex-grow">
+                  <span className="text-primary flex-grow text-center text-sm leading-tight font-bold md:text-base">
                     АРХИВ КАМПАНИИ
                   </span>
-                  <span className="text-2xl md:text-4xl font-bold leading-tight text-primary">
+                  <span className="text-primary text-2xl leading-tight font-bold md:text-4xl">
                     555
                   </span>
                 </div>
@@ -82,34 +85,34 @@ function Campaigns() {
               items={sampleCampaigns}
               color="green"
               containerHeightClass="flex-grow min-h-0"
-              className="flex-grow min-h-0"
+              className="min-h-0 flex-grow"
             />
             <ScrollableGridContainer
               title="ПРЕДСТОЯЩИ КАМПАНИИ"
               items={sampleCampaigns}
               color="orange"
               containerHeightClass="flex-grow min-h-0"
-              className="flex-grow min-h-0"
+              className="min-h-0 flex-grow"
             />
             <ScrollableGridContainer
               title="ЗАВЪРШЕНИ КАМПАНИИ"
               items={sampleCampaigns}
               color="blue"
               containerHeightClass="flex-grow min-h-0"
-              className="flex-grow min-h-0"
+              className="min-h-0 flex-grow"
             />
           </div>
 
-          <div className="flex flex-col min-h-0 rounded-2xl overflow-hidden shadow-lg">
-            <Map className="flex-grow w-full h-full" />
+          <div className="flex min-h-0 flex-col overflow-hidden rounded-2xl">
+            <Map className="h-full w-full flex-grow" />
           </div>
 
-          <div className="flex flex-col min-h-0">
+          <div className="flex min-h-0 flex-col">
             <ScrollableCampaignList
               title="ДИНАМИКА НА АКТИВНИТЕ КАМПАНИИ"
               items={sampleCampaignDynamics}
               containerHeightClass="flex-grow min-h-0"
-              className="flex-grow min-h-0"
+              className="min-h-0 flex-grow"
               number="first"
               icon="/images/campaigns/side-icon1.svg"
             />
@@ -117,20 +120,26 @@ function Campaigns() {
               title="ПРЕДПОЧИТАНИ СПОНСОРИ"
               items={sampleCampaignDynamics}
               containerHeightClass="flex-grow min-h-0"
-              className="flex-grow min-h-0"
+              className="min-h-0 flex-grow"
               icon="/images/campaigns/side-icon2.svg"
             />
             <ScrollableCampaignList
               title="ТОП 10 СТАРТЕР МЕРОПРИЯТИЯ"
               items={sampleCampaignDynamics}
               containerHeightClass="flex-grow min-h-0"
-              className="flex-grow min-h-0"
+              className="min-h-0 flex-grow"
               number="last"
               icon="/images/campaigns/side-icon3.svg"
             />
           </div>
         </div>
       </div>
+      <footer className="fixed right-0 bottom-0 z-50 mr-8 mb-1 text-right">
+        <p className="rounded bg-white/80 px-2 text-xs text-gray-500">
+          &copy; {new Date().getFullYear()} Interactive Business Partners
+          Petersburg
+        </p>
+      </footer>
     </div>
   );
 }

@@ -47,7 +47,7 @@ export default function Home() {
             height={220}
             alt="Home Logo"
             priority
-            className="z-10 md:h-32"
+            // className="z-10 md:h-32"
           />
           <p className="text-text-main -ml-6 w-50 text-end font-bold">
             СТАТИСТИЧЕСКИ АНАЛИЗ
@@ -83,11 +83,13 @@ export default function Home() {
               image="/images/home/location.svg"
               text="Настройка на ГИС"
               percents={10}
+              onClick={() => router.push("/gis")}
             ></Tab>
             <Tab
               image="/images/home/gift.svg"
               text="Подаръци - площадка"
               percents={100}
+              onClick={() => router.push("/gifts")}
             ></Tab>
             <Tab
               image="/images/home/listX.svg"
@@ -176,15 +178,10 @@ export default function Home() {
           </div>
         </div>
         <div className="py-5">
-          <p
-            className="text-center font-bold"
-            style={{ color: "var(  --color-gray)" }}
-          >
+          <p className="text-gray text-center font-bold">
             ИНДИКАТОР ЗА ПОПЪЛВАНЕ НА МАТРИЦАТА
           </p>
-          <p className="text-center" style={{ color: "var(  --color-gray)" }}>
-            базисни показатели
-          </p>
+          <p className="text-gray text-center">базисни показатели</p>
         </div>
       </div>
     </ProtectedRoute>
