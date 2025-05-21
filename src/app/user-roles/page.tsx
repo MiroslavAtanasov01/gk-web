@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import { useRouter } from "next/navigation";
 import UserList from "@/components/user-roles/UserList";
 import UserForm from "@/components/user-roles/UserForm";
 import OptionsList, {
@@ -10,15 +8,7 @@ import OptionsList, {
 import { useState } from "react";
 import Header from "@/components/auto-reports/Header";
 
-// If SelectableItem is not exported from OptionsList.tsx, define it here or import it if it's in a separate types file
-// export interface SelectableItem {
-//   id: string | number;
-//   label: string;
-// }
-
 export default function FixCampaign() {
-  const router = useRouter();
-
   const roleOptions: SelectableItem[] = [
     { id: "role_admin0", label: "Администратор 0" },
     { id: "role_admin1", label: "Администратор 1" },
@@ -57,32 +47,32 @@ export default function FixCampaign() {
     <div className="flex h-screen flex-col">
       <Header title="Роли и права на достъп" />
 
-      <div className="flex w-full grow gap-7 overflow-hidden p-1 px-7 pl-20">
+      <div className="mt-3 flex w-full grow gap-8 overflow-hidden p-1 px-7 pl-20">
         <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="text-text-secondary pt-5 pb-2 pl-1 font-bold uppercase">
-              Регистрирани потребители с адрес
+            <p className="text-primary w-full p-3 text-center text-2xl font-semibold tracking-wide">
+              РЕГИСТРИРАНИ ПОТРЕБИТЕЛИ С АДРЕС
             </p>
           </div>
-          <div className="border-text-secondary relative m-auto flex h-full w-full flex-col rounded-lg border-2 bg-white p-5 font-sans shadow-md">
+          <div className="border-text-secondary relative m-auto flex h-full w-full flex-col rounded-xl border-2 bg-white p-5 font-sans shadow-md">
             <UserList />
           </div>
         </div>
 
         <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="text-text-secondary pt-5 pb-2 pl-1 font-bold uppercase">
-              Статус 1. Реистрация на роли и потребители
+            <p className="text-primary w-full p-3 text-center text-2xl font-semibold tracking-wide">
+              СТАТУС 1. РЕГИСТРАЦИЯ НА РОЛИ И ПОТРЕБИТЕЛИ
             </p>
           </div>
           <div className="flex flex-1 flex-col overflow-hidden">
-            <div className="border-text-secondary relative m-auto mb-3 flex w-full flex-col rounded-lg border-2 bg-white p-5 font-sans shadow-md">
+            <div className="border-text-secondary relative m-auto mb-3 flex w-full flex-col rounded-xl border-2 p-5">
               <UserForm />
             </div>
             <div className="flex w-full flex-1 flex-row gap-7 overflow-hidden font-sans">
               <div className="flex w-1/2 flex-col">
-                <p className="text-text-secondary w-full shrink-0 pt-2 pb-2 pl-1 text-center font-bold uppercase">
-                  Статус 2. Избор на роля
+                <p className="text-primary w-full p-3 text-center text-2xl font-semibold tracking-wide">
+                  СТАТУС 2. ИЗБОР НА РОЛЯ
                 </p>
                 <OptionsList
                   items={roleOptions}
@@ -92,8 +82,8 @@ export default function FixCampaign() {
                 />
               </div>
               <div className="flex w-1/2 flex-col">
-                <p className="text-text-secondary w-full shrink-0 pt-2 pb-2 pl-1 text-center font-bold uppercase">
-                  Статус 3. Достъп
+                <p className="text-primary w-full p-3 text-center text-2xl font-semibold tracking-wide">
+                  СТАТУС 3. ДОСТЪП
                 </p>
                 <OptionsList
                   items={accessOptions}
@@ -107,7 +97,7 @@ export default function FixCampaign() {
         </div>
       </div>
       <div>
-        <p className="pr-7 text-end text-xs text-gray-400">
+        <p className="py-2 pr-7 text-end text-xs text-gray-400">
           © Copyright 2025 Interactive Business Partners Petersburg
         </p>
       </div>

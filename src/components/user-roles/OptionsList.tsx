@@ -62,7 +62,7 @@ const OptionsList: React.FC<MultiSelectProps> = ({
       className={`border-text-secondary flex flex-col rounded-lg border-2 bg-white p-5 ${className}`}
     >
       {items.length === 0 ? (
-        <p className="text-sm text-gray-500">No options available.</p>
+        <p className="text-lg">No options available.</p>
       ) : (
         <ul className="custom-scrollbar space-y-2.5 overflow-y-auto">
           {items.map((item) => {
@@ -88,10 +88,8 @@ const OptionsList: React.FC<MultiSelectProps> = ({
                   <IconUncheckedCircle className="shrink-0" />
                 )}
                 <span
-                  className={`ml-2 text-sm ${
-                    isSelected
-                      ? "text-sky-500"
-                      : "group-hover:text-secondary text-gray-700"
+                  className={`ml-2 text-lg ${
+                    isSelected ? "text-sky-500" : "group-hover:text-secondary"
                   }`}
                 >
                   {item.label}

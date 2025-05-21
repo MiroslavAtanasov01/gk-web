@@ -1,4 +1,4 @@
-"use client"; // If using Next.js App Router
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -25,14 +25,11 @@ const FormField: React.FC<FormFieldProps> = ({
   const fieldId = id || label.toLowerCase().replace(/\s+/g, "-");
 
   const baseInputClasses =
-    "w-full border-2 rounded-lg px-2 py-1 mb-1 text-sm text-gray-700 bg-white leading-tight border-secondary focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary";
+    "w-full border-2 rounded-xl px-2 py-1 mb-1 text-lg leading-tight border-secondary focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary";
 
   return (
     <div className="mb-0">
-      <label
-        htmlFor={fieldId}
-        className="text-secondary block pl-1 text-[14px]"
-      >
+      <label htmlFor={fieldId} className="text-secondary block pl-1 text-lg">
         {label}
       </label>
       {isSelect ? (
@@ -49,11 +46,14 @@ const FormField: React.FC<FormFieldProps> = ({
             )}
             {children}
           </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-blue-600">
-            <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
-              <path d="M7 10l5 5 5-5H7z" />
-            </svg>
-          </div>
+          <span className="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2">
+            <Image
+              src="/images/down-arrow.svg"
+              alt="arrow"
+              width={20}
+              height={15}
+            />
+          </span>
         </div>
       ) : (
         <input
@@ -70,7 +70,7 @@ const FormField: React.FC<FormFieldProps> = ({
 
 function UserForm() {
   const buttonClasses =
-    "w-2/3 bg-secondary text-white font-medium py-[0.6rem] px-4 rounded-md text-[0.8rem] transition-colors duration-200 ease-in-out leading-none hover:bg-[#7FA0CC]";
+    "w-2/3 bg-secondary text-white font-medium p-4 rounded-xl cursor-pointer text-lg transition-colors duration-200 font-semibold ease-in-out leading-none hover:bg-primary";
 
   return (
     <>
@@ -111,7 +111,7 @@ function UserForm() {
               <FormField label="E-mail" id="email" type="email" />
               <FormField label="Логин" id="login" />
             </div>
-            <div className="mt-auto space-y-2.5 pt-3.5 text-end">
+            <div className="mt-auto space-y-4 pt-3.5 text-end">
               <button type="button" className={buttonClasses}>
                 Промени паролата
               </button>
