@@ -6,7 +6,7 @@ export interface TreeNodeData {
   id: string;
   label: string;
   children?: TreeNodeData[];
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface TreeViewProps {
@@ -71,9 +71,10 @@ const TreeView: React.FC<TreeViewProps> = ({
         className="tree-node relative"
         role="treeitem"
         aria-expanded={hasChildren ? currentIsExpanded : undefined}
+        aria-selected={false}
       >
         <div
-          className="tree-node-content flex  py-1 cursor-pointer  rounded"
+          className="tree-node-content flex cursor-pointer rounded py-1"
           style={{ paddingLeft: contentPaddingLeft }}
           onClick={() => hasChildren && handleToggle(node.id)}
         >
@@ -90,7 +91,7 @@ const TreeView: React.FC<TreeViewProps> = ({
 
           {level > 0 && (
             <span
-              className="absolute top-1/2 w-[15px] h-px bg-gray-300 -translate-y-1/2"
+              className="absolute top-1/2 h-px w-[15px] -translate-y-1/2 bg-gray-300"
               style={{
                 left: lineLeftOffset(level - 1),
               }}
@@ -98,20 +99,18 @@ const TreeView: React.FC<TreeViewProps> = ({
           )}
 
           {/* Icon and Label container */}
-          <div className="flex relative  bg-white pr-2">
+          <div className="relative flex items-center bg-white pr-2">
             {hasChildren ? (
               <button
                 aria-label={currentIsExpanded ? "Collapse" : "Expand"}
-                className="bg-secondary hover:bg-blue-600 text-white w-5 h-5 flex items-center justify-center rounded-sm text-xs mr-2 flex-shrink-0"
+                className="bg-secondary text-md hover:bg-primary mr-2 flex h-3 w-3 flex-shrink-0 items-center justify-center text-white"
               >
                 {currentIsExpanded ? "-" : "+"}
               </button>
             ) : (
-              <span className=" w-5 "></span>
+              <span className="w-5"></span>
             )}
-            <span className="select-none text-sm text-gray-700">
-              {node.label}
-            </span>
+            <span className="text-xl text-black select-none">{node.label}</span>
           </div>
         </div>
 
@@ -135,9 +134,9 @@ const TreeView: React.FC<TreeViewProps> = ({
   };
 
   return (
-    <div className={` bg-white ${className}`}>
+    <div className={`bg-white ${className}`}>
       {title && (
-        <h2 className="text-md font-semibold mb-2 text-primary text-start">
+        <h2 className="text-md text-primary mb-2 text-start text-xl font-semibold">
           {title}
         </h2>
       )}

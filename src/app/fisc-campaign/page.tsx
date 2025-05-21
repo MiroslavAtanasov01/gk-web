@@ -8,16 +8,16 @@ import Header from "@/components/auto-reports/Header";
 
 export default function fixCampaign() {
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-screen flex-col pb-3">
       {/* Header */}
       <Header title="Фискализация на кампаниите" />
 
       {/* Main Content */}
-      <div className="flex w-full grow gap-7 overflow-hidden p-1 px-7 pl-20">
+      <div className="mt-3 flex w-full grow gap-8 overflow-hidden p-1 px-7 pr-10 pl-20">
         {/* Left Side - Campaign Table */}
         <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="text-text-secondary pt-5 pb-2 pl-1 font-bold">
+            <p className="text-primary w-full p-3 text-center text-2xl font-semibold tracking-wide">
               АКТИВИРАНЕ НА КАМПАНИЯ
             </p>
           </div>
@@ -29,12 +29,12 @@ export default function fixCampaign() {
         {/* Right Side - Tree View */}
         <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="text-text-secondary pt-5 pb-2 pl-1 font-bold">
+            <p className="text-primary w-full p-3 text-center text-2xl font-semibold tracking-wide">
               ПРЕГЛЕД НА КАМПАНИЯТА
             </p>
           </div>
           <div className="flex flex-1 flex-col overflow-hidden">
-            <div className="border-text-secondary mx-auto w-full flex-1 overflow-hidden rounded-lg border-2 bg-white p-4 shadow-md">
+            <div className="border-primary mx-auto w-full flex-1 overflow-hidden rounded-xl border-2 p-4">
               <TreeView
                 title="Шифр 001/001 кампания № 002"
                 data={sampleTreeData}
@@ -42,13 +42,13 @@ export default function fixCampaign() {
               />
             </div>
             <div className="flex shrink-0 justify-end py-3">
-              <button className="bg-secondary flex rounded-lg p-2 text-white">
+              <button className="bg-secondary flex rounded-lg p-2 text-lg font-semibold text-white">
                 Продължи
                 <Image
                   src="/images/campaign/right-arrow.svg"
                   alt="campaign"
-                  width={20}
-                  height={25}
+                  width={23}
+                  height={40}
                   className="pl-2"
                 />
               </button>

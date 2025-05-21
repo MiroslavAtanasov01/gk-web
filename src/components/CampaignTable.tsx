@@ -86,7 +86,9 @@ function CampaignTable({
         );
       case "statusDisplay":
         return (
-          <div className="text-text-secondary mr-5 font-semibold">Статус</div>
+          <div className="text-text-secondary mr-5 text-xl font-semibold">
+            Статус
+          </div>
         );
       case "questions":
         return null;
@@ -114,10 +116,38 @@ function CampaignTable({
       case "statusDisplay":
         return (
           <>
-            <div className="text-text-secondary mr-1 w-20 font-semibold">
+            <div className="text-text-secondary mr-1 w-25 font-semibold">
               {" "}
               Активирай
             </div>{" "}
+            <span className="text-text-secondary w-11 text-center font-semibold">
+              №
+            </span>
+            <span className="text-text-secondary mr-2 ml-2 font-semibold">
+              Кампании
+            </span>
+          </>
+        );
+      case "questions":
+        return (
+          <>
+            <div className="mr-1 w-8"></div>{" "}
+            <span className="text-primary w-11 text-center font-semibold">
+              №
+            </span>
+            <span className="text-primary mr-2 ml-2 font-semibold">Въпрос</span>
+          </>
+        );
+      case "answers":
+        return (
+          <div className="text-primary flex w-full justify-center text-xl font-semibold">
+            ШИФЪР 002 ВЪПРОС 0001
+          </div>
+        );
+      default:
+        return (
+          <>
+            <div className="mr-1 w-8"></div>
             <span className="text-text-secondary w-11 text-center font-semibold">
               №
             </span>
@@ -126,36 +156,6 @@ function CampaignTable({
             </span>
           </>
         );
-      case "questions":
-        return (
-          <>
-            <div className="mr-1 w-8"></div>{" "}
-            <span className="text-text-secondary w-11 text-center font-semibold">
-              №
-            </span>
-            <span className="text-text-secondary mr-2 ml-2 font-semibold">
-              Въпрос
-            </span>
-          </>
-        );
-      case "answers":
-        return (
-          <div className="text-text-secondary w-full text-center font-semibold">
-            Въпрос номер {selectedId}
-          </div>
-        );
-      // default:
-      //   return (
-      //     <>
-      //       <div className="mr-1 w-8"></div>
-      //       <span className="text-text-secondary w-11 text-center font-semibold">
-      //         №
-      //       </span>
-      //       <span className="text-text-secondary mr-2 ml-2 font-semibold">
-      //         Кампания
-      //       </span>
-      //     </>
-      //   );
     }
   };
 
@@ -163,8 +163,16 @@ function CampaignTable({
     <div className="border-primary flex h-full w-full flex-col rounded-xl border-2 p-4">
       {/* Header Row */}
       <div className="mb-5 flex items-center justify-between pr-3">
-        <div className="flex items-center text-xl">{renderHeaderTitles()}</div>
-        {renderHeaderActions()}
+        {headerMode === "answers" ? (
+          renderHeaderTitles()
+        ) : (
+          <>
+            <div className="flex items-center text-xl">
+              {renderHeaderTitles()}
+            </div>
+            {renderHeaderActions()}
+          </>
+        )}
       </div>
 
       {/* Data Rows */}
@@ -242,7 +250,7 @@ function CampaignTable({
             >
               <div
                 className={`mr-1 flex items-center justify-center ${
-                  headerMode === "statusDisplay" ? "w-20" : "w-8"
+                  headerMode === "statusDisplay" ? "w-25" : "w-8"
                 }`}
               >
                 {isSelected ? (
@@ -262,7 +270,7 @@ function CampaignTable({
               </div>
               {rowContent}
               {isSelected && headerMode === "statusDisplay" && (
-                <span className="mr-5 ml-auto text-sm">OK</span>
+                <span className="mr-10 ml-auto text-sm">OK</span>
               )}
             </div>
           );
