@@ -7,12 +7,12 @@ export default function NewscampaignPage() {
   return (
     <CampaignLayout
       title="СЪЗДАВАНЕ НА ВЪПРОСИ - ОТГОВОРИ"
-      leftIcon="/images/campaign/topic.svg"
+      leftIcon="/images/campaign/questions-blue.svg"
       leftTitle="ВЪПРОСИ"
-      rightIcon="/images/campaign/questions-blue.svg"
+      rightIcon="/images/campaign/blue-check.svg"
       rightTitle="ОТГОВОРИ"
-      leftContent={<CampaignTable />}
-      rightContent={<CampaignTable />}
+      leftContent={<CampaignTable sectionTitle="Въпрос" />}
+      rightContent={<CampaignTable sectionTitle="Отговори" />}
       onSave={() => {
         console.log("Saving news campaign...");
       }}

@@ -6,7 +6,7 @@
 }
 
 @theme {
-  --color-primary: #27519b;
+  --color-primary: #25509a;
   --color-secondary: #74acda;
   --color-text-main: #efb333;
   --color-text-secondary: #25509a;
@@ -14,6 +14,7 @@
   --color-gray-light: #8e8e8e;
   --color-gray-bg: #d7d8d9;
   --color-black: #000000;
+  --color-custom-green: #7fbb48;
 }
 
 body {

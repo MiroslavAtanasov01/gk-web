@@ -38,7 +38,7 @@ export default function Tab({ image, text, percents, onClick }: TabProps) {
         className={`${styles.icon} rounded`}
       />
 
-      <p className="text-base font-semibold flex-1 text-[var(--color-text-secondary)] pl-2">
+      <p className="text-base font-semibold flex-1 text-text-secondary pl-2">
         {text}
       </p>
 

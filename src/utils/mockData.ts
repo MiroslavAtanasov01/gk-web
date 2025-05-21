@@ -1,3 +1,4 @@
+import { UserData } from "@/components/user-roles/UserList";
 import { Campaign } from "@/types/types";
 
 export const sampleCampaigns: Campaign[] = [
@@ -57,4 +58,44 @@ export const sampleCampaigns: Campaign[] = [
     startDate: "20.08.2020 г.",
     endDate: "25.08.2020 г.",
   },
+];
+
+export const campaignData = [
+  { id: 1, code: "001/001", name: "кампания № 001" },
+  { id: 2, code: "001/001", name: "кампания № 002" },
+  { id: 3, code: "001/001", name: "кампания № 010" },
+  { id: 4, code: "001/001", name: "кампания № 010" },
+  { id: 5, code: "001/001", name: "кампания № 010" },
+  { id: 6, code: "001/001", name: "кампания № 010" },
+];
+
+export const initialUsersData: UserData[] = [
+  { id: 1, num: 1, name: "Иванов Иван Иванов", email: "e-mail_1@gmail.com" },
+  { id: 2, num: 2, name: "Петров Петър Петров", email: "e-mail_2@gmail.com" },
+  {
+    id: 3,
+    num: 3,
+    name: "Сидеров Константин Сергеев",
+    email: "e-mail_2@gmail.com",
+  },
+  {
+    id: 4,
+    num: 4,
+    name: "Георгиев Георги Георгиев",
+    email: "e-mail_3@gmail.com",
+  },
+  {
+    id: 5,
+    num: 5,
+    name: "Димитров Димитър Димитров",
+    email: "e-mail_4@gmail.com",
+  },
+  {
+    id: 6,
+    num: 6,
+    name: "Николов Николай Николов",
+    email: "e-mail_5@gmail.com",
+  },
+  { id: 7, num: 7, name: "Стоянов Стоян Стоянов", email: "e-mail_6@gmail.com" },
+  { id: 8, num: 8, name: "Павлов Павел Павлов", email: "e-mail_7@gmail.com" },
 ];

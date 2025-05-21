@@ -90,7 +90,7 @@ export default function RegisterPage() {
             width={700}
             height={273}
           />
-          <h2 className="text-4xl font-bold text-[var(--color-secondary)] mb-5 mt-10 ml-13 w-md">
+          <h2 className="text-4xl font-bold text-secondary mb-5 mt-10 ml-13 w-md">
             Регистрация на първи потребител
           </h2>
           <form onSubmit={handleSubmit} className="w-sm ml-13">
@@ -147,14 +147,14 @@ export default function RegisterPage() {
               <button
                 type="button"
                 onClick={() => router.push("/login")}
-                className="py-2 w-full rounded-lg bg-[var(--color-gray-light)] text-white text-2xl hover:bg-gray-300 cursor-pointer"
+                className="py-2 w-full rounded-lg bg-gray-light text-white text-2xl hover:bg-gray-300 cursor-pointer"
               >
                 Отмяна
               </button>
               <button
                 type="submit"
                 disabled={loadingRegister}
-                className="w-full py-2 rounded-lg bg-[var(--color-secondary)] text-white text-2xl hover:bg-[var(--color-primary)] flex items-center justify-center relative cursor-pointer"
+                className="w-full py-2 rounded-lg bg-secondary text-white text-2xl hover:bg-primary flex items-center justify-center relative cursor-pointer"
               >
                 {loadingRegister ? "Регистриране..." : "Вход"}
                 {!loadingRegister && (

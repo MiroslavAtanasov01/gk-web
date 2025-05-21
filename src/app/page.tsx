@@ -77,6 +77,7 @@ export default function Home() {
               image="/images/home/profile.svg"
               text="Потребители, роли и права на достъп"
               percents={50}
+              onClick={() => router.push("/user-roles")}
             ></Tab>
             <Tab
               image="/images/home/location.svg"
@@ -154,11 +155,13 @@ export default function Home() {
               image="/images/home/barchart.svg"
               text="Справки, репорт, доклад"
               percents={60}
+              onClick={() => router.push("/fisc-campaign")}
             ></Tab>
             <Tab
               image="/images/home/archive.svg"
               text="Архив"
               percents={0}
+              onClick={() => router.push("/question-answer-archive")}
             ></Tab>
           </div>
           {/* Progress Bars  */}

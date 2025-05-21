@@ -9,10 +9,10 @@ export default function NewsCampaignPage() {
       title="СЪЗДАВАНЕ НА КАМПАНИЯ - ТЕМА"
       leftIcon="/images/campaign/campaign.svg"
       leftTitle="КАМПАНИЯ"
-      rightIcon="/images/campaign/questions-blue.svg"
+      rightIcon="/images/campaign/topic.svg"
       rightTitle="ТЕМА"
-      leftContent={<CampaignTable />}
-      rightContent={<CampaignTable />}
+      leftContent={<CampaignTable sectionTitle="Кампания" />}
+      rightContent={<CampaignTable sectionTitle="Теми" />}
       onSave={() => {
         console.log("Saving news campaign...");
       }}
