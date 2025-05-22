@@ -248,6 +248,11 @@ const GISConfigPage: React.FC = () => {
           </div>
         </section>
       </main>
+      <div>
+        <p className="pr-7 pb-2 text-end text-xs text-gray-400">
+          © Copyright 2025 Interactive Business Partners Petersburg
+        </p>
+      </div>
     </div>
   );
 };

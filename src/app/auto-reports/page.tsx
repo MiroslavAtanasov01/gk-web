@@ -94,6 +94,11 @@ const AutoReportsPage: React.FC = () => {
         <ResultsDisplay height="40" />
         <AutoReportGraphics />
       </div>
+      <div>
+        <p className="py-2 pr-7 text-end text-xs text-gray-400">
+          © Copyright 2025 Interactive Business Partners Petersburg
+        </p>
+      </div>
     </div>
   );
 };

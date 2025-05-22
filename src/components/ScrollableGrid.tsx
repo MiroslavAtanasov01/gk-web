@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { getColorClasses } from "../utils/colorStyles";
+import styles from "../styles/campaigns.module.css";
 
 interface GridItem {
   id: string;
@@ -11,7 +12,6 @@ interface ScrollableGridContainerProps {
   title: string;
   items: GridItem[];
   color: "green" | "orange" | "blue";
-  containerHeightClass?: string;
   initialActiveId?: string | null;
   onItemClick?: (id: string) => void;
   className?: string;
@@ -21,7 +21,6 @@ const ScrollableGridContainer: React.FC<ScrollableGridContainerProps> = ({
   title,
   items,
   color,
-  containerHeightClass,
   initialActiveId = null,
   onItemClick,
   className,
@@ -49,13 +48,13 @@ const ScrollableGridContainer: React.FC<ScrollableGridContainerProps> = ({
       </div>
 
       <div
-        className={`custom-scrollbar overflow-y-auto ${containerHeightClass} border-primary min-h-0 rounded-b-2xl border-r-2 border-b-2 border-l-2 bg-white pt-2 pb-2 pl-2`}
+        className={`custom-scrollbar border-primary min-h-0 flex-grow overflow-y-auto rounded-b-2xl border-r-2 border-b-2 border-l-2 bg-white pt-2 pb-2 pl-2`}
       >
         <div className="grid grid-cols-2 gap-3 pr-2">
           {items.map((item) => (
             <div
               key={item.id}
-              className={`cursor-pointer rounded-lg border p-4 text-center font-medium transition duration-150 ease-in-out ${
+              className={`cursor-pointer rounded-lg border ${styles.item} text-center font-medium transition duration-150 ease-in-out ${
                 activeItemId === item.id
                   ? `${border} ${bg} text-white`
                   : `border-2 ${border} bg-white ${text} hover:${border} ${hover}`

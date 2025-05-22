@@ -14,7 +14,7 @@ import {
   ScrollableCampaignList,
 } from "@/components/ScrollableCampaigns";
 
-const Map = dynamic(() => import("@/components/Map"), {
+const MapPage = dynamic(() => import("@/components/CampaignsMap"), {
   ssr: false,
   loading: () => <p className="p-10 text-center">Зареждане на картата...</p>,
 });
@@ -84,27 +84,24 @@ function Campaigns() {
               title="АКТИВНИ КАМПАНИИ"
               items={sampleCampaigns}
               color="green"
-              containerHeightClass="flex-grow min-h-0"
               className="min-h-0 flex-grow"
             />
             <ScrollableGridContainer
               title="ПРЕДСТОЯЩИ КАМПАНИИ"
               items={sampleCampaigns}
               color="orange"
-              containerHeightClass="flex-grow min-h-0"
               className="min-h-0 flex-grow"
             />
             <ScrollableGridContainer
               title="ЗАВЪРШЕНИ КАМПАНИИ"
               items={sampleCampaigns}
               color="blue"
-              containerHeightClass="flex-grow min-h-0"
               className="min-h-0 flex-grow"
             />
           </div>
 
           <div className="flex min-h-0 flex-col overflow-hidden rounded-2xl">
-            <Map className="h-full w-full flex-grow" />
+            <MapPage />
           </div>
 
           <div className="flex min-h-0 flex-col">
