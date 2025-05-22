@@ -44,3 +44,14 @@ body {
   background: url("/images/down-arrow.svg") no-repeat center;
   background-size: 22px 13px;
 }
+
+.custom-map-marker {
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+  color: white;
+  padding: 5px 20px;
+  background-color: #d9534f;
+  font-size: 14px;
+}

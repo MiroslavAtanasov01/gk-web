@@ -14,7 +14,7 @@ import {
   ScrollableCampaignList,
 } from "@/components/ScrollableCampaigns";
 
-const Map = dynamic(() => import("@/components/Map"), {
+const MapPage = dynamic(() => import("@/components/CampaignsMap"), {
   ssr: false,
   loading: () => <p className="p-10 text-center">Зареждане на картата...</p>,
 });
@@ -104,7 +104,7 @@ function Campaigns() {
           </div>
 
           <div className="flex min-h-0 flex-col overflow-hidden rounded-2xl">
-            <Map className="h-full w-full flex-grow" />
+            <MapPage />
           </div>
 
           <div className="flex min-h-0 flex-col">

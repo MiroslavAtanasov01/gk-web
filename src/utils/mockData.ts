@@ -1,3 +1,4 @@
+import { CampaignData } from "@/components/CampaignsMap";
 import { UserData } from "@/components/user-roles/UserList";
 import { Campaign } from "@/types/types";
 
@@ -98,4 +99,51 @@ export const initialUsersData: UserData[] = [
   },
   { id: 7, num: 7, name: "Стоянов Стоян Стоянов", email: "e-mail_6@gmail.com" },
   { id: 8, num: 8, name: "Павлов Павел Павлов", email: "e-mail_7@gmail.com" },
+];
+
+export const sampleCampaignsData: CampaignData[] = [
+  {
+    id: "c1",
+    position: [43.217, 27.925],
+    value: 27,
+    themeName: "Тема 000",
+    questions: "001, 002, 003",
+    totalQueries: 1200,
+    responses: 800,
+    activityPercentage: 66,
+    ratingTrendPercentage: -15,
+  },
+  {
+    id: "c2",
+    position: [43.209, 27.918],
+    value: 8,
+    themeName: "Тема 003",
+    questions: "101, 102",
+    totalQueries: 500,
+    responses: 250,
+    activityPercentage: 50,
+    ratingTrendPercentage: 5,
+  },
+  {
+    id: "c3",
+    position: [43.205, 27.935],
+    value: 67,
+    themeName: "Тема 002",
+    questions: "205, 208",
+    totalQueries: 2000,
+    responses: 1500,
+    activityPercentage: 75,
+    ratingTrendPercentage: 12,
+  },
+  {
+    id: "c4",
+    position: [43.213, 27.945],
+    value: 32,
+    themeName: "Тема 001",
+    questions: "003, 005, 0006",
+    totalQueries: 600,
+    responses: 400,
+    activityPercentage: 50,
+    ratingTrendPercentage: -34,
+  },
 ];
