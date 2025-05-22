@@ -66,7 +66,7 @@ export default function fixCampaign() {
         </div>
       </div>
       <div>
-        <p className="py-3 pr-7 text-end text-xs text-gray-400">
+        <p className="py-2 pr-7 text-end text-xs text-gray-400">
           © Copyright 2025 Interactive Business Partners Petersburg
         </p>
       </div>
