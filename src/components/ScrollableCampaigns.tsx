@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import styles from "../styles/campaigns.module.css";
 
 type IndicatorType = "up" | "down" | "neutral";
 
@@ -68,10 +69,10 @@ const ScrollableCampaignList: React.FC<ScrollableCampaignListProps> = ({
       <div
         className={`bg-primary flex items-center space-x-3 px-3 py-1 text-white ${roundedT}`}
       >
-        <div className="relative h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16">
+        <div className={`relative ${styles.icon}`}>
           <Image src={icon} alt="Gauge Icon" fill className="object-contain" />
         </div>
-        <span className="2xl:text-md lg:text-xs xl:text-sm">{title}</span>
+        <span className={`font-semibold ${styles.text}`}>{title}</span>
       </div>
 
       <div

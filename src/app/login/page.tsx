@@ -58,22 +58,22 @@ export default function LoginPage() {
   return (
     <div className="flex flex-col items-center justify-center">
       {/* Main Content Grid */}
-      <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-16">
         {/* Left Column: Form */}
-        <div className="w-full h-full p-15">
+        <div className="h-full w-full p-15">
           <Image
             src="/images/auth/logo.svg"
             alt="Account Security Graphic"
             width={700}
             height={273}
           />
-          <h2 className="text-4xl font-bold text-secondary b-1 mt-10 ml-13 w-md">
+          <h2 className="text-secondary b-1 mt-10 ml-13 w-md text-4xl font-bold">
             Вход в системата
           </h2>
-          <p className="text-lg text-primary mb-5  ml-13">
+          <p className="text-primary mb-5 ml-13 text-lg">
             Моля, въведете вашите данни по-долу.
           </p>
-          <form onSubmit={handleSubmit} className="w-sm ml-13">
+          <form onSubmit={handleSubmit} className="ml-13 w-sm">
             <InputField
               name="username"
               icon={<FiLogIn size={18} />}
@@ -90,20 +90,20 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+            {error && <p className="mb-4 text-sm text-red-500">{error}</p>}
 
             {/* Action Buttons */}
-            <div className="flex items-center gap-9 mt-6">
+            <div className="mt-6 flex items-center gap-9">
               <button
                 type="button"
                 onClick={() => router.push("/register")}
-                className="py-2 w-full rounded-lg bg-gray-light text-white text-2xl hover:bg-gray-300 cursor-pointer"
+                className="bg-gray-light w-full cursor-pointer rounded-lg py-2 text-2xl text-white hover:bg-gray-300"
               >
                 Отмяна
               </button>
               <button
                 type="submit"
-                className="w-full py-2 rounded-lg bg-secondary text-white text-2xl hover:bg-primary flex items-center justify-center relative cursor-pointer"
+                className="bg-secondary hover:bg-primary relative flex w-full cursor-pointer items-center justify-center rounded-lg py-2 text-2xl text-white"
               >
                 Вход
                 <div className="absolute right-2">
@@ -120,7 +120,7 @@ export default function LoginPage() {
         </div>
 
         {/* Right Column: Graphic */}
-        <div className="hidden md:flex justify-center items-center h-screen pr-5">
+        <div className="hidden h-screen items-center justify-center pr-5 md:flex">
           <Image
             src="/images/auth/img-login.svg"
             alt="register graphic"
@@ -129,6 +129,12 @@ export default function LoginPage() {
           />
         </div>
       </div>
+      <footer className="fixed right-0 bottom-0 z-50 mr-2 mb-1 text-right">
+        <p className="rounded bg-white/80 px-2 text-xs text-gray-500">
+          &copy; {new Date().getFullYear()} Interactive Business Partners
+          Petersburg
+        </p>
+      </footer>
     </div>
   );
 }

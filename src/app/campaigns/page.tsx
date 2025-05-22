@@ -84,21 +84,18 @@ function Campaigns() {
               title="АКТИВНИ КАМПАНИИ"
               items={sampleCampaigns}
               color="green"
-              containerHeightClass="flex-grow min-h-0"
               className="min-h-0 flex-grow"
             />
             <ScrollableGridContainer
               title="ПРЕДСТОЯЩИ КАМПАНИИ"
               items={sampleCampaigns}
               color="orange"
-              containerHeightClass="flex-grow min-h-0"
               className="min-h-0 flex-grow"
             />
             <ScrollableGridContainer
               title="ЗАВЪРШЕНИ КАМПАНИИ"
               items={sampleCampaigns}
               color="blue"
-              containerHeightClass="flex-grow min-h-0"
               className="min-h-0 flex-grow"
             />
           </div>
