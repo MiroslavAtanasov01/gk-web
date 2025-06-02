@@ -70,7 +70,7 @@ const FormField: React.FC<FormFieldProps> = ({
 
 function UserForm() {
   const buttonClasses =
-    "w-2/3 bg-secondary text-white font-medium p-4 rounded-xl cursor-pointer text-lg transition-colors duration-200 font-semibold ease-in-out leading-none hover:bg-primary";
+    "w-2/3 bg-secondary text-white font-medium py-4 rounded-xl cursor-pointer text-lg transition-colors duration-200 font-semibold ease-in-out leading-none hover:bg-primary";
 
   return (
     <>
@@ -122,7 +122,6 @@ function UserForm() {
           </div>
         </div>
       </div>
-      {/* <style jsx global>{` ... `}</style> block has been removed */}
     </>
   );
 }

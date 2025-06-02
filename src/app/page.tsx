@@ -47,6 +47,7 @@ export default function Home() {
             height={220}
             alt="Home Logo"
             priority
+            className="home-img"
             // className="z-10 md:h-32"
           />
           <p className="text-text-main -ml-6 w-50 text-end font-bold">
@@ -95,6 +96,7 @@ export default function Home() {
               image="/images/home/listX.svg"
               text="Шаблони"
               percents={60}
+              onClick={() => router.push("/question-answer-archive")}
             ></Tab>
           </div>
 
@@ -161,7 +163,6 @@ export default function Home() {
               image="/images/home/archive.svg"
               text="Архив"
               percents={0}
-              onClick={() => router.push("/question-answer-archive")}
             ></Tab>
           </div>
           {/* Progress Bars  */}

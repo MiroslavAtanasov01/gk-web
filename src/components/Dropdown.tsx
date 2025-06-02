@@ -34,7 +34,7 @@ export default function Dropdown({
       <div className={`w-full ${className}`}>
         {label && (
           <label
-            className={`mb-1 ml-2 block text-xl font-medium ${getLabelColorClass(activate, labelColor)}`}
+            className={`title-fields mb-1 ml-2 block text-xl font-medium ${getLabelColorClass(activate, labelColor)}`}
           >
             {label}
           </label>
@@ -66,7 +66,7 @@ export default function Dropdown({
       </div>
       <div className="ml-2 flex flex-col items-center">
         <label
-          className={`text-${activate ? "secondary" : "black"} mb-2 block text-xl font-medium`}
+          className={`text-${activate ? "secondary" : "black"} title-fields mb-2 block text-xl font-medium`}
         >
           Активиране
         </label>

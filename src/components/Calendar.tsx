@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { formatDateToDayKey } from "@/utils/getDateTime";
+import "@/styles/gifts.css";
 
 type EventMap = Record<string, { start?: boolean; end?: boolean }>;
 
@@ -80,16 +81,17 @@ const Calendar: React.FC<CalendarProps> = ({
   return (
     <>
       {/* Header */}
-      <div className="bg-primary flex h-25 items-center justify-between rounded-t-lg px-1 py-2 text-white">
+      <div className="bg-primary calendar-header flex h-25 items-center justify-between rounded-t-lg px-1 py-2 text-white">
         <button onClick={() => onMonthChange(-1)} className="ml-15 p-2">
           <Image
             src="/images/left-arrow.svg"
             alt="prev"
             width={25}
             height={40}
+            className="calendar-arrows"
           />
         </button>
-        <h3 className="text-5xl">
+        <h3 className="calendar-month text-5xl">
           {monthNames[month]}, {year}
         </h3>
         <button onClick={() => onMonthChange(1)} className="mr-15 p-2">
@@ -98,6 +100,7 @@ const Calendar: React.FC<CalendarProps> = ({
             alt="next"
             width={25}
             height={40}
+            className="calendar-arrows"
           />
         </button>
       </div>
@@ -107,7 +110,7 @@ const Calendar: React.FC<CalendarProps> = ({
         {dayHeaders.map((header) => (
           <div
             key={header}
-            className="text-secondary py-5 text-center text-4xl font-bold"
+            className="text-secondary calendar-days py-5 pb-0 text-center text-4xl font-bold"
           >
             {header}
           </div>

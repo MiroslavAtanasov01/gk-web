@@ -29,7 +29,7 @@ export default function TextInput({
       <div className={`w-full ${className}`}>
         {label && (
           <label
-            className={`${activate ? "text-secondary" : "text-[#9F9FA3]"} mb-1 ml-2 block text-xl font-medium`}
+            className={`${activate ? "text-secondary" : "text-[#9F9FA3]"} title-fields mb-1 ml-2 block text-xl font-medium`}
           >
             {label}
           </label>
@@ -48,7 +48,7 @@ export default function TextInput({
       </div>
       <div className="ml-2 flex flex-col items-center">
         <label
-          className={`text-${activate ? "secondary" : "black"} mb-2 block text-xl font-medium`}
+          className={`text-${activate ? "secondary" : "black"} title-fields mb-2 block text-xl font-medium`}
         >
           Активиране
         </label>
