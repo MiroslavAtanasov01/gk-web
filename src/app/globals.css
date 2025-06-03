@@ -62,7 +62,7 @@ body {
     margin-bottom: 0.2em;
   }
   .title-fields {
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
   .arrows-btn {
     height: 45px;
@@ -79,5 +79,12 @@ body {
   }
   .home-img {
     height: 9em;
+  }
+  .register-logo {
+    height: 200px;
+    width: 500px;
+  }
+  .register-title {
+    margin-top: 0;
   }
 }

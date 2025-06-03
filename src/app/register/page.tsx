@@ -83,14 +83,15 @@ export default function RegisterPage() {
       {/* Main Content Grid */}
       <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-16">
         {/* Left Column: Form */}
-        <div className="h-full w-full p-15">
+        <div className="h-full w-full p-15 pt-0">
           <Image
             src="/images/auth/logo.svg"
             alt="Account Security Graphic"
             width={700}
             height={273}
+            className="register-logo"
           />
-          <h2 className="text-secondary mt-10 mb-5 ml-13 w-md text-4xl font-bold">
+          <h2 className="text-secondary register-title mt-10 mb-5 ml-13 w-md text-4xl font-bold">
             Регистрация на първи потребител
           </h2>
           <form onSubmit={handleSubmit} className="ml-13 w-sm">

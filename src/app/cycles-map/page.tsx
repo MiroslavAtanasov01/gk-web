@@ -57,37 +57,31 @@ const CampaignsAndCyclesPage: React.FC = () => {
       <main className="grid flex-grow grid-cols-1 gap-6 p-4 md:p-6 lg:grid-cols-[1fr_2fr]">
         {/* Left Column */}
         <section className="border-primary flex flex-grow flex-col overflow-hidden">
-          <h2 className="text-primary mb-3 ml-25 text-center text-2xl font-semibold">
+          <h2 className="text-primary title-column mb-3 ml-25 text-center text-2xl font-semibold">
             КАМПАНИИ - ИЗВАДКА ПОТРЕБИТЕЛИ
           </h2>
           <div className="border-primary ml-25 flex flex-grow rounded-xl border-2">
             <div className="flex max-h-[calc(100vh-270px)] flex-grow flex-col">
               <div className="bg-primary flex h-25 items-center justify-between rounded-t-lg px-1 py-2 text-white">
-                <button
-                  onClick={() => console.log("clicked")}
-                  className="ml-15 p-2"
-                >
+                <button onClick={() => console.log("clicked")} className="p-2">
                   <Image
-                    src="/images/left-arrow.svg"
+                    src="/images/left-arrow-transparent.svg"
                     alt="prev"
                     width={25}
                     height={40}
                   />
                 </button>
                 <div>
-                  <p className="text-center text-lg font-semibold">
+                  <p className="text-m text-center font-semibold">
                     Шифр 001/001 кампания № 001
                   </p>
                   <p className="mb-2 text-center text-lg font-semibold">
                     Дълго наименование на кампанията
                   </p>
                 </div>
-                <button
-                  onClick={() => console.log("clicked")}
-                  className="mr-15 p-2"
-                >
+                <button onClick={() => console.log("clicked")} className="p-2">
                   <Image
-                    src="/images/right-arrow.svg"
+                    src="/images/right-arrow-transparent.svg"
                     alt="next"
                     width={25}
                     height={40}
@@ -104,6 +98,9 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       { value: "5", label: "5" },
                       { value: "50", label: "50" },
                     ]}
+                    checkbox={false}
+                    labelColor="#000"
+                    activate={true}
                   />
                 </div>
                 <div className="flex w-full flex-row gap-5">
@@ -115,6 +112,9 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       { value: "5", label: "5" },
                       { value: "50", label: "50" },
                     ]}
+                    checkbox={false}
+                    labelColor="#000"
+                    activate={true}
                   />
                   <Dropdown
                     label="Доход"
@@ -124,6 +124,9 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       { value: "5", label: "5" },
                       { value: "50", label: "50" },
                     ]}
+                    checkbox={false}
+                    labelColor="#000"
+                    activate={true}
                   />
                 </div>
                 <div className="w-full">
@@ -135,6 +138,9 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       { value: "5", label: "5" },
                       { value: "50", label: "50" },
                     ]}
+                    checkbox={false}
+                    labelColor="#000"
+                    activate={true}
                   />
                 </div>
                 <div className="w-full">
@@ -146,6 +152,9 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       { value: "5", label: "5" },
                       { value: "50", label: "50" },
                     ]}
+                    checkbox={false}
+                    labelColor="#000"
+                    activate={true}
                   />
                 </div>
               </div>
@@ -158,7 +167,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
 
         {/* Right Column */}
         <section className="flex flex-grow flex-col">
-          <h2 className="text-primary mb-3 text-center text-2xl font-semibold">
+          <h2 className="text-primary title-column mb-3 text-center text-2xl font-semibold">
             ГРАФИК КАМПАНИИ
           </h2>
           <div className="grid min-h-0 flex-grow grid-cols-[1fr_2fr]">

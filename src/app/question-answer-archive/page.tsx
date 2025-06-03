@@ -15,7 +15,7 @@ export default function fixCampaign() {
         {/* Left Side - Campaign Table */}
         <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="text-primary w-full p-3 text-center text-2xl font-semibold tracking-wide">
+            <p className="text-primary title-column w-full p-3 text-center text-2xl font-semibold tracking-wide">
               АРХИВ “ВЪПРОСИ” И “ОТГОВОРИ”
             </p>
           </div>
@@ -27,7 +27,7 @@ export default function fixCampaign() {
         {/* Right Side - Tree View */}
         <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="text-primary w-full p-3 text-center text-2xl font-semibold tracking-wide">
+            <p className="text-primary title-column w-full p-3 text-center text-2xl font-semibold tracking-wide">
               ВИЗУАЛИЗАЦИЯ НА ВЪПРОСА
             </p>
           </div>

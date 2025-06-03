@@ -42,6 +42,18 @@ const GISConfigPage: React.FC = () => {
     }));
   };
 
+  const handleDropdownChange = (
+    field: keyof typeof formData,
+    value: string,
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+    // You can add a console log here to see the dynamic change
+    console.log(`Dropdown for ${field} changed to:`, value);
+  };
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header title="Настройка на Географската Информационна Система" />
@@ -67,7 +79,9 @@ const GISConfigPage: React.FC = () => {
                 <Dropdown
                   label="Държава"
                   value={formData.country}
-                  onChange={() => console.log(1)}
+                  onChange={(newValue) =>
+                    handleDropdownChange("country", newValue)
+                  }
                   labelColor="secondary"
                   activate={formData.countryActive}
                   disabled={!formData.countryActive}
@@ -84,7 +98,9 @@ const GISConfigPage: React.FC = () => {
                 <Dropdown
                   label="Град"
                   value={formData.city}
-                  onChange={() => console.log(1)}
+                  onChange={(newValue) =>
+                    handleDropdownChange("city", newValue)
+                  }
                   labelColor="secondary"
                   activate={formData.cityActive}
                   disabled={!formData.cityActive}
@@ -101,7 +117,9 @@ const GISConfigPage: React.FC = () => {
                 <Dropdown
                   label="Район"
                   value={formData.district}
-                  onChange={() => console.log(1)}
+                  onChange={(newValue) =>
+                    handleDropdownChange("district", newValue)
+                  }
                   labelColor="secondary"
                   activate={formData.districtActive}
                   disabled={!formData.districtActive}
@@ -118,7 +136,9 @@ const GISConfigPage: React.FC = () => {
                 <Dropdown
                   label="Квартал"
                   value={formData.quarter}
-                  onChange={() => console.log(1)}
+                  onChange={(newValue) =>
+                    handleDropdownChange("quarter", newValue)
+                  }
                   labelColor="secondary"
                   activate={formData.quarterActive}
                   disabled={!formData.quarterActive}

@@ -63,13 +63,13 @@ const CampaignsAndCyclesPage: React.FC = () => {
                     {campaign.name}
                   </p>
                   <div className="bg-gray-bg py-5">
-                    <div className="mb-3 flex items-center justify-between px-15">
+                    <div className="mb-3 flex items-center justify-between px-10">
                       <div className="flex items-center">
                         {StarIcon("red")}
-                        <span className="ml-3 text-xl">Начало</span>
+                        <span className="mr-9 ml-3 text-xl">Начало</span>
                       </div>
                       <div className="flex items-center">
-                        <span className="mr-3 text-xl">Дата</span>
+                        <span className="mx-3 text-xl">Дата</span>
                         <input
                           defaultValue={campaign.startDate}
                           type="date"
@@ -77,13 +77,13 @@ const CampaignsAndCyclesPage: React.FC = () => {
                         />
                       </div>
                     </div>
-                    <div className="flex items-center justify-between px-15">
+                    <div className="flex items-center justify-between px-10">
                       <div className="flex items-center">
                         {StarIcon("green")}{" "}
-                        <span className="ml-3 text-xl">Край</span>
+                        <span className="mr-9 ml-3 text-xl">Край</span>
                       </div>
                       <div className="flex items-center">
-                        <span className="mr-3 text-xl">Дата</span>
+                        <span className="mx-3 text-xl">Дата</span>
                         <input
                           defaultValue={campaign.endDate}
                           type="date"

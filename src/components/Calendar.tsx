@@ -81,10 +81,10 @@ const Calendar: React.FC<CalendarProps> = ({
   return (
     <>
       {/* Header */}
-      <div className="bg-primary calendar-header flex h-25 items-center justify-between rounded-t-lg px-1 py-2 text-white">
+      <div className="bg-primary calendar-header flex h-25 items-center justify-between rounded-tr-lg px-1 py-2 text-white">
         <button onClick={() => onMonthChange(-1)} className="ml-15 p-2">
           <Image
-            src="/images/left-arrow.svg"
+            src="/images/left-arrow-transparent.svg"
             alt="prev"
             width={25}
             height={40}
@@ -96,7 +96,7 @@ const Calendar: React.FC<CalendarProps> = ({
         </h3>
         <button onClick={() => onMonthChange(1)} className="mr-15 p-2">
           <Image
-            src="/images/right-arrow.svg"
+            src="/images/right-arrow-transparent.svg"
             alt="next"
             width={25}
             height={40}

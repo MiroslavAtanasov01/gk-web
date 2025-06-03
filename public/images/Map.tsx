@@ -5,9 +5,9 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: "/images/marker-icon-2x.png",
-  iconUrl: "/images/marker-icon.png",
-  shadowUrl: "/images/marker-shadow.png",
+  iconRetinaUrl: "/leaflet/images/marker-icon-2x.png",
+  iconUrl: "/leaflet/images/marker-icon.png",
+  shadowUrl: "/leaflet/images/marker-shadow.png",
 });
 
 interface MapProps {
