@@ -1,0 +1,31 @@
+@media (min-height: 601px) and (max-height: 800px) {
+  .title {
+    font-size: 1.2em;
+  }
+  .subtitle,
+  .text-dropdown {
+    font-size: 1.1em;
+  }
+  .text {
+    font-size: 1em;
+  }
+
+  .calendar-header {
+    height: 5em;
+  }
+  .calendar-arrows {
+    height: 30px;
+  }
+  .calendar-month {
+    font-size: 1.5em;
+  }
+  .calendar-days {
+    font-size: 1.3em;
+  }
+  .sample-img {
+    max-height: 16.5vh;
+  }
+  .s-sample-img {
+    max-height: 9vh;
+  }
+}

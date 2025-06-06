@@ -23,3 +23,8 @@
 .roundedLeft {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
 }
+@media (min-height: 601px) and (max-height: 800px) {
+  .tab {
+    height: 5.5em;
+  }
+}

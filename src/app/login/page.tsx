@@ -99,7 +99,7 @@ export default function LoginPage() {
                 onClick={() => router.push("/register")}
                 className="bg-gray-light w-full cursor-pointer rounded-lg py-2 text-2xl text-white hover:bg-gray-300"
               >
-                Отмяна
+                Регистрация
               </button>
               <button
                 type="submit"

@@ -50,7 +50,9 @@ export default function FixCampaign() {
       <div className="mt-3 flex w-full grow gap-8 overflow-hidden p-1 px-7 pl-20">
         <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="text-primary w-full p-3 text-center text-2xl font-semibold tracking-wide">
+            <p
+              className={`text-primary title-column w-full p-3 text-center font-semibold tracking-wide`}
+            >
               РЕГИСТРИРАНИ ПОТРЕБИТЕЛИ С АДРЕС
             </p>
           </div>
@@ -61,7 +63,9 @@ export default function FixCampaign() {
 
         <div className="flex flex-1 flex-col overflow-hidden">
           <div className="flex justify-center">
-            <p className="text-primary w-full p-3 text-center text-2xl font-semibold tracking-wide">
+            <p
+              className={`text-primary title-column w-full p-3 text-center font-semibold tracking-wide`}
+            >
               СТАТУС 1. РЕГИСТРАЦИЯ НА РОЛИ И ПОТРЕБИТЕЛИ
             </p>
           </div>
@@ -69,9 +73,11 @@ export default function FixCampaign() {
             <div className="border-text-secondary relative m-auto mb-3 flex w-full flex-col rounded-xl border-2 p-5">
               <UserForm />
             </div>
-            <div className="flex w-full flex-1 flex-row gap-7 overflow-hidden font-sans">
+            <div className="flex w-full flex-1 flex-row gap-7 overflow-hidden">
               <div className="flex w-1/2 flex-col">
-                <p className="text-primary w-full p-3 text-center text-2xl font-semibold tracking-wide">
+                <p
+                  className={`text-primary title-column w-full p-3 text-center font-semibold tracking-wide`}
+                >
                   СТАТУС 2. ИЗБОР НА РОЛЯ
                 </p>
                 <OptionsList
@@ -82,7 +88,9 @@ export default function FixCampaign() {
                 />
               </div>
               <div className="flex w-1/2 flex-col">
-                <p className="text-primary w-full p-3 text-center text-2xl font-semibold tracking-wide">
+                <p
+                  className={`text-primary title-column w-full p-3 text-center font-semibold tracking-wide`}
+                >
                   СТАТУС 3. ДОСТЪП
                 </p>
                 <OptionsList

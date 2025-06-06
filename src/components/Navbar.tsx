@@ -19,6 +19,7 @@ export default function Navbar() {
           alt="back"
           width={65}
           height={65}
+          className="arrows-btn"
         />
       </div>
 
@@ -82,7 +83,7 @@ export default function Navbar() {
       </div>
 
       {/* Logo */}
-      <div className="ml-15 flex justify-start">
+      <div className="mr-5 ml-15 flex justify-start">
         <div
           className="mr-5 flex cursor-pointer justify-start"
           onClick={() => router.forward()}
@@ -92,6 +93,7 @@ export default function Navbar() {
             alt="next"
             width={65}
             height={65}
+            className="arrows-btn"
           />
         </div>
         <div>

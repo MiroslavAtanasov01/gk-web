@@ -105,10 +105,10 @@ function CampaignTable({
         return (
           <>
             <div className="mr-1 w-7"> </div>{" "}
-            <span className="text-text-secondary w-11 text-center font-semibold">
+            <span className="text-text-secondary title-fields w-11 text-center font-semibold">
               №
             </span>
-            <span className="text-text-secondary mr-2 ml-2 font-semibold">
+            <span className="text-text-secondary title-fields mr-2 ml-2 font-semibold">
               {sectionTitle}
             </span>
           </>
@@ -116,14 +116,14 @@ function CampaignTable({
       case "statusDisplay":
         return (
           <>
-            <div className="text-text-secondary mr-1 w-25 font-semibold">
+            <div className="text-text-secondary title-fields mr-1 w-25 font-semibold">
               {" "}
               Активирай
             </div>{" "}
-            <span className="text-text-secondary w-11 text-center font-semibold">
+            <span className="text-text-secondary title-fields w-11 text-center font-semibold">
               №
             </span>
-            <span className="text-text-secondary mr-2 ml-2 font-semibold">
+            <span className="text-text-secondary title-fields mr-2 ml-2 font-semibold">
               Кампании
             </span>
           </>
@@ -132,15 +132,17 @@ function CampaignTable({
         return (
           <>
             <div className="mr-1 w-8"></div>{" "}
-            <span className="text-primary w-11 text-center font-semibold">
+            <span className="text-primary title-fields w-11 text-center font-semibold">
               №
             </span>
-            <span className="text-primary mr-2 ml-2 font-semibold">Въпрос</span>
+            <span className="text-primary title-fields mr-2 ml-2 font-semibold">
+              Въпрос
+            </span>
           </>
         );
       case "answers":
         return (
-          <div className="text-primary flex w-full justify-center text-xl font-semibold">
+          <div className="text-primary title-fields flex w-full justify-center font-semibold">
             ШИФЪР 002 ВЪПРОС 0001
           </div>
         );
@@ -148,10 +150,10 @@ function CampaignTable({
         return (
           <>
             <div className="mr-1 w-8"></div>
-            <span className="text-text-secondary w-11 text-center font-semibold">
+            <span className="text-text-secondary title-fields w-11 text-center font-semibold">
               №
             </span>
-            <span className="text-text-secondary mr-2 ml-2 font-semibold">
+            <span className="text-text-secondary title-fields mr-2 ml-2 font-semibold">
               Кампания
             </span>
           </>

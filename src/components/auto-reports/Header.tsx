@@ -12,10 +12,12 @@ const Header = ({ title }: { title: string }) => {
           alt="back"
           width={65}
           height={65}
-          className="mr-10 cursor-pointer"
+          className="arrows-btn mr-10 cursor-pointer"
           onClick={() => window.history.back()}
         />
-        <h1 className="text-primary text-5xl font-semibold">{title}</h1>
+        <h1 className="text-primary nav-title text-5xl font-semibold">
+          {title}
+        </h1>
       </div>
       <div className="flex items-center space-x-2">
         <Image
@@ -23,7 +25,7 @@ const Header = ({ title }: { title: string }) => {
           alt="next"
           width={65}
           height={65}
-          className="mr-10"
+          className="arrows-btn mr-10"
         />
         <Image
           src="/images/campaigns/logo.svg"
@@ -31,7 +33,7 @@ const Header = ({ title }: { title: string }) => {
           width={200}
           height={55}
           onClick={() => router.push("/")}
-          className="cursor-pointer"
+          className="nav-logo nav-logo cursor-pointer"
         />
       </div>
     </header>

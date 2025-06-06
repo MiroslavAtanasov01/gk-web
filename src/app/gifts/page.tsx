@@ -48,25 +48,25 @@ const CampaignsAndCyclesPage: React.FC = () => {
     <div className="flex min-h-screen flex-col">
       <Header title="Кампании и Цикли" />
       {/* Main Content Area */}
-      <main className="grid flex-grow grid-cols-1 gap-6 p-4 md:p-6 lg:grid-cols-[1fr_2fr]">
+      <main className="grid flex-grow grid-cols-1 gap-6 p-4 md:p-6 md:pb-3 lg:grid-cols-[1fr_2fr]">
         {/* Left Column: Active Campaigns */}
         <section className="border-primary flex flex-grow flex-col overflow-hidden">
-          <h2 className="text-primary mb-3 ml-25 text-center text-2xl font-semibold">
+          <h2 className="text-primary title mb-3 ml-25 text-center text-2xl font-semibold md:mb-1">
             НАСТРОЙКИ
           </h2>
           <div className="border-primary ml-25 flex flex-grow rounded-xl border-2 py-3">
             <div className="max-h-[calc(100vh-270px)] flex-grow space-y-3 py-5">
               <div className="mb-7">
-                <p className="text-primary mb-3 text-center text-xl font-semibold">
+                <p className="text-primary subtitle mb-3 text-center text-xl font-semibold">
                   Бонус Подаръци
                 </p>
                 <div className="bg-gray-bg flex justify-center py-5">
                   <div className="items-center">
                     <div className="flex items-center">
-                      <span className="text-xl">На всеки</span>
+                      <span className="text text-xl">На всеки</span>
                       <div className="relative inline-block">
                         <select
-                          className="border-secondary mx-3 appearance-none rounded-xl border-2 bg-white px-2 pr-10 text-xl"
+                          className="border-secondary text-dropdown mx-3 appearance-none rounded-xl border-2 bg-white px-2 pr-10 text-xl"
                           defaultValue=""
                         >
                           <option value="5">5</option>
@@ -81,23 +81,25 @@ const CampaignsAndCyclesPage: React.FC = () => {
                           />
                         </span>
                       </div>
-                      <span className="mr-3 text-xl">отговор</span>
+                      <span className="text mr-3 text-xl">отговор</span>
                     </div>
-                    <span className="flex justify-center text-xl">0-50</span>
+                    <span className="text flex justify-center text-xl">
+                      0-50
+                    </span>
                   </div>
                 </div>
               </div>
               <div className="mb-7">
-                <p className="text-primary mb-3 text-center text-xl font-semibold">
+                <p className="text-primary subtitle mb-3 text-center text-xl font-semibold">
                   Бонус Подаръци
                 </p>
                 <div className="bg-gray-bg flex justify-center py-5">
                   <div className="items-center">
                     <div className="flex items-center">
-                      <span className="text-xl">На всеки</span>
+                      <span className="text text-xl">На всеки</span>
                       <div className="relative inline-block">
                         <select
-                          className="border-secondary mx-3 appearance-none rounded-xl border-2 bg-white px-2 pr-10 text-xl"
+                          className="border-secondary text-dropdown mx-3 appearance-none rounded-xl border-2 bg-white px-2 pr-10 text-xl"
                           defaultValue=""
                         >
                           <option value="5">5</option>
@@ -112,14 +114,16 @@ const CampaignsAndCyclesPage: React.FC = () => {
                           />
                         </span>
                       </div>
-                      <span className="mr-3 text-xl">отговор</span>
+                      <span className="text mr-3 text-xl">отговор</span>
                     </div>
-                    <span className="flex justify-center text-xl">0-50</span>
+                    <span className="text flex justify-center text-xl">
+                      0-50
+                    </span>
                   </div>
                 </div>
               </div>
               <div>
-                <p className="text-primary mb-3 text-center text-xl font-semibold">
+                <p className="text-primary subtitle mb-3 text-center text-xl font-semibold">
                   Линк към площадката за благодарности
                 </p>
                 <div className="bg-gray-bg flex justify-center py-10">
@@ -140,10 +144,10 @@ const CampaignsAndCyclesPage: React.FC = () => {
         {/* Right Column: Calendar */}
         <section className="flex flex-grow flex-col">
           <div className="flex flex-row items-center justify-between px-15">
-            <h2 className="text-primary mb-3 text-center text-2xl font-semibold">
+            <h2 className="text-primary title mb-3 text-center text-2xl font-semibold md:mb-1">
               ПЛОЩАДКА ЗА БЛАГОДАРНОСТ
             </h2>
-            <h2 className="text-primary mb-3 text-center text-2xl font-semibold">
+            <h2 className="text-primary title mb-3 text-center text-2xl font-semibold md:mb-1">
               ГРАФИК КАМПАНИИ
             </h2>
           </div>
@@ -178,7 +182,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                   alt="sample"
                   width={300}
                   height={200}
-                  className="mx-auto mb-3 h-auto max-h-[25vh] object-contain"
+                  className="sample-img mx-auto mb-3 h-auto max-h-[25vh] object-contain"
                 />
                 <span className="flex justify-center text-sm font-bold">
                   Мероприятия граждани на квартала
@@ -190,7 +194,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       alt="sample"
                       width={100}
                       height={100}
-                      className="h-auto max-h-[12vh] object-contain"
+                      className="s-sample-img h-auto max-h-[12vh] object-contain"
                     />
 
                     <span className="flex justify-center text-xs">
@@ -203,7 +207,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       alt="sample"
                       width={100}
                       height={100}
-                      className="h-auto max-h-[12vh] object-contain"
+                      className="s-sample-img h-auto max-h-[12vh] object-contain"
                     />
 
                     <span className="flex justify-center text-xs">
@@ -216,7 +220,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       alt="sample"
                       width={100}
                       height={100}
-                      className="h-auto max-h-[12vh] object-contain"
+                      className="s-sample-img h-auto max-h-[12vh] object-contain"
                     />
 
                     <span className="flex justify-center text-xs">
@@ -234,7 +238,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       alt="sample"
                       width={100}
                       height={100}
-                      className="h-auto max-h-[12vh] object-contain"
+                      className="s-sample-img h-auto max-h-[12vh] object-contain"
                     />
                   </div>
                   <div>
@@ -243,7 +247,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       alt="sample"
                       width={100}
                       height={100}
-                      className="h-auto max-h-[12vh] object-contain"
+                      className="s-sample-img h-auto max-h-[12vh] object-contain"
                     />
                   </div>
                   <div>
@@ -252,7 +256,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
                       alt="sample"
                       width={100}
                       height={100}
-                      className="h-auto max-h-[12vh] object-contain"
+                      className="s-sample-img h-auto max-h-[12vh] object-contain"
                     />
                   </div>
                 </div>
@@ -290,7 +294,7 @@ const CampaignsAndCyclesPage: React.FC = () => {
         </section>
       </main>
 
-      <footer className="flex flex-wrap items-center justify-center gap-2 px-6 pb-3 md:justify-between">
+      <footer className="flex flex-wrap items-center justify-center gap-2 px-6 pb-3 md:justify-between md:pb-2">
         <div></div>
         <button className="hover:bg-secondary mr-20 flex cursor-pointer items-center space-x-2 rounded-lg bg-[#74ACDA] px-4 py-2 text-lg font-medium text-white transition-colors duration-150">
           <Image

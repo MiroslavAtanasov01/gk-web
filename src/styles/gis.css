@@ -1,0 +1,8 @@
+@media (min-height: 601px) and (max-height: 800px) {
+  .buttons-wrapper {
+    padding-top: 0.3em;
+  }
+  .fields-wrapper {
+    padding: 0.7em;
+  }
+}
