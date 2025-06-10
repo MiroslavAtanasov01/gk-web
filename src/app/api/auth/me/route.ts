@@ -3,14 +3,15 @@ import { cookies } from "next/headers";
 
 async function getUserByToken(token: string) {
   try {
-    const backendProfileUrl = "https://api.citizens.asicsoft.ru/api/Operator";
-
-    const beResponse = await fetch(backendProfileUrl, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Accept-Language": "en-US",
+    const beResponse = await fetch(
+      "https://api.citizens.asicsoft.ru/api/Operator",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Accept-Language": "en-US",
+        },
       },
-    });
+    );
 
     if (!beResponse.ok) {
       return null;
