@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -13,47 +13,42 @@ export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { user, loading, login } = useAuth();
+  const { login } = useAuth();
   const router = useRouter();
 
-  useEffect(() => {
-    if (!loading && user) {
-      router.replace("/");
-    }
-  }, [user, loading, router]);
-
-  const getStoredUsers = (): { username: string; password: string }[] => {
-    try {
-      const usersJson = localStorage.getItem("gk_users");
-      return usersJson ? JSON.parse(usersJson) : [];
-    } catch (error) {
-      console.error("Failed to parse users from localStorage", error);
-      return [];
-    }
-  };
-
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setError("");
 
-    console.log(username, password);
     if (username.trim() === "" || password.trim() === "") {
       setError("Моля, попълнете всички полета.");
       return;
     }
 
-    const users = getStoredUsers();
-    const foundUser = users.find((u) => u.username === username);
-
-    if (foundUser && foundUser.password === password) {
-      login({ username: foundUser.username });
-      router.push("/");
-    } else {
-      setError("Invalid username or password");
+    try {
+      await login(username, password);
+    } catch (err: unknown) {
+      console.error("Login failed:", err);
+      if (
+        err &&
+        typeof err === "object" &&
+        "message" in err &&
+        typeof (err as { message?: string }).message === "string"
+      ) {
+        setError((err as { message: string }).message);
+      } else {
+        setError("Invalid username or password");
+      }
     }
   };
 
-  if (loading) return <div>Зареждане...</div>;
+  // if (loading || (!loading && user)) {
+  //   return (
+  //     <div className="flex h-screen items-center justify-center">
+  //       <p className="text-primary text-lg">Зареждане...</p>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="flex flex-col items-center justify-center">
