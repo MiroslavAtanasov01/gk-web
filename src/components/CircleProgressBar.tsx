@@ -7,23 +7,23 @@ type SegmentedCircularProgressProps = {
 export default function SegmentedCircularProgress({
   value,
 }: SegmentedCircularProgressProps) {
-  const [size, setSize] = useState(60);
+  const [size, setSize] = useState<number | null>(null);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
     const updateSize = () => {
-      setSize(
-        window.innerHeight > 700 && window.innerHeight < 850
-          ? 50
-          : window.innerHeight > 850 && window.innerHeight < 950
-            ? 60
-            : 70,
-      );
+      const h = window.innerHeight;
+      const newSize = h > 700 && h < 850 ? 50 : h > 850 && h < 950 ? 60 : 70;
+      setSize(newSize);
     };
 
     updateSize();
+    setHasMounted(true);
     window.addEventListener("resize", updateSize);
     return () => window.removeEventListener("resize", updateSize);
   }, []);
+
+  if (!hasMounted || size === null) return null;
 
   const stroke = 6;
   const segments = 8;
@@ -108,7 +108,7 @@ export default function SegmentedCircularProgress({
       className="relative flex items-center justify-center"
       style={{ width: size, height: size }}
     >
-      <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-full">
+      <svg viewBox={`0 0 ${size} ${size}`} className="h-full w-full">
         {paths}
       </svg>
       <div
