@@ -79,32 +79,32 @@ const GisPageClient: React.FC<GisPageClientProps> = ({ availableRegions }) => {
     }
   };
 
-  // --- FUNCTION TO VIEW A SPECIFIC REGION ---
-  const handleViewRegion = async (regionId: string) => {
-    try {
-      const regionDetails = await api.get<Region>(`/api/regions/${regionId}`);
-      console.log("Region Details:", regionDetails);
-    } catch (error) {
-      console.error("Failed to fetch region details:", error);
-      alert("Грешка при извличане на детайли.");
-    }
-  };
+  // // --- FUNCTION TO VIEW A SPECIFIC REGION ---
+  // const handleViewRegion = async (regionId: string) => {
+  //   try {
+  //     const regionDetails = await api.get<Region>(`/api/regions/${regionId}`);
+  //     console.log("Region Details:", regionDetails);
+  //   } catch (error) {
+  //     console.error("Failed to fetch region details:", error);
+  //     alert("Грешка при извличане на детайли.");
+  //   }
+  // };
 
-  // --- NEW FUNCTION TO DELETE A REGION ---
-  const handleDeleteRegion = async (regionId: string) => {
-    if (!window.confirm("Наистина ли искате да изтриете този регион?")) {
-      return;
-    }
+  // // --- NEW FUNCTION TO DELETE A REGION ---
+  // const handleDeleteRegion = async (regionId: string) => {
+  //   if (!window.confirm("Наистина ли искате да изтриете този регион?")) {
+  //     return;
+  //   }
 
-    try {
-      await api.delete(`/api/regions/${regionId}`);
-      alert("Регионът е изтрит успешно.");
-      router.refresh();
-    } catch (error) {
-      console.error("Failed to delete region:", error);
-      alert("Грешка при изтриване на регион.");
-    }
-  };
+  //   try {
+  //     await api.delete(`/api/regions/${regionId}`);
+  //     alert("Регионът е изтрит успешно.");
+  //     router.refresh();
+  //   } catch (error) {
+  //     console.error("Failed to delete region:", error);
+  //     alert("Грешка при изтриване на регион.");
+  //   }
+  // };
 
   const toggleField = (field: keyof typeof formData) => {
     setFormData((prev) => ({
