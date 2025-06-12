@@ -1,21 +1,24 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-interface RequestContext {
-  params: {
-    id: string;
-  };
-}
-
 // --- HANDLER FOR GETTING ONE REGION ---
-// I think we don`t have this type of request in the app, but I add it for example
-export async function GET(request: NextRequest, { params }: RequestContext) {
+export async function GET(request: NextRequest) {
+  // --- NEW WAY TO GET THE ID ---
+  // We get the full URL from the request object.
+  const url = new URL(request.url);
+  // The pathname will be something like '/api/regions/123'
+  // We split it by '/' and take the last part.
+  const id = url.pathname.split("/").pop();
+
+  if (!id) {
+    return new NextResponse("Region ID is missing in the URL", { status: 400 });
+  }
+
   const token = (await cookies()).get("auth_token")?.value;
+
   if (!token) {
     return new NextResponse("Authentication required", { status: 401 });
   }
-
-  const { id } = params; // Get the ID from the URL
 
   try {
     const beResponse = await fetch(
@@ -44,14 +47,18 @@ export async function GET(request: NextRequest, { params }: RequestContext) {
 }
 
 // --- HANDLER FOR DELETING ONE REGION ---
-// I think we don`t have this type of request in the app, but I add it for example
-export async function DELETE(request: NextRequest, { params }: RequestContext) {
+export async function DELETE(request: NextRequest) {
+  const url = new URL(request.url);
+  const id = url.pathname.split("/").pop();
+
+  if (!id) {
+    return new NextResponse("Region ID is missing in the URL", { status: 400 });
+  }
+
   const token = (await cookies()).get("auth_token")?.value;
   if (!token) {
     return new NextResponse("Authentication required", { status: 401 });
   }
-
-  const { id } = params; // Get the ID from the URL
 
   try {
     const beResponse = await fetch(

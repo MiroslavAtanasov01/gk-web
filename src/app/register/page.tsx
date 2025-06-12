@@ -21,7 +21,7 @@ export default function RegisterPage() {
   const router = useRouter();
   const { register } = useAuth();
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setError("");
     setLoading(true);
@@ -45,29 +45,22 @@ export default function RegisterPage() {
       return;
     }
 
-    const userData = {
-      username,
-      firstName,
-      lastName,
-      email,
-    };
+    await register(firstName, lastName, email, password, username);
 
-    const success = register(userData, password);
-
-    if (success) {
-      alert("Регистрацията е успешна!");
-      setLoading(false);
-      router.push("/");
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setUsername("");
-      setPassword("");
-      setConfirmPassword("");
-    } else {
-      setError("Потребителското име вече съществува.");
-      setLoading(false);
-    }
+    // if (success) {
+    //   alert("Регистрацията е успешна!");
+    //   setLoading(false);
+    //   router.push("/");
+    //   setFirstName("");
+    //   setLastName("");
+    //   setEmail("");
+    //   setUsername("");
+    //   setPassword("");
+    //   setConfirmPassword("");
+    // } else {
+    //   setError("Потребителското име вече съществува.");
+    //   setLoading(false);
+    // }
   };
 
   return (
