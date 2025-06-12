@@ -8,6 +8,7 @@ import React, {
   ReactNode,
 } from "react";
 import { useRouter } from "next/navigation";
+import { api, ApiError } from "@/lib/api";
 
 interface User {
   username: string;
@@ -19,109 +20,65 @@ interface User {
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: (userData: User) => void;
+  login: (username: string, password: string) => Promise<void>;
   logout: () => void;
-  register: (userData: User, password: string) => boolean; // Added register logic here for simplicity
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Define the key for storing users in localStorage
-const LOCAL_STORAGE_USERS_KEY = "gk_users";
-// Define the key for storing the currently logged-in user
-const LOCAL_STORAGE_SESSION_KEY = "gk_loggedInUser";
-
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true); // Start loading until initial check is done
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  // Check localStorage for existing session on initial load
+  // Check for existing session on initial load
   useEffect(() => {
-    try {
-      const loggedInUserJson = localStorage.getItem(LOCAL_STORAGE_SESSION_KEY);
-      if (loggedInUserJson) {
-        const loggedInUser = JSON.parse(loggedInUserJson);
-        setUser(loggedInUser);
+    const checkUser = async () => {
+      try {
+        const { user: fetchedUser } = await api.get<{ user: User }>(
+          "/api/auth/me",
+        );
+        if (fetchedUser) {
+          setUser(fetchedUser);
+        }
+      } catch (error) {
+        if (error instanceof ApiError && error.status === 401) {
+          console.log("No active session.");
+        } else {
+          console.error("Failed to fetch user on load", error);
+        }
+        setUser(null);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error("Failed to parse logged in user from localStorage", error);
-      localStorage.removeItem(LOCAL_STORAGE_SESSION_KEY); // Clear corrupted data
-    } finally {
-      setLoading(false); // Finished initial check
-    }
-  }, []); // Empty dependency array means this runs once on mount
+    };
+    checkUser();
+  }, []);
 
-  const getStoredUsers = (): (User & { password: string })[] => {
-    try {
-      const usersJson = localStorage.getItem(LOCAL_STORAGE_USERS_KEY);
-      return usersJson ? JSON.parse(usersJson) : [];
-    } catch (error) {
-      console.error("Failed to parse users from localStorage", error);
-      return [];
-    }
+  const login = async (username: string, password: string) => {
+    const { user: loggedInUser } = await api.post<
+      { user: User },
+      { username: string; password: string }
+    >("/api/auth/login", { username, password });
+    setUser(loggedInUser);
+    router.push("/");
   };
 
-  const storeUsers = (users: (User & { password: string })[]) => {
-    try {
-      localStorage.setItem(LOCAL_STORAGE_USERS_KEY, JSON.stringify(users));
-    } catch (error) {
-      console.error("Failed to save users to localStorage", error);
-    }
+  const logout = async () => {
+    await api.post("/api/auth/logout", {});
+    setUser(null);
+    router.push("/login");
   };
 
-  const register = (userData: User, password: string): boolean => {
-    const users = getStoredUsers();
-    const userExists = users.some((u) => u.username === userData.username);
-
-    if (userExists) {
-      alert("Username already exists!");
-      return false;
-    }
-
-    // !!! INSECURE: Storing plain text password !!!
-    const newUser = { ...userData, password: password };
-    const updatedUsers = [...users, newUser];
-    storeUsers(updatedUsers);
-    console.log("User registered (in localStorage):", userData.username);
-    return true;
-  };
-
-  const login = (loginUser: User) => {
-    // Store user data in localStorage to simulate session persistence
-    try {
-      localStorage.setItem(
-        LOCAL_STORAGE_SESSION_KEY,
-        JSON.stringify(loginUser),
-      );
-      setUser(loginUser);
-      console.log("User logged in (in localStorage):", loginUser.username);
-    } catch (error) {
-      console.error("Failed to save logged in user to localStorage", error);
-    }
-  };
-
-  const logout = () => {
-    // Remove user data from localStorage
-    try {
-      localStorage.removeItem(LOCAL_STORAGE_SESSION_KEY);
-      setUser(null);
-      console.log("User logged out (localStorage cleared)");
-      // Optional: Redirect to login page after logout
-      router.push("/login");
-    } catch (error) {
-      console.error("Failed to remove logged in user from localStorage", error);
-    }
-  };
+  // TODO register `await api.post('/api/auth/register', { ... });`
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, register }}>
+    <AuthContext.Provider value={{ user, loading, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-// Custom hook to use the AuthContext
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (context === undefined) {

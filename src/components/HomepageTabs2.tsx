@@ -21,7 +21,7 @@ export default function Tab({ image, text, percents, onClick }: TabProps) {
 
   return (
     <div
-      className={`flex items-center m-3 ${styles.tab} cursor-pointer`}
+      className={`m-3 flex items-center ${styles.tab} cursor-pointer`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
@@ -38,7 +38,7 @@ export default function Tab({ image, text, percents, onClick }: TabProps) {
         className={`${styles.icon} rounded`}
       />
 
-      <p className="text-base font-semibold flex-1 text-text-secondary pl-2">
+      <p className="text-text-secondary flex-1 pl-2 text-base font-semibold">
         {text}
       </p>
 
@@ -49,7 +49,7 @@ export default function Tab({ image, text, percents, onClick }: TabProps) {
             alt="icon"
             width={30}
             height={30}
-            className="rounded m-1"
+            className="m-1 rounded"
           />
         ) : (
           <CircularProgressBar value={percents} />

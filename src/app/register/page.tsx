@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { FiLogIn } from "react-icons/fi";
@@ -19,13 +19,7 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
   const [loadingRegister, setLoading] = useState(false);
   const router = useRouter();
-  const { user, loading, register } = useAuth();
-
-  useEffect(() => {
-    if (!loading && user) {
-      router.replace("/");
-    }
-  }, [user, loading, router]);
+  const { register } = useAuth();
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -75,8 +69,6 @@ export default function RegisterPage() {
       setLoading(false);
     }
   };
-
-  if (loading) return <div>Зареждане...</div>;
 
   return (
     <div className="flex flex-col items-center justify-center">
